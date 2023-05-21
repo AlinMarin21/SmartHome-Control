@@ -56,6 +56,8 @@ public class StartActivity extends AppCompatActivity {
     AnimationDrawable connectivityAnimation = null;
     ImageView startPageConnectivity = null;
 
+    Intent homeMenu_intent = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -207,8 +209,8 @@ public class StartActivity extends AppCompatActivity {
 //                    transmission_allowed = true;
 //                    recovery_action = true;
 //
-//                    homeMenu_intent = new Intent(StartActivity.this, HomeMenuActivity.class);
-//                    startActivity(homeMenu_intent);
+                homeMenu_intent = new Intent(StartActivity.this, HomeMenuActivity.class);
+                startActivity(homeMenu_intent);
                 }
             }
         }

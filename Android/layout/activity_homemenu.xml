@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/beige_background">
+
+
+    <ImageView
+        android:id="@+id/bottom_page"
+        android:layout_width="424dp"
+        android:layout_height="325dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="-2dp"
+        android:src="@drawable/beige_bottom_image" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="325dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/button4"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/lights_text"
+                android:textColor="@color/white"
+                android:textSize="18dp"
+                android:layout_marginRight="5dp"
+                android:gravity="center_vertical"
+                android:drawableLeft="@drawable/baseline_lightbulb_24"
+                android:backgroundTint="@color/green_navigation_background"/>
+
+            <LinearLayout
+                android:layout_width="186dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginLeft="5dp">
+
+                <Button
+                    android:id="@+id/button"
+                    android:layout_width="match_parent"
+                    android:layout_height="163dp"
+                    android:text="@string/doors_text"
+                    android:textColor="@color/white"
+                    android:textSize="18dp"
+                    android:layout_marginRight="5dp"
+                    android:gravity="center_vertical"
+                    android:drawableLeft="@drawable/baseline_door_sliding_24"
+                    android:backgroundTint="@color/purple_navigation_background"/>
+
+                <Button
+                    android:id="@+id/button2"
+                    android:layout_width="match_parent"
+                    android:layout_height="163dp"
+                    android:text="@string/AC_text"
+                    android:textColor="@color/white"
+                    android:textSize="18dp"
+                    android:layout_marginRight="5dp"
+                    android:gravity="center_vertical"
+                    android:drawableLeft="@drawable/baseline_wind_power_24"
+                    android:backgroundTint="@color/red_navigation_background"/>
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="170dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/button5"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/ambient_text"
+                android:textColor="@color/white"
+                android:textSize="18dp"
+                android:layout_marginRight="5dp"
+                android:gravity="center_vertical"
+                android:drawableLeft="@drawable/baseline_device_thermostat_24"
+                android:backgroundTint="@color/blue_navigation_background"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="186dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="5dp"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/button7"
+                    android:layout_width="match_parent"
+                    android:layout_height="163dp"
+                    android:text="@string/voice_text"
+                    android:textColor="@color/white"
+                    android:textSize="18dp"
+                    android:layout_marginRight="5dp"
+                    android:gravity="center_vertical"
+                    android:drawableLeft="@drawable/baseline_record_voice_over_24"
+                    android:backgroundTint="@color/red_navigation_background"/>
+
+                <Button
+                    android:id="@+id/button27"
+                    android:layout_width="match_parent"
+                    android:layout_height="163dp"
+                    android:text="@string/settings_text"
+                    android:textColor="@color/white"
+                    android:textSize="18dp"
+                    android:layout_marginRight="5dp"
+                    android:gravity="center_vertical"
+                    android:drawableLeft="@drawable/baseline_settings_24"
+                    android:backgroundTint="@color/purple_navigation_background"/>
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/button49"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:text="@string/display_text"
+                android:textColor="@color/white"
+                android:textSize="18dp"
+                android:layout_marginRight="5dp"
+                android:gravity="center_vertical"
+                android:drawableLeft="@drawable/baseline_desktop_windows_24"
+                android:backgroundTint="@color/green_navigation_background"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

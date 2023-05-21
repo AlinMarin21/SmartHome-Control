@@ -8,4 +8,12 @@
     <string name="connection_not_established">The connection could not be established. Try restarting the Bluetooth module</string>
 
     <string name="try_again_button">TRY AGAIN</string>
+
+    <string name="lights_text">LIGHTS</string>
+    <string name="doors_text">DOORS</string>
+    <string name="AC_text">AC</string>
+    <string name="ambient_text">HOME AMBIENT</string>
+    <string name="display_text">DISPLAY</string>
+    <string name="voice_text">VOICE CONTROL</string>
+    <string name="settings_text">SETTINGS</string>
 </resources>
