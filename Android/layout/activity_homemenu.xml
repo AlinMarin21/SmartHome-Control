@@ -29,7 +29,7 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/button4"
+                android:id="@+id/light_button"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -48,7 +48,7 @@
                 android:layout_marginLeft="5dp">
 
                 <Button
-                    android:id="@+id/button"
+                    android:id="@+id/doors_button"
                     android:layout_width="match_parent"
                     android:layout_height="163dp"
                     android:text="@string/doors_text"
@@ -60,7 +60,7 @@
                     android:backgroundTint="@color/purple_navigation_background"/>
 
                 <Button
-                    android:id="@+id/button2"
+                    android:id="@+id/ac_button"
                     android:layout_width="match_parent"
                     android:layout_height="163dp"
                     android:text="@string/AC_text"
@@ -80,7 +80,7 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/button5"
+                android:id="@+id/ambient_button"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -105,7 +105,7 @@
                 android:orientation="vertical">
 
                 <Button
-                    android:id="@+id/button7"
+                    android:id="@+id/voice_button"
                     android:layout_width="match_parent"
                     android:layout_height="163dp"
                     android:text="@string/voice_text"
@@ -117,7 +117,7 @@
                     android:backgroundTint="@color/red_navigation_background"/>
 
                 <Button
-                    android:id="@+id/button27"
+                    android:id="@+id/settings_button"
                     android:layout_width="match_parent"
                     android:layout_height="163dp"
                     android:text="@string/settings_text"
@@ -131,7 +131,7 @@
             </LinearLayout>
 
             <Button
-                android:id="@+id/button49"
+                android:id="@+id/display_button"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="5dp"
