@@ -28,6 +28,27 @@
         <activity
             android:name=".HomeMenuActivity">
         </activity>
+        <activity
+            android:name=".AirConditionerActivity">
+        </activity>
+        <activity
+            android:name=".DisplayActivity">
+        </activity>
+        <activity
+            android:name=".DoorsActivity">
+        </activity>
+        <activity
+            android:name=".HomeAmbientActivity">
+        </activity>
+        <activity
+            android:name=".LightsActivity">
+        </activity>
+        <activity
+            android:name=".SettingsActivity">
+        </activity>
+        <activity
+            android:name=".VoiceControlActivity">
+        </activity>
     </application>
 
 </manifest>
