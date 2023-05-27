@@ -13,4 +13,103 @@
         android:layout_marginBottom="-2dp"
         android:src="@drawable/green_bottom_image" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.33"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/living_room_button"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/living_room_text"
+                android:textColor="@color/black"
+                android:backgroundTint="@color/beige_background"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp" />
+
+            <Button
+                android:id="@+id/kitchen_button"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/kitchen_text"
+                android:textColor="@color/black"
+                android:backgroundTint="@color/beige_background"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.33"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/room1_button"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/room1_text"
+                android:textColor="@color/black"
+                android:backgroundTint="@color/beige_background"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp" />
+
+            <Button
+                android:id="@+id/room2_button"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/room2_text"
+                android:textColor="@color/black"
+                android:backgroundTint="@color/beige_background"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.33"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/bathroom_button"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/bathroom_text"
+                android:textColor="@color/black"
+                android:backgroundTint="@color/beige_background"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginBottom="5dp"/>
+
+            <Button
+                android:id="@+id/terrace_button"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/terrace_text"
+                android:textColor="@color/black"
+                android:backgroundTint="@color/beige_background"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginBottom="5dp"
+                android:paddingTop="30dp" />
+        </LinearLayout>
+    </LinearLayout>
+
 </RelativeLayout>

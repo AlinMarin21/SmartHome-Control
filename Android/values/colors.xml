@@ -21,8 +21,19 @@
     <color name="green_background">#DDFFBB</color>
 
     <color name="beige_navigation_background">#CBB279</color>
+    <color name="beige_fade_background">#66CBB279</color>
     <color name="beige_background">#FFF8D6</color>
 
     <color name="purple_navigation_background">#5C469C</color>
     <color name="purple_background">#E3DFFD</color>
+
+    <color name="red_color">#FF0000</color>
+    <color name="green_color">#00FF00</color>
+    <color name="blue_color">#0000FF</color>
+    <color name="aqua_color">#00FFFF</color>
+    <color name="yellow_color">#FFFF00</color>
+    <color name="pink_color">#FF00FF</color>
+    <color name="orange_color">#FFA500</color>
+    <color name="purple_color">#800080</color>
+
 </resources>

@@ -16,4 +16,15 @@
     <string name="display_text">DISPLAY</string>
     <string name="voice_text">VOICE CONTROL</string>
     <string name="settings_text">SETTINGS</string>
+
+    <string name="living_room_text">LIVING ROOM</string>
+    <string name="room1_text">ROOM 1</string>
+    <string name="room2_text">ROOM 2</string>
+    <string name="bathroom_text">BATHROOM</string>
+    <string name="kitchen_text">KITCHEN</string>
+    <string name="terrace_text">TERRACE</string>
+
+    <string name="normal_control_text">Manual control of lights</string>
+    <string name="darkness_control_text">Lights up when dark is detected</string>
+    <string name="motion_control_text">Lights up when motion is detected</string>
 </resources>

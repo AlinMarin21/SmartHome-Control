@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/beige_background">
+
+    <ImageView
+        android:id="@+id/bottom_page"
+        android:layout_width="424dp"
+        android:layout_height="325dp"
+        android:layout_alignParentBottom="true"
+        android:src="@drawable/beige_bottom_image"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:background="@color/beige_fade_background"
+        android:paddingLeft="20dp"
+        android:paddingTop="7dp"
+        android:text="@string/terrace_text"
+        android:textAlignment="textStart"
+        android:textColor="@color/black"
+        android:textSize="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.044" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.652">
+
+        <Switch
+            android:id="@+id/motion_switch"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:text="@string/motion_control_text"
+            android:textColor="@color/black"
+            android:textSize="18dp"
+            android:thumbTint="@color/beige_navigation_background"
+            android:trackTint="@color/gray_navigation_background" />
+
+        <Switch
+            android:id="@+id/brightness_switch"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:text="@string/darkness_control_text"
+            android:textColor="@color/black"
+            android:textSize="18dp"
+            android:thumbTint="@color/beige_navigation_background"
+            android:trackTint="@color/gray_navigation_background" />
+
+        <Switch
+            android:id="@+id/manual_switch"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:text="@string/normal_control_text"
+            android:textColor="@color/black"
+            android:textSize="18dp"
+            android:thumbTint="@color/beige_navigation_background"
+            android:trackTint="@color/gray_navigation_background" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/bulb_icon_terrace"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/baseline_lightbulb_200_black"
+        app:layout_constraintBottom_toBottomOf="@+id/bottom_page"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.269" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
