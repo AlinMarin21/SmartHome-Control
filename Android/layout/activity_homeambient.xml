@@ -1,17 +1,336 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/blue_background">
 
     <ImageView
         android:id="@+id/bottom_page"
-        android:layout_width="424dp"
+        android:layout_width="match_parent"
         android:layout_height="325dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="6dp"
-        android:layout_marginBottom="-2dp"
-        android:src="@drawable/blue_bottom_image" />
+        android:layout_marginBottom="1dp"
+        android:src="@drawable/blue_bottom_image"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.538"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <LinearLayout
+        android:id="@+id/home_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/temp_inside_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="0.8"
+            android:background="@color/blue_background">
+
+            <LinearLayout
+                android:id="@+id/temp_inside_text_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight="0.8">
+
+                <ImageView
+                    android:id="@+id/temp_inside_icon"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:srcCompat="@drawable/baseline_thermostat_50"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"/>
+
+                <TextView
+                    android:id="@+id/temp_inside_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/temp_inside_text"
+                    android:layout_weight="0.2"
+                    android:gravity="center_vertical"
+                    android:textSize="30dp"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/temp_inside_hidden"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1.3"
+                android:background="@color/blue_background"
+                android:orientation="vertical"
+                android:text="29.6 °C"
+                android:textAlignment="textEnd"
+                android:gravity="center_vertical"
+                android:textSize="33dp"
+                android:layout_marginRight="20dp"/>
+
+        </LinearLayout>
 
 
-</RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/hum_inside_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:background="@color/blue_int4_background">
+
+            <LinearLayout
+                android:id="@+id/hum_inside_text_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:id="@+id/hum_inside_icon"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/baseline_water_drop_50"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"/>
+
+                <TextView
+                    android:id="@+id/hum_inside_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:text="@string/hum_inside_text"
+                    android:layout_weight="0.2"
+                    android:gravity="center_vertical"
+                    android:textSize="30dp" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/hum_inside_hidden"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="99"
+                android:background="@color/blue_int4_background"
+                android:orientation="vertical"
+                android:text="34 %"
+                android:textAlignment="textEnd"
+                android:gravity="center_vertical"
+                android:textSize="33dp"
+                android:layout_marginRight="20dp"
+                android:visibility="invisible"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/temp_outside_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:background="@color/blue_int3_background">
+
+            <LinearLayout
+                android:id="@+id/temp_outside_text_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:id="@+id/temp_outside_icon"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/baseline_thermostat_50"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"/>
+
+                <TextView
+                    android:id="@+id/temp_outside_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:text="@string/temp_outside_text"
+                    android:layout_weight="0.2"
+                    android:gravity="center_vertical"
+                    android:textSize="30dp" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/temp_outside_hidden"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="99"
+                android:background="@color/blue_int3_background"
+                android:orientation="vertical"
+                android:text="24.1 °C"
+                android:textAlignment="textEnd"
+                android:gravity="center_vertical"
+                android:textSize="33dp"
+                android:layout_marginRight="20dp"
+                android:visibility="invisible"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/hum_outside_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:background="@color/blue_int2_background">
+
+            <LinearLayout
+                android:id="@+id/hum_outside_text_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:id="@+id/hum_outside_icon"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/baseline_water_drop_50"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"/>
+
+                <TextView
+                    android:id="@+id/hum_outside_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:text="@string/hum_outside_text"
+                    android:layout_weight="0.2"
+                    android:gravity="center_vertical"
+                    android:textSize="30dp" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/hum_outside_hidden"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="99"
+                android:background="@color/blue_int2_background"
+                android:orientation="vertical"
+                android:text="74 %"
+                android:textAlignment="textEnd"
+                android:gravity="center_vertical"
+                android:textSize="33dp"
+                android:layout_marginRight="20dp"
+                android:visibility="invisible"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/air_quality_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:background="@color/blue_int1_background">
+
+            <LinearLayout
+                android:id="@+id/air_quality_text_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:id="@+id/air_quality_icon"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/baseline_air_50"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"/>
+
+                <TextView
+                    android:id="@+id/air_quality_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:text="@string/air_quality_text"
+                    android:layout_weight="0.2"
+                    android:gravity="center_vertical"
+                    android:textSize="30dp" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/air_quality_hidden"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="99"
+                android:background="@color/blue_int1_background"
+                android:orientation="vertical"
+                android:text="568 ppm"
+                android:textAlignment="textEnd"
+                android:gravity="center_vertical"
+                android:textSize="33dp"
+                android:layout_marginRight="20dp"
+                android:visibility="invisible"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/gas_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:background="@color/blue_navigation_background"
+            android:layout_marginBottom="1dp">
+
+            <LinearLayout
+                android:id="@+id/gas_text_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:id="@+id/gas_icon"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/baseline_gas_meter_50"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"/>
+
+                <TextView
+                    android:id="@+id/gas_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:text="@string/gas_text"
+                    android:layout_weight="0.2"
+                    android:gravity="center_vertical"
+                    android:textSize="30dp" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/gas_hidden"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="99"
+                android:background="@color/blue_navigation_background"
+                android:orientation="vertical"
+                android:text="200 ppm"
+                android:textAlignment="textEnd"
+                android:gravity="center_vertical"
+                android:textSize="33dp"
+                android:layout_marginRight="20dp"
+                android:visibility="invisible"/>
+        </LinearLayout>
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

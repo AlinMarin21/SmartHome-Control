@@ -27,8 +27,8 @@ public class BathroomActivity extends AppCompatActivity {
         Window window = BathroomActivity.this.getWindow();
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        window.setStatusBarColor(ContextCompat.getColor(BathroomActivity.this, R.color.beige_background));
-        window.setNavigationBarColor(ContextCompat.getColor(BathroomActivity.this, R.color.beige_navigation_background));
+        window.setStatusBarColor(ContextCompat.getColor(BathroomActivity.this, R.color.green_background));
+        window.setNavigationBarColor(ContextCompat.getColor(BathroomActivity.this, R.color.green_navigation_background));
 
         BathroomBulb = (ImageView) findViewById(R.id.bulb_icon1_kitchen);
 

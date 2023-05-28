@@ -42,8 +42,8 @@ public class Room1Activity extends AppCompatActivity {
         Window window = Room1Activity.this.getWindow();
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        window.setStatusBarColor(ContextCompat.getColor(Room1Activity.this, R.color.beige_background));
-        window.setNavigationBarColor(ContextCompat.getColor(Room1Activity.this, R.color.beige_navigation_background));
+        window.setStatusBarColor(ContextCompat.getColor(Room1Activity.this, R.color.green_background));
+        window.setNavigationBarColor(ContextCompat.getColor(Room1Activity.this, R.color.green_navigation_background));
 
         Room1Bulb = (ImageView) findViewById(R.id.bulb_icon_roo1);
         ColorsBar = (LinearLayout) findViewById(R.id.colors_bar);

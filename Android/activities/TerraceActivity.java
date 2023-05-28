@@ -37,8 +37,8 @@ public class TerraceActivity extends AppCompatActivity {
         Window window = TerraceActivity.this.getWindow();
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        window.setStatusBarColor(ContextCompat.getColor(TerraceActivity.this, R.color.beige_background));
-        window.setNavigationBarColor(ContextCompat.getColor(TerraceActivity.this, R.color.beige_navigation_background));
+        window.setStatusBarColor(ContextCompat.getColor(TerraceActivity.this, R.color.green_background));
+        window.setNavigationBarColor(ContextCompat.getColor(TerraceActivity.this, R.color.green_navigation_background));
 
         motionSwitch = (Switch) findViewById(R.id.motion_switch);
         brightnessSwitch = (Switch) findViewById(R.id.brightness_switch);
@@ -48,7 +48,7 @@ public class TerraceActivity extends AppCompatActivity {
 
         if(MANUAL_CONTROL == control_mode) {
             manualSwitch.setChecked(true);
-            manualSwitch.setTrackTintList(ColorStateList.valueOf(ContextCompat.getColor(TerraceActivity.this, R.color.beige_navigation_background)));
+            manualSwitch.setTrackTintList(ColorStateList.valueOf(ContextCompat.getColor(TerraceActivity.this, R.color.green_navigation_background)));
 
             if(LIGHT_OFF == led_state) {
                 terraceBulb.setImageResource(R.drawable.baseline_lightbulb_200_black);
@@ -59,7 +59,7 @@ public class TerraceActivity extends AppCompatActivity {
         }
         else if(MOTION_CONTROL == control_mode) {
             motionSwitch.setChecked(true);
-            motionSwitch.setTrackTintList(ColorStateList.valueOf(ContextCompat.getColor(TerraceActivity.this, R.color.beige_navigation_background)));
+            motionSwitch.setTrackTintList(ColorStateList.valueOf(ContextCompat.getColor(TerraceActivity.this, R.color.green_navigation_background)));
 
 //            if(MOTION_DETECTED == GlobalBuffer.RxBuffer[1]) {
 //                terraceBulb.setImageResource(R.drawable.bulb_on2);
@@ -70,7 +70,7 @@ public class TerraceActivity extends AppCompatActivity {
         }
         else if(DARKNESS_CONTROL == control_mode) {
             brightnessSwitch.setChecked(true);
-            brightnessSwitch.setTrackTintList(ColorStateList.valueOf(ContextCompat.getColor(TerraceActivity.this, R.color.beige_navigation_background)));
+            brightnessSwitch.setTrackTintList(ColorStateList.valueOf(ContextCompat.getColor(TerraceActivity.this, R.color.green_navigation_background)));
 
 //            if(DARKNESS_THRESHOLD > GlobalBuffer.RxBuffer[2]) {
 //                terraceBulb.setImageResource(R.drawable.bulb_on2);
@@ -85,7 +85,7 @@ public class TerraceActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(MANUAL_CONTROL != control_mode) {
                     manualSwitch.setChecked(true);
-                    manualSwitch.setTrackTintList(ColorStateList.valueOf(ContextCompat.getColor(TerraceActivity.this, R.color.beige_navigation_background)));
+                    manualSwitch.setTrackTintList(ColorStateList.valueOf(ContextCompat.getColor(TerraceActivity.this, R.color.green_navigation_background)));
                     motionSwitch.setChecked(false);
                     motionSwitch.setTrackTintList(ColorStateList.valueOf(ContextCompat.getColor(TerraceActivity.this, R.color.gray_navigation_background)));
                     brightnessSwitch.setChecked(false);
@@ -110,7 +110,7 @@ public class TerraceActivity extends AppCompatActivity {
                     manualSwitch.setChecked(false);
                     manualSwitch.setTrackTintList(ColorStateList.valueOf(ContextCompat.getColor(TerraceActivity.this, R.color.gray_navigation_background)));
                     motionSwitch.setChecked(true);
-                    motionSwitch.setTrackTintList(ColorStateList.valueOf(ContextCompat.getColor(TerraceActivity.this, R.color.beige_navigation_background)));
+                    motionSwitch.setTrackTintList(ColorStateList.valueOf(ContextCompat.getColor(TerraceActivity.this, R.color.green_navigation_background)));
                     brightnessSwitch.setChecked(false);
                     brightnessSwitch.setTrackTintList(ColorStateList.valueOf(ContextCompat.getColor(TerraceActivity.this, R.color.gray_navigation_background)));
 
@@ -141,7 +141,7 @@ public class TerraceActivity extends AppCompatActivity {
                     motionSwitch.setChecked(false);
                     motionSwitch.setTrackTintList(ColorStateList.valueOf(ContextCompat.getColor(TerraceActivity.this, R.color.gray_navigation_background)));
                     brightnessSwitch.setChecked(true);
-                    brightnessSwitch.setTrackTintList(ColorStateList.valueOf(ContextCompat.getColor(TerraceActivity.this, R.color.beige_navigation_background)));
+                    brightnessSwitch.setTrackTintList(ColorStateList.valueOf(ContextCompat.getColor(TerraceActivity.this, R.color.green_navigation_background)));
 
                     control_mode = DARKNESS_CONTROL;
 

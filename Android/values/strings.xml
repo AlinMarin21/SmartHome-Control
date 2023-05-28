@@ -27,4 +27,20 @@
     <string name="normal_control_text">Manual control of lights</string>
     <string name="darkness_control_text">Lights up when dark is detected</string>
     <string name="motion_control_text">Lights up when motion is detected</string>
+
+    <string name="front_door_text">FRONT DOOR</string>
+    <string name="gates_text">GATES</string>
+
+    <string name="automatic_closing_text">Automatic closing</string>
+    <string name="door_lock_text">Door lock</string>
+
+    <string name="air_conditioner_text">AIR CONDITIONER</string>
+    <string name="auto_ac_text">Automatic AC</string>
+
+    <string name="temp_inside_text">Temperature inside</string>
+    <string name="hum_inside_text">Humidity inside</string>
+    <string name="temp_outside_text">Temperature outside</string>
+    <string name="hum_outside_text">Humidity outside</string>
+    <string name="air_quality_text">Air Quality</string>
+    <string name="gas_text">CO2</string>
 </resources>

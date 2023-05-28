@@ -29,8 +29,8 @@ public class KitchenActivity extends AppCompatActivity {
         Window window = KitchenActivity.this.getWindow();
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        window.setStatusBarColor(ContextCompat.getColor(KitchenActivity.this, R.color.beige_background));
-        window.setNavigationBarColor(ContextCompat.getColor(KitchenActivity.this, R.color.beige_navigation_background));
+        window.setStatusBarColor(ContextCompat.getColor(KitchenActivity.this, R.color.green_background));
+        window.setNavigationBarColor(ContextCompat.getColor(KitchenActivity.this, R.color.green_navigation_background));
 
         KitchenBulb1 = (ImageView) findViewById(R.id.bulb_icon1_kitchen);
         KitchenBulb2 = (ImageView) findViewById(R.id.bulb_icon2_kitchen);

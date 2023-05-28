@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,12 +14,12 @@ import androidx.core.content.ContextCompat;
 
 public class LightsActivity extends AppCompatActivity {
 
-    Button LivingRoomActivityButton = null;
-    Button KitchenActivityButton = null;
-    Button Room1ActivityButton = null;
-    Button Room2ActivityButton = null;
-    Button BathroomActivityButton = null;
-    Button TerraceActivityButton = null;
+    LinearLayout LivingRoomActivityButton = null;
+    LinearLayout KitchenActivityButton = null;
+    LinearLayout Room1ActivityButton = null;
+    LinearLayout Room2ActivityButton = null;
+    LinearLayout BathroomActivityButton = null;
+    LinearLayout TerraceActivityButton = null;
 
     Intent living_room_activity_intent = null;
     Intent kitchen_activity_intent = null;
@@ -38,12 +39,12 @@ public class LightsActivity extends AppCompatActivity {
         window.setStatusBarColor(ContextCompat.getColor(LightsActivity.this, R.color.green_background));
         window.setNavigationBarColor(ContextCompat.getColor(LightsActivity.this, R.color.green_navigation_background));
 
-        LivingRoomActivityButton = (Button) findViewById(R.id.living_room_button);
-        KitchenActivityButton = (Button) findViewById(R.id.kitchen_button);
-        Room1ActivityButton = (Button) findViewById(R.id.room1_button);
-        Room2ActivityButton = (Button) findViewById(R.id.room2_button);
-        BathroomActivityButton = (Button) findViewById(R.id.bathroom_button);
-        TerraceActivityButton = (Button) findViewById(R.id.terrace_button);
+        LivingRoomActivityButton = (LinearLayout) findViewById(R.id.living_room_button);
+        KitchenActivityButton = (LinearLayout) findViewById(R.id.kitchen_button);
+        Room1ActivityButton = (LinearLayout) findViewById(R.id.room1_button);
+        Room2ActivityButton = (LinearLayout) findViewById(R.id.room2_button);
+        BathroomActivityButton = (LinearLayout) findViewById(R.id.bathroom_button);
+        TerraceActivityButton = (LinearLayout) findViewById(R.id.terrace_button);
 
         LivingRoomActivityButton.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -10,7 +10,7 @@
         android:layout_height="325dp"
         android:layout_alignParentBottom="true"
         android:layout_marginTop="6dp"
-        android:layout_marginBottom="-2dp"
+        android:layout_marginBottom="0dp"
         android:src="@drawable/green_bottom_image" />
 
     <LinearLayout
@@ -18,98 +18,129 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.33"
-            android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/living_room_button"
+        <LinearLayout
+            android:id="@+id/living_room_button"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:text="@string/living_room_text"
+            android:textColor="@color/black"
+            android:background="@color/green_background">
+
+            <TextView
+                android:id="@+id/livingroom_text"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
                 android:text="@string/living_room_text"
-                android:textColor="@color/black"
-                android:backgroundTint="@color/beige_background"
-                android:layout_marginRight="5dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="5dp" />
+                android:gravity="center_vertical"
+                android:textSize="30dp"
+                android:layout_marginLeft="15dp"/>
+        </LinearLayout>
 
-            <Button
-                android:id="@+id/kitchen_button"
+        <LinearLayout
+            android:id="@+id/kitchen_button"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:text="@string/living_room_text"
+            android:textColor="@color/black"
+            android:background="@color/green_int4_background">
+
+            <TextView
+                android:id="@+id/kitchen_text"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
                 android:text="@string/kitchen_text"
-                android:textColor="@color/black"
-                android:backgroundTint="@color/beige_background"
-                android:layout_marginRight="5dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="5dp" />
+                android:gravity="center_vertical"
+                android:textSize="30dp"
+                android:layout_marginLeft="15dp"/>
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/room1_button"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.33"
-            android:orientation="horizontal">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:text="@string/living_room_text"
+            android:textColor="@color/black"
+            android:background="@color/green_int3_background">
 
-            <Button
-                android:id="@+id/room1_button"
+            <TextView
+                android:id="@+id/room1_text"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
                 android:text="@string/room1_text"
-                android:textColor="@color/black"
-                android:backgroundTint="@color/beige_background"
-                android:layout_marginRight="5dp"
-                android:layout_marginLeft="5dp" />
-
-            <Button
-                android:id="@+id/room2_button"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="@string/room2_text"
-                android:textColor="@color/black"
-                android:backgroundTint="@color/beige_background"
-                android:layout_marginRight="5dp"
-                android:layout_marginLeft="5dp" />
-
+                android:gravity="center_vertical"
+                android:textSize="30dp"
+                android:layout_marginLeft="15dp"/>
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/room2_button"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.33"
-            android:orientation="horizontal">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:text="@string/living_room_text"
+            android:textColor="@color/black"
+            android:background="@color/green_int2_background">
 
-            <Button
-                android:id="@+id/bathroom_button"
+            <TextView
+                android:id="@+id/room2_text"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="@string/bathroom_text"
-                android:textColor="@color/black"
-                android:backgroundTint="@color/beige_background"
-                android:layout_marginRight="5dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginBottom="5dp"/>
-
-            <Button
-                android:id="@+id/terrace_button"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="@string/terrace_text"
-                android:textColor="@color/black"
-                android:backgroundTint="@color/beige_background"
-                android:layout_marginRight="5dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginBottom="5dp"
-                android:paddingTop="30dp" />
+                android:text="@string/room2_text"
+                android:gravity="center_vertical"
+                android:textSize="30dp"
+                android:layout_marginLeft="15dp"/>
         </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/bathroom_button"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:text="@string/living_room_text"
+            android:textColor="@color/black"
+            android:background="@color/green_int1_background">
+
+        <TextView
+            android:id="@+id/bathroom_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/bathroom_text"
+            android:gravity="center_vertical"
+            android:textSize="30dp"
+            android:layout_marginLeft="15dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/terrace_button"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:text="@string/living_room_text"
+            android:textColor="@color/black"
+            android:background="@color/green_navigation_background"
+            android:layout_marginBottom="1dp">
+
+            <TextView
+                android:id="@+id/terrace_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/terrace_text"
+                android:gravity="center_vertical"
+                android:textSize="30dp"
+                android:layout_marginLeft="15dp"/>
+        </LinearLayout>
+
+
     </LinearLayout>
 
 </RelativeLayout>

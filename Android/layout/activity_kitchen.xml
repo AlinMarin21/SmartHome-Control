@@ -4,14 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/beige_background">
+    android:background="@color/green_background">
 
     <ImageView
         android:id="@+id/bottom_page"
         android:layout_width="424dp"
         android:layout_height="325dp"
         android:layout_alignParentBottom="true"
-        android:src="@drawable/beige_bottom_image"
+        android:layout_marginBottom="1dp"
+        android:src="@drawable/green_bottom_image"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,7 +25,7 @@
         android:layout_height="60dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentBottom="true"
-        android:background="@color/beige_fade_background"
+        android:background="@color/green_fade_background"
         android:paddingLeft="20dp"
         android:paddingTop="7dp"
         android:text="@string/kitchen_text"

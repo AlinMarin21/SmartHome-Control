@@ -1,16 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/red_background">
 
     <ImageView
         android:id="@+id/bottom_page"
-        android:layout_width="424dp"
+        android:layout_width="match_parent"
         android:layout_height="325dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="6dp"
-        android:layout_marginBottom="-2dp"
-        android:src="@drawable/red_bottom_image" />
+        android:layout_marginTop="316dp"
+        android:layout_marginBottom="1dp"
+        android:src="@drawable/red_bottom_image"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintVertical_bias="1.0" />
 
-</RelativeLayout>
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:background="@color/red_fade_background"
+        android:paddingLeft="20dp"
+        android:paddingTop="7dp"
+        android:text="@string/air_conditioner_text"
+        android:textAlignment="textStart"
+        android:textColor="@color/black"
+        android:textSize="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.044" />
+
+    <LinearLayout
+        android:id="@+id/AC_layout"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginBottom="120dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@+id/bottom_page"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/fan_icon"
+                    android:layout_width="220dp"
+                    android:layout_height="200dp"
+                    android:src="@drawable/baseline_wind_power_200"
+                    app:layout_constraintBottom_toBottomOf="@+id/bottom_page"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.497"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.269" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <Switch
+                    android:id="@+id/auto_ac_switch"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:paddingLeft="30dp"
+                    android:paddingRight="30dp"
+                    android:text="@string/auto_ac_text"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    android:thumbTint="@color/red_navigation_background"
+                    android:trackTint="@color/gray_navigation_background" />
+
+                <SeekBar
+                    android:id="@+id/ac_speed_bar"
+                    style="@android:style/Widget.Material.SeekBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_marginStart="10dp"
+                    android:progressBackgroundTint="@color/gray_navigation_background"
+                    android:progressTint="@color/red_navigation_background"
+                    android:thumbTint="@color/red_navigation_background"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.327"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.672" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

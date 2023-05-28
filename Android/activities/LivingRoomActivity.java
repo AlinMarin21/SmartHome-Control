@@ -30,8 +30,8 @@ public class LivingRoomActivity extends AppCompatActivity {
         Window window = LivingRoomActivity.this.getWindow();
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        window.setStatusBarColor(ContextCompat.getColor(LivingRoomActivity.this, R.color.beige_background));
-        window.setNavigationBarColor(ContextCompat.getColor(LivingRoomActivity.this, R.color.beige_navigation_background));
+        window.setStatusBarColor(ContextCompat.getColor(LivingRoomActivity.this, R.color.green_background));
+        window.setNavigationBarColor(ContextCompat.getColor(LivingRoomActivity.this, R.color.green_navigation_background));
 
         LivingRoomBulb = (ImageView) findViewById(R.id.bulb_icon);
         LightIntensityBar = (SeekBar) findViewById(R.id.light_intensity_bar);

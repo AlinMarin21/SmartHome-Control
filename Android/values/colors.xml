@@ -14,17 +14,30 @@
     <color name="blue_navigation_background">#146C94</color>
     <color name="blue_background">#AFD3E2</color>
 
+    <color name="blue_int1_background">#418AAA</color>
+    <color name="blue_int2_background">#609EBA</color>
+    <color name="blue_int3_background">#7DB2C9</color>
+    <color name="blue_int4_background">#9EC8D9</color>
+
     <color name="red_navigation_background">#B70404</color>
+    <color name="red_fade_background">#66B70404</color>
     <color name="red_background">#FA9884</color>
 
     <color name="green_navigation_background">#539165</color>
+    <color name="green_fade_background">#66539165</color>
     <color name="green_background">#DDFFBB</color>
+
+    <color name="green_int1_background">#7cb17d</color>
+    <color name="green_int2_background">#92c28b</color>
+    <color name="green_int3_background">#a8d499</color>
+    <color name="green_int4_background">#c6ecac</color>
 
     <color name="beige_navigation_background">#CBB279</color>
     <color name="beige_fade_background">#66CBB279</color>
     <color name="beige_background">#FFF8D6</color>
 
     <color name="purple_navigation_background">#5C469C</color>
+    <color name="purple_fade_background">#665C469C</color>
     <color name="purple_background">#E3DFFD</color>
 
     <color name="red_color">#FF0000</color>
