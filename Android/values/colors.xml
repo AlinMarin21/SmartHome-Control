@@ -40,6 +40,10 @@
     <color name="purple_fade_background">#665C469C</color>
     <color name="purple_background">#E3DFFD</color>
 
+    <color name="purple_int1_background">#8574b9</color>
+    <color name="purple_int2_background">#a194ce</color>
+    <color name="purple_int3_background">#c4bce7</color>
+
     <color name="red_color">#FF0000</color>
     <color name="green_color">#00FF00</color>
     <color name="blue_color">#0000FF</color>

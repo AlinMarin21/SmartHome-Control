@@ -115,7 +115,7 @@ public class HomeMenuActivity extends AppCompatActivity {
             super.onBackPressed();
             finishAffinity();
         } else {
-            Toast.makeText(getBaseContext(), "Press back again to exit", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getBaseContext(), R.string.exit_app_text, Toast.LENGTH_SHORT).show();
         }
         pressedTime = System.currentTimeMillis();
     }

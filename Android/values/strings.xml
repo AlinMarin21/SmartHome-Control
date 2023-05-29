@@ -37,10 +37,48 @@
     <string name="air_conditioner_text">AIR CONDITIONER</string>
     <string name="auto_ac_text">Automatic AC</string>
 
-    <string name="temp_inside_text">Temperature inside</string>
-    <string name="hum_inside_text">Humidity inside</string>
-    <string name="temp_outside_text">Temperature outside</string>
-    <string name="hum_outside_text">Humidity outside</string>
+    <string name="temp_inside_text">Inside Temperature</string>
+    <string name="hum_inside_text">Inside Humidity</string>
+    <string name="temp_outside_text">Outside Temperature</string>
+    <string name="hum_outside_text">Outside Humidity</string>
     <string name="air_quality_text">Air Quality</string>
     <string name="gas_text">CO2</string>
+
+    <string name="select_display_text">Select what you want your display to show:</string>
+
+    <string name="temp_inside_only_text">Inside Temperature</string>
+    <string name="temp_outside_only_text">Outside Temperature</string>
+    <string name="hum_inside_only_text">Inside Humidity</string>
+    <string name="hum_outside_only_text">Outside Humidity</string>
+    <string name="temp_hum_inside_text">Inside Temperature and Humidity</string>
+    <string name="temp_hum_outside_text">Outside Temperature and Humidity</string>
+    <string name="rainfall_text">Rainfall</string>
+    <string name="custom_text">Custom</string>
+    <string name="brightness_text">Brightness</string>
+    <string name="motion_text">Motion</string>
+
+    <string name="on_text">ON</string>
+    <string name="off_text">OFF</string>
+
+    <string name="settings_limits_text">THRESHOLDS</string>
+    <string name="settings_units_text">MEASUREMENT UNITS</string>
+    <string name="settings_alarm_text">ALARM</string>
+    <string name="settings_custom_display_text">CUSTOM DISPLAY</string>
+    <string name="settings_language_text">LANGUAGE</string>
+
+    <string name="select_alarm_text">Select what events shall trigger your alarm:</string>
+
+    <string name="airquality_alarm_text">Air quality is below the permitted limit level</string>
+    <string name="gas_alarm_text">The CO2 level is above the allowed limits</string>
+    <string name="humidity_alarm_text">The humidity is above the bearable level</string>
+    <string name="motion_detected_text">Motion detected in the alley</string>
+
+    <string name="temperature_unit_text">Temperature</string>
+    <string name="celsius_text">°C</string>
+    <string name="fahrenheit_text">°F</string>
+
+    <string name="select_custom_display_text">Select what information you want to view on the custom screen:</string>
+
+    <string name="max_limit_text">Max limit reached: 5</string>
+    <string name="exit_app_text">Press back again to exit</string>
 </resources>

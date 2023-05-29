@@ -1,16 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/purple_background">
 
     <ImageView
         android:id="@+id/bottom_page"
-        android:layout_width="424dp"
+        android:layout_width="match_parent"
         android:layout_height="325dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="6dp"
-        android:layout_marginBottom="-2dp"
-        android:src="@drawable/purple_bottom_image" />
+        android:layout_marginBottom="1dp"
+        android:src="@drawable/purple_bottom_image"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.538"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
-</RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:id="@+id/Limits_button"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:textColor="@color/black"
+            android:background="@color/purple_background">
+
+            <TextView
+                android:id="@+id/limits_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/settings_limits_text"
+                android:gravity="center_vertical"
+                android:textSize="30dp"
+                android:layout_marginLeft="15dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/measurement_units_button"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:textColor="@color/black"
+            android:background="@color/purple_int3_background">
+
+            <TextView
+                android:id="@+id/measurement_units_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/settings_units_text"
+                android:gravity="center_vertical"
+                android:textSize="30dp"
+                android:layout_marginLeft="15dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/alarm_button"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:textColor="@color/black"
+            android:background="@color/purple_int2_background">
+
+            <TextView
+                android:id="@+id/alarm_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/settings_alarm_text"
+                android:gravity="center_vertical"
+                android:textSize="30dp"
+                android:layout_marginLeft="15dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/custom_display_button"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:textColor="@color/black"
+            android:background="@color/purple_int1_background">
+
+            <TextView
+                android:id="@+id/custom_display_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/settings_custom_display_text"
+                android:gravity="center_vertical"
+                android:textSize="30dp"
+                android:layout_marginLeft="15dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/language_button"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:textColor="@color/black"
+            android:background="@color/purple_navigation_background"
+            android:layout_marginBottom="1dp">
+
+            <TextView
+                android:id="@+id/language_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/settings_language_text"
+                android:gravity="center_vertical"
+                android:textSize="30dp"
+                android:layout_marginLeft="15dp" />
+        </LinearLayout>
+
+    </LinearLayout>.
+
+</androidx.constraintlayout.widget.ConstraintLayout>

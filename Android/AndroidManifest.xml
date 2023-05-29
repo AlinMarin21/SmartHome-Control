@@ -68,6 +68,21 @@
         <activity
             android:name=".TerraceActivity">
         </activity>
+        <activity
+            android:name=".ThresholdsActivity">
+        </activity>
+        <activity
+            android:name=".MeasurementUnitsActivity">
+        </activity>
+        <activity
+            android:name=".AlarmActivity">
+        </activity>
+        <activity
+            android:name=".CustomDisplayActivity">
+        </activity>
+        <activity
+            android:name=".LanguageActivity">
+        </activity>
     </application>
 
 </manifest>
