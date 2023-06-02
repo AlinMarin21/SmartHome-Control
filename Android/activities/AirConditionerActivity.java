@@ -13,7 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
-public class AirConditionerActivity extends AppCompatActivity {
+public class AirConditionerActivity extends AppCompat {
 
     static final int AC_OFF = 0;
     static final int AC_ON = 1;
@@ -42,6 +42,16 @@ public class AirConditionerActivity extends AppCompatActivity {
         FanIcon = (ImageView) findViewById(R.id.fan_icon);
         AutoACSwitch = (Switch) findViewById(R.id.auto_ac_switch);
         ACSpeedBar = (SeekBar) findViewById(R.id.ac_speed_bar);
+
+        if(BufferManager.currentLanguage.equals("fr")) {
+            AutoACSwitch.setTextSize(16);
+        }
+        if(BufferManager.currentLanguage.equals("de")) {
+            AutoACSwitch.setTextSize(14);
+        }
+        if(BufferManager.currentLanguage.equals("ru")) {
+            AutoACSwitch.setTextSize(11);
+        }
 
         ACSpeedBar.setVisibility(View.INVISIBLE);
 

@@ -11,7 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
-public class SettingsActivity extends AppCompatActivity {
+public class SettingsActivity extends AppCompat {
 
     LinearLayout ThresholdsActivityButton;
     LinearLayout UnitsActivityButton;
@@ -81,5 +81,11 @@ public class SettingsActivity extends AppCompatActivity {
                 startActivity(LanguageActivityIntent);
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(SettingsActivity.this, HomeMenuActivity.class);
+        startActivity(intent);
     }
 }

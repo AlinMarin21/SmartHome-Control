@@ -27,7 +27,7 @@ import java.io.OutputStream;
 import java.util.Set;
 import java.util.UUID;
 
-public class StartActivity extends AppCompatActivity {
+public class StartActivity extends AppCompat {
 
     static final UUID mUUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
 

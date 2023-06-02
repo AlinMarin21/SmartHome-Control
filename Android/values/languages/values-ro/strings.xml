@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Acasă</string>
+
+    <string name="device_not_supported">Dispozitivul dumneavoastră nu suportă funcția de Bluetooth</string>
+    <string name="permission_not_granted">Vă rugăm să acordați permisiunea pentru conexiunea la Bluetooth</string>
+    <string name="bluetooth_not_connected">Bluetooth-ul dumneavoastră este oprit. Vă rugăm să activați Bluetooth-ul</string>
+    <string name="device_not_paired">Dispozitivul dumneavoastră nu este împerecheat. Vă rugăm să împerecheați dispozitivele</string>
+    <string name="connection_not_established">Conexiunea nu a putut fi stabilita. Încercați să reporniți modulul Bluetooth</string>
+
+    <string name="try_again_button">ÎNCERCAȚI DIN NOU</string>
+
+    <string name="lights_text">LUMINI</string>
+    <string name="doors_text">UȘI</string>
+    <string name="AC_text">AC</string>
+    <string name="ambient_text">AMBIENTUL CASEI</string>
+    <string name="display_text">ECRAN</string>
+    <string name="voice_text">CONTROL VOCAL</string>
+    <string name="settings_text">SETĂRI</string>
+
+    <string name="living_room_text">SUFRAGERIE</string>
+    <string name="room1_text">CAMERA 1</string>
+    <string name="room2_text">CAMERA 2</string>
+    <string name="bathroom_text">BAIE</string>
+    <string name="kitchen_text">BUCĂTĂRIE</string>
+    <string name="terrace_text">TERASĂ</string>
+
+    <string name="normal_control_text">Control manual al luminilor</string>
+    <string name="darkness_control_text">Aprinderea luminilor la lăsarea întunericului</string>
+    <string name="motion_control_text">Aprinderea luminilor la detecția mișcării</string>
+
+    <string name="front_door_text">UȘA DIN FAȚĂ</string>
+    <string name="gates_text">PORȚI</string>
+
+    <string name="automatic_closing_text">Închidere automată</string>
+    <string name="door_lock_text">Blocarea ușii</string>
+
+    <string name="air_conditioner_text">AER CONDIȚIONAT</string>
+    <string name="auto_ac_text">AC Automat</string>
+
+    <string name="temp_inside_text">Temperatura la interior</string>
+    <string name="hum_inside_text">Umiditatea la interior</string>
+    <string name="temp_outside_text">Temperatura la exterior</string>
+    <string name="hum_outside_text">Umiditatea la exterior</string>
+    <string name="air_quality_text">Calitatea aerului</string>
+    <string name="gas_text">CO2</string>
+
+    <string name="select_display_text">Selectați ce doriți să afișseze ecranul dumneavoastră</string>
+
+    <string name="temp_inside_only_text">Temperatura la interior</string>
+    <string name="temp_outside_only_text">Temperatura la exterior</string>
+    <string name="hum_inside_only_text">Umiditatea la interior</string>
+    <string name="hum_outside_only_text">Umiditatea la exterior</string>
+    <string name="temp_hum_inside_text">Temperatura la interior și exterior</string>
+    <string name="temp_hum_outside_text">Umiditatea la interior și exterior</string>
+    <string name="rainfall_text">Precipitațiile</string>
+    <string name="custom_text">Personalizat</string>
+    <string name="brightness_text">Luminozitatea</string>
+    <string name="motion_text">Mișcarea</string>
+
+    <string name="on_text">PORNIT</string>
+    <string name="off_text">OPRIT</string>
+
+    <string name="settings_limits_text">VALORI DE PRAG</string>
+    <string name="settings_units_text">UNITĂȚI DE MĂSURĂ</string>
+    <string name="settings_alarm_text">ALARMĂ</string>
+    <string name="settings_custom_display_text">ECRAN PERSONALIZAT</string>
+    <string name="settings_language_text">LIMBĂ</string>
+
+    <string name="select_alarm_text">Selectați ce evenimente doriți să declanșeze alarma:</string>
+
+    <string name="airquality_alarm_text">Calitatea aerului este sub nivelul permis</string>
+    <string name="gas_alarm_text">Nivelul de CO2 este peste limitele permise</string>
+    <string name="humidity_alarm_text">Umiditatea este peste nivelul suportabil</string>
+    <string name="motion_detected_text">Mișcare detectată pe alee</string>
+
+    <string name="temperature_unit_text">Temperatura</string>
+    <string name="celsius_text">°C</string>
+    <string name="fahrenheit_text">°F</string>
+
+    <string name="select_custom_display_text">Selectați ce informații doriți să vedeți pe ecranul personalizat:</string>
+
+    <string name="max_limit_text">Limita maximă atinsă: 5</string>
+    <string name="exit_app_text">Apăsați din nou pentru a ieși</string>
+
+    <string name="temp_limit_text">Aceasta este temperatura la care aerul condiționat va porni dacă este setat modul său automat</string>
+    <string name="bright_limit_text">Acesta este pragul de luminozitate la care se vor aprinde luminile de pe alee, dacă acesta este modul selectat.</string>
+    <string name="gas_limit_text">Acesta este nivelul maxim permis de CO2. Dacă alarma este setată și valoarea CO2 este depășită, alarma se va declanșa.</string>
+    <string name="aq_limit_text">Acesta este nivelul minim admisibil pentru calitatea aerului. Dacă alarma este setată și calitatea aerului este sub această valoare, alarma se va declanșa.</string>
+
+    <string name="save_text">SALVAȚI</string>
+
+    <string name="number_error">Valoarea trebuie să fie un număr!</string>
+
+    <string name="en_lang_text">Engleză</string>
+    <string name="ro_lang_text">Română</string>
+    <string name="fr_lang_text">Franceză</string>
+    <string name="sp_lang_text">Spaniolă</string>
+    <string name="it_lang_text">Italiană</string>
+    <string name="ge_lang_text">Germană</string>
+    <string name="ru_lang_text">Rusă</string>
+    <string name="jp_lang_text">Japoneză</string>
+    <string name="cn_lang_text">Chineză</string>
+</resources>

@@ -77,16 +77,16 @@
             android:paddingRight="20dp"
             android:text=""
             android:textAlignment="center"
-            android:textColor="@color/white"
+            android:textColor="@color/gray_navigation_background"
             android:textSize="24dp" />
 
         <Button
             android:id="@+id/try_again_button"
-            android:layout_width="150dp"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="125dp"
+            android:layout_marginLeft="105dp"
             android:layout_marginTop="140dp"
-            android:layout_marginRight="120dp"
+            android:layout_marginRight="10dp"
             android:backgroundTint="#A8FFFFFF"
             android:paddingLeft="25dp"
             android:paddingRight="25dp"

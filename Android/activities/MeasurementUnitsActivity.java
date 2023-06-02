@@ -12,7 +12,7 @@ import androidx.core.content.ContextCompat;
 
 import org.w3c.dom.Text;
 
-public class MeasurementUnitsActivity extends AppCompatActivity {
+public class MeasurementUnitsActivity extends AppCompat {
 
     static final int CELSIUS_UNIT = 0;
     static final int FAHRENHEIT_UNIT = 1;

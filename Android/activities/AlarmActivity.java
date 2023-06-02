@@ -11,7 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
-public class AlarmActivity extends AppCompatActivity {
+public class AlarmActivity extends AppCompat {
 
     static final int SWITCH_ON = 1;
     static final int SWITCH_OFF = 0;

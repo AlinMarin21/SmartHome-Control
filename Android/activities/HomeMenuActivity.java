@@ -12,7 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
-public class HomeMenuActivity extends AppCompatActivity {
+public class HomeMenuActivity extends AppCompat {
 
     private long pressedTime;
 
@@ -50,6 +50,31 @@ public class HomeMenuActivity extends AppCompatActivity {
         VoiceControlActivityButton = (Button) findViewById(R.id.voice_button);
         SettingsActivityButton = (Button) findViewById(R.id.settings_button);
         DisplayActivityButton = (Button) findViewById(R.id.display_button);
+
+        if(BufferManager.currentLanguage.equals("fr")) {
+            AirConditionerActivityButton.setTextSize(14);
+            SettingsActivityButton.setTextSize(14);
+        }
+        if(BufferManager.currentLanguage.equals("it") ) {
+            AirConditionerActivityButton.setTextSize(11);
+            SettingsActivityButton.setTextSize(12);
+            VoiceControlActivityButton.setTextSize(14);
+        }
+        if(BufferManager.currentLanguage.equals("es") ) {
+            AirConditionerActivityButton.setTextSize(11);
+        }
+        if(BufferManager.currentLanguage.equals("de") ) {
+            LightsActivityButton.setTextSize(16);
+            AirConditionerActivityButton.setTextSize(12);
+            SettingsActivityButton.setTextSize(12);
+            VoiceControlActivityButton.setTextSize(9);
+        }
+        if(BufferManager.currentLanguage.equals("ru") ) {
+            AirConditionerActivityButton.setTextSize(12);
+            SettingsActivityButton.setTextSize(14);
+            VoiceControlActivityButton.setTextSize(14);
+            DisplayActivityButton.setTextSize(16);
+        }
 
         LightsActivityButton.setOnClickListener(new View.OnClickListener() {
             @Override

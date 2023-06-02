@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">家</string>
+
+    <string name="device_not_supported">お使いのデバイスはブルートゥースをサポートしていないようです</string>
+    <string name="permission_not_granted">ブルートゥース接続の許可を与えてください</string>
+    <string name="bluetooth_not_connected">ブルートゥース接続がオフになっています。 ブルートゥースをオンにしてください</string>
+    <string name="device_not_paired">デバイスがペアリングされていません。 デバイスをペアリングしてください</string>
+    <string name="connection_not_established">接続を確立できませんでした。 ブルートゥースモジュールを再起動してみてください</string>
+
+    <string name="try_again_button">再試行する</string>
+
+    <string name="lights_text">ライト</string>
+    <string name="doors_text">ドア</string>
+    <string name="AC_text">エアコン</string>
+    <string name="ambient_text">ホームアンビエント</string>
+    <string name="display_text">画面</string>
+    <string name="voice_text">音声制御</string>
+    <string name="settings_text">設定</string>
+
+    <string name="living_room_text">リビングルーム</string>
+    <string name="room1_text">部屋 1</string>
+    <string name="room2_text">部屋 2</string>
+    <string name="bathroom_text">トイレ</string>
+    <string name="kitchen_text">台所</string>
+    <string name="terrace_text">テラス</string>
+
+    <string name="normal_control_text">ライトの手動制御</string>
+    <string name="darkness_control_text">暗闇を検知すると点灯</string>
+    <string name="motion_control_text">動きが検知されると点灯します</string>
+
+    <string name="front_door_text">正面玄関</string>
+    <string name="gates_text">ゲイツ</string>
+
+    <string name="automatic_closing_text">オートクローズ</string>
+    <string name="door_lock_text">ドアロック</string>
+
+    <string name="air_conditioner_text">エアコン</string>
+    <string name="auto_ac_text">オートエアコン</string>
+
+    <string name="temp_inside_text">庫内温度</string>
+    <string name="hum_inside_text">内部湿度</string>
+    <string name="temp_outside_text">外気温</string>
+    <string name="hum_outside_text">外気の湿度</string>
+    <string name="air_quality_text">空気の質</string>
+    <string name="gas_text">CO2</string>
+
+    <string name="select_display_text">ディスプレイに表示したいものを選択してください:</string>
+
+    <string name="temp_inside_only_text">庫内温度</string>
+    <string name="temp_outside_only_text">外気温</string>
+    <string name="hum_inside_only_text">内部湿度</string>
+    <string name="hum_outside_only_text">外気の湿度</string>
+    <string name="temp_hum_inside_text">庫内の温度と湿度</string>
+    <string name="temp_hum_outside_text">外気の温度と湿度</string>
+    <string name="rainfall_text">降雨</string>
+    <string name="custom_text">カスタム</string>
+    <string name="brightness_text">輝度</string>
+    <string name="motion_text">モーション</string>
+
+    <string name="on_text">有効</string>
+    <string name="off_text">無効</string>
+
+    <string name="settings_limits_text">しきい値</string>
+    <string name="settings_units_text">測定単位</string>
+    <string name="settings_alarm_text">警報</string>
+    <string name="settings_custom_display_text">カスタムディスプレイ</string>
+    <string name="settings_language_text">言語</string>
+
+    <string name="select_alarm_text">アラームをトリガーするイベントを選択してください:</string>
+
+    <string name="airquality_alarm_text">空気の質が許容限界レベルを下回っている</string>
+    <string name="gas_alarm_text">CO2 レベルが許容値を超えています</string>
+    <string name="humidity_alarm_text">湿度が耐えられるレベルを超えています</string>
+    <string name="motion_detected_text">路地で動きが検出されました</string>
+
+    <string name="temperature_unit_text">温度</string>
+    <string name="celsius_text">°C</string>
+    <string name="fahrenheit_text">°F</string>
+
+    <string name="select_custom_display_text">カスタム画面に表示したい情報を選択します:</string>
+
+    <string name="max_limit_text">最大制限に達しました: 5</string>
+    <string name="exit_app_text">もう一度戻るボタンを押して終了します</string>
+
+    <string name="temp_limit_text">エアコンの自動モードが設定されている場合に、エアコンが作動する温度です。</string>
+    <string name="bright_limit_text">これが選択されたモードの場合、これは私道の照明が点灯する明るさのしきい値です。</string>
+    <string name="gas_limit_text">これは許容される CO2 の最大レベルです。 アラームが設定されており、CO2値を超えるとアラームが鳴ります。</string>
+    <string name="aq_limit_text">これは空気品質の最低許容レベルです。 アラームが設定されており、空気の質がこの値を下回ると、アラームが鳴ります。</string>
+
+    <string name="save_text">保存</string>
+
+    <string name="number_error">値は数値でなければなりません。</string>
+
+    <string name="en_lang_text">英語</string>
+    <string name="ro_lang_text">ルーマニア語</string>
+    <string name="fr_lang_text">フランス語</string>
+    <string name="sp_lang_text">スペイン語</string>
+    <string name="it_lang_text">イタリアの</string>
+    <string name="ge_lang_text">ドイツ人</string>
+    <string name="ru_lang_text">ロシア</string>
+    <string name="jp_lang_text">日本</string>
+    <string name="cn_lang_text">中国語</string>
+</resources>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Casa</string>
+
+    <string name="device_not_supported">Sembra che il tuo dispositivo non supporti il Bluetooth</string>
+    <string name="permission_not_granted">Si prega di concedere le autorizzazioni per la connessione Bluetooth</string>
+    <string name="bluetooth_not_connected">La connessione Bluetooth è disattivata. Si prega di attivare il Bluetooth</string>
+    <string name="device_not_paired">I tuoi dispositivi non sono accoppiati. Associa il tuo dispositivo</string>
+    <string name="connection_not_established">Non è stato possibile stabilire la connessione. Prova a riavviare il modulo Bluetooth</string>
+
+    <string name="try_again_button">RIPROVA</string>
+
+    <string name="lights_text">LUCI</string>
+    <string name="doors_text">PORTE</string>
+    <string name="AC_text">CONDIZIONATORE</string>
+    <string name="ambient_text">AMBIENTE DOMESTICO</string>
+    <string name="display_text">SCHERMO</string>
+    <string name="voice_text">CONTROLLO VOCALE</string>
+    <string name="settings_text">IMPOSTAZIONI</string>
+
+    <string name="living_room_text">SOGGIORNO</string>
+    <string name="room1_text">CAMERA 1</string>
+    <string name="room2_text">CAMERA 2</string>
+    <string name="bathroom_text">BAGNO</string>
+    <string name="kitchen_text">CUCINA</string>
+    <string name="terrace_text">TERRAZZA</string>
+
+    <string name="normal_control_text">Controllo manuale delle luci</string>
+    <string name="darkness_control_text">Si illumina quando viene rilevato il buio</string>
+    <string name="motion_control_text">Si illumina quando viene rilevato un movimento</string>
+
+    <string name="front_door_text">PORTA D\'INGRESSO</string>
+    <string name="gates_text">CANCELLI</string>
+
+    <string name="automatic_closing_text">Chiusura automatica</string>
+    <string name="door_lock_text">Serratura</string>
+
+    <string name="air_conditioner_text">CONDIZIONATORE</string>
+    <string name="auto_ac_text">AC automatico</string>
+
+    <string name="temp_inside_text">Temperatura interna</string>
+    <string name="hum_inside_text">Umidità interna</string>
+    <string name="temp_outside_text">Temperatura esterna</string>
+    <string name="hum_outside_text">Umidità esterna</string>
+    <string name="air_quality_text">Qualità dell\'aria</string>
+    <string name="gas_text">CO2</string>
+
+    <string name="select_display_text">Seleziona cosa vuoi che il tuo display mostri:</string>
+
+    <string name="temp_inside_only_text">Temperatura interna</string>
+    <string name="temp_outside_only_text">Temperatura esterna</string>
+    <string name="hum_inside_only_text">Umidità interna</string>
+    <string name="hum_outside_only_text">Umidità esterna</string>
+    <string name="temp_hum_inside_text">Temperatura e umidità interne</string>
+    <string name="temp_hum_outside_text">Temperatura e umidità esterne</string>
+    <string name="rainfall_text">Pioggia</string>
+    <string name="custom_text">Costume</string>
+    <string name="brightness_text">Luminosità</string>
+    <string name="motion_text">Movimento</string>
+
+    <string name="on_text">ABILITARE</string>
+    <string name="off_text">DISATTIVARE</string>
+
+    <string name="settings_limits_text">SOGLIE</string>
+    <string name="settings_units_text">UNITÀ DI MISURA</string>
+    <string name="settings_alarm_text">ALLARME</string>
+    <string name="settings_custom_display_text">ESPOSIZIONE PERSONALIZZATA</string>
+    <string name="settings_language_text">LINGUA</string>
+
+    <string name="select_alarm_text">Seleziona quali eventi attiveranno il tuo allarme:</string>
+
+    <string name="airquality_alarm_text">La qualità dell\'aria è al di sotto del livello limite consentito</string>
+    <string name="gas_alarm_text">Il livello di CO2 è superiore ai limiti consentiti</string>
+    <string name="humidity_alarm_text">L\'umidità è al di sopra del livello sopportabile</string>
+    <string name="motion_detected_text">Movimento rilevato nel vicolo</string>
+
+    <string name="temperature_unit_text">Temperatura</string>
+    <string name="celsius_text">°C</string>
+    <string name="fahrenheit_text">°F</string>
+
+    <string name="select_custom_display_text">Seleziona le informazioni che desideri visualizzare nella schermata personalizzata:</string>
+
+    <string name="max_limit_text">Limite massimo raggiunto: 5</string>
+    <string name="exit_app_text">Premi di nuovo indietro per uscire</string>
+
+    <string name="temp_limit_text">Questa è la temperatura alla quale il climatizzatore si avvierà se è impostata la modalità automatica.</string>
+    <string name="bright_limit_text">Questa è la soglia di luminosità alla quale si accenderanno le luci del vialetto, se questa è la modalità selezionata.</string>
+    <string name="gas_limit_text">Questo è il livello massimo di CO2 consentito. Se l\'allarme è impostato e il valore di CO2 viene superato, l\'allarme si spegnerà.</string>
+    <string name="aq_limit_text">Questo è il livello minimo consentito per la qualità dell\'aria. Se l\'allarme è impostato e la qualità dell\'aria è inferiore a questo valore, l\'allarme si spegnerà.</string>
+
+    <string name="save_text">SALVA</string>
+
+    <string name="number_error">Il valore deve essere un numero!</string>
+
+    <string name="en_lang_text">Inglese</string>
+    <string name="ro_lang_text">Rumena</string>
+    <string name="fr_lang_text">Francese</string>
+    <string name="sp_lang_text">Spagnola</string>
+    <string name="it_lang_text">Italiana</string>
+    <string name="ge_lang_text">Tedesca</string>
+    <string name="ru_lang_text">Russa</string>
+    <string name="jp_lang_text">Giapponese</string>
+    <string name="cn_lang_text">Cinese</string>
+</resources>

@@ -12,7 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
-public class TerraceActivity extends AppCompatActivity {
+public class TerraceActivity extends AppCompat {
 
     static final int LIGHT_ON = 1;
     static final int LIGHT_OFF = 0;

@@ -11,7 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
-public class HomeAmbientActivity extends AppCompatActivity {
+public class HomeAmbientActivity extends AppCompat {
 
     LinearLayout TemperatureInsideLayout;
     LinearLayout HumidityInsideLayout;
@@ -26,6 +26,8 @@ public class HomeAmbientActivity extends AppCompatActivity {
     TextView HumidityOutsideHiddenLayout;
     TextView AirQualityHiddenLayout;
     TextView GasHiddenLayout;
+
+    TextView tempInsideTextView;
 
 
     @Override
@@ -52,6 +54,12 @@ public class HomeAmbientActivity extends AppCompatActivity {
         HumidityOutsideHiddenLayout = (TextView) findViewById(R.id.hum_outside_hidden);
         AirQualityHiddenLayout = (TextView) findViewById(R.id.air_quality_hidden);
         GasHiddenLayout = (TextView) findViewById(R.id.gas_hidden);
+
+        tempInsideTextView = (TextView) findViewById(R.id.temp_inside_text);
+
+        if(BufferManager.currentLanguage.equals("ru")) {
+            tempInsideTextView.setTextSize(26);
+        }
 
         TemperatureInsideLayout.setVisibility(View.VISIBLE);
         HumidityInsideHiddenLayout.setVisibility(View.INVISIBLE);

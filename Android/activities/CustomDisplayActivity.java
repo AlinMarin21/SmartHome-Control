@@ -6,13 +6,14 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
-public class CustomDisplayActivity extends AppCompatActivity {
+public class CustomDisplayActivity extends AppCompat {
 
     static final int SWITCH_ON = 1;
     static final int SWITCH_OFF = 0;
@@ -26,6 +27,9 @@ public class CustomDisplayActivity extends AppCompatActivity {
     Switch RainfallSwitch;
     Switch BrightnessSwitch;
     Switch MotionSwitch;
+
+    TextView titleTextView;
+    TextView infoTextView;
 
     int inside_temp_switch_state = SWITCH_ON;
     int outside_temp_switch_state = SWITCH_ON;
@@ -59,6 +63,20 @@ public class CustomDisplayActivity extends AppCompatActivity {
         RainfallSwitch = (Switch) findViewById(R.id.rainfall_switch);
         BrightnessSwitch = (Switch) findViewById(R.id.brightness_switch);
         MotionSwitch = (Switch) findViewById(R.id.motion_switch);
+
+        titleTextView = (TextView) findViewById(R.id.title_textview);
+        infoTextView = (TextView) findViewById(R.id.info_textview);
+
+        if(BufferManager.currentLanguage.equals("fr")
+                || BufferManager.currentLanguage.equals("it")
+                || BufferManager.currentLanguage.equals("de")
+                || BufferManager.currentLanguage.equals("ru")) {
+            titleTextView.setTextSize(26);
+            infoTextView.setTextSize(18);
+        }
+        if(BufferManager.currentLanguage.equals("es")) {
+            titleTextView.setTextSize(26);
+        }
 
         if(SWITCH_ON == inside_temp_switch_state) {
             InsideTemperatureSwitch.setChecked(true);

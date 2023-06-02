@@ -12,7 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
-public class DisplayActivity extends AppCompatActivity {
+public class DisplayActivity extends AppCompat {
 
     static final int DISPLAY_ON = 1;
     static final int DISPLAY_OFF = 0;
@@ -30,6 +30,8 @@ public class DisplayActivity extends AppCompatActivity {
 
     TextView DisplayOnButton;
     TextView DisplayOffButton;
+
+    TextView titleTextView;
 
     Switch TemperatureInsideSwitch;
     Switch TemperatureIOutsideSwitch;
@@ -69,6 +71,26 @@ public class DisplayActivity extends AppCompatActivity {
         GasSwitch = (Switch) findViewById(R.id.gas_switch);
         RainfallSwitch = (Switch) findViewById(R.id.rainfall_switch);
         CustomSwitch = (Switch) findViewById(R.id.custom_switch);
+
+        titleTextView = (TextView) findViewById(R.id.title_textview);
+
+        if(BufferManager.currentLanguage.equals("fr")) {
+            titleTextView.setTextSize(24);
+            DisplayOnButton.setTextSize(14);
+            DisplayOffButton.setTextSize(12);
+        }
+        if(BufferManager.currentLanguage.equals("it")
+                || BufferManager.currentLanguage.equals("es")
+                || BufferManager.currentLanguage.equals("de")) {
+            titleTextView.setTextSize(20);
+            DisplayOnButton.setTextSize(11);
+            DisplayOffButton.setTextSize(11);
+        }
+        if(BufferManager.currentLanguage.equals("ru")) {
+            titleTextView.setTextSize(18);
+            DisplayOnButton.setTextSize(11);
+            DisplayOffButton.setTextSize(7);
+        }
 
         getActiveDisplayMode();
 

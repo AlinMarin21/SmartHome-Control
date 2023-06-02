@@ -81,4 +81,23 @@
 
     <string name="max_limit_text">Max limit reached: 5</string>
     <string name="exit_app_text">Press back again to exit</string>
+
+    <string name="temp_limit_text">This is the temperature at which the air conditioner will start if its automatic mode is set.</string>
+    <string name="bright_limit_text">This is the brightness threshold at which the driveway lights will turn on, if this is the selected mode.</string>
+    <string name="gas_limit_text">This is the maximum level of CO2 allowed. If the alarm is set and the CO2 value is exceeded, the alarm will go off.</string>
+    <string name="aq_limit_text">This is the minimum allowable level for air quality. If the alarm is set and the air quality is below this value, the alarm will go off.</string>
+
+    <string name="save_text">SAVE</string>
+
+    <string name="number_error">Value shall be a number!</string>
+
+    <string name="en_lang_text">English</string>
+    <string name="ro_lang_text">Romanian</string>
+    <string name="fr_lang_text">French</string>
+    <string name="sp_lang_text">Spanish</string>
+    <string name="it_lang_text">Italian</string>
+    <string name="ge_lang_text">German</string>
+    <string name="ru_lang_text">Russian</string>
+    <string name="jp_lang_text">Japanese</string>
+    <string name="cn_lang_text">Chinese</string>
 </resources>

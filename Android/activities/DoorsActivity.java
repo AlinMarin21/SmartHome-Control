@@ -15,7 +15,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
-public class DoorsActivity extends AppCompatActivity {
+public class DoorsActivity extends AppCompat {
 
     static final int DOOR_OPEN = 1;
     static final int DOOR_CLOSE = 0;
@@ -74,6 +74,19 @@ public class DoorsActivity extends AppCompatActivity {
         DoorLockSwitch = (Switch) findViewById(R.id.lock_switch);
         DoorClosingSwitch = (Switch) findViewById(R.id.closing_door_switch);
         GatesClosingSwitch = (Switch) findViewById(R.id.closing_gate_switch);
+
+        if(BufferManager.currentLanguage.equals("fr")) {
+            DoorClosingSwitch.setTextSize(16);
+            GatesClosingSwitch.setTextSize(16);
+        }
+        if(BufferManager.currentLanguage.equals("de")) {
+            DoorClosingSwitch.setTextSize(13);
+            GatesClosingSwitch.setTextSize(13);
+        }
+        if(BufferManager.currentLanguage.equals("ru")) {
+            DoorClosingSwitch.setTextSize(11);
+            GatesClosingSwitch.setTextSize(11);
+        }
 
         GatesLayout.setVisibility(View.INVISIBLE);
 

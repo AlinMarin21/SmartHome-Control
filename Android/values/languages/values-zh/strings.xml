@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">家</string>
+
+    <string name="device_not_supported">您的设备似乎不支持蓝牙</string>
+    <string name="permission_not_granted">请授予蓝牙连接权限</string>
+    <string name="bluetooth_not_connected">您的蓝牙连接已关闭。 请打开您的蓝牙</string>
+    <string name="device_not_paired">您的设备未配对。 请配对您的设备</string>
+    <string name="connection_not_established">无法建立连接。 尝试重启蓝牙模块</string>
+
+    <string name="try_again_button">再试一次</string>
+
+    <string name="lights_text">灯</string>
+    <string name="doors_text">门</string>
+    <string name="AC_text">冷气机</string>
+    <string name="ambient_text">家居环境</string>
+    <string name="display_text">屏幕</string>
+    <string name="voice_text">语音控制</string>
+    <string name="settings_text">设置</string>
+
+    <string name="living_room_text">客厅</string>
+    <string name="room1_text">房间 1</string>
+    <string name="room2_text">房间 2</string>
+    <string name="bathroom_text">浴室</string>
+    <string name="kitchen_text">厨房</string>
+    <string name="terrace_text">阳台</string>
+
+    <string name="normal_control_text">手动控制灯光</string>
+    <string name="darkness_control_text">检测到黑暗时亮起</string>
+    <string name="motion_control_text">检测到运动时亮起</string>
+
+    <string name="front_door_text">前门</string>
+    <string name="gates_text">盖茨</string>
+
+    <string name="automatic_closing_text">自动关闭</string>
+    <string name="door_lock_text">门锁</string>
+
+    <string name="air_conditioner_text">冷气机</string>
+    <string name="auto_ac_text">自动空调</string>
+
+    <string name="temp_inside_text">内部温度</string>
+    <string name="hum_inside_text">室内湿度</string>
+    <string name="temp_outside_text">室外温度</string>
+    <string name="hum_outside_text">室外湿度</string>
+    <string name="air_quality_text">空气质量</string>
+    <string name="gas_text">二氧化碳</string>
+
+    <string name="select_display_text">选择您希望显示器显示的内容：</string>
+
+    <string name="temp_inside_only_text">内部温度</string>
+    <string name="temp_outside_only_text">室外温度</string>
+    <string name="hum_inside_only_text">室内湿度</string>
+    <string name="hum_outside_only_text">室外湿度</string>
+    <string name="temp_hum_inside_text">内部温度和湿度</string>
+    <string name="temp_hum_outside_text">室外温度和湿度</string>
+    <string name="rainfall_text">雨量</string>
+    <string name="custom_text">风俗</string>
+    <string name="brightness_text">亮度</string>
+    <string name="motion_text">运动</string>
+
+    <string name="on_text">启用</string>
+    <string name="off_text">禁用</string>
+
+    <string name="settings_limits_text">门槛</string>
+    <string name="settings_units_text">计量单位</string>
+    <string name="settings_alarm_text">警报</string>
+    <string name="settings_custom_display_text">自定义显示</string>
+    <string name="settings_language_text">语言</string>
+
+    <string name="select_alarm_text">选择哪些事件将触发您的警报：</string>
+
+    <string name="airquality_alarm_text">空气质量低于允许的极限水平</string>
+    <string name="gas_alarm_text">二氧化碳水平高于允许限值</string>
+    <string name="humidity_alarm_text">湿度超过可承受水平</string>
+    <string name="motion_detected_text">在小巷中检测到运动</string>
+
+    <string name="temperature_unit_text">温度</string>
+    <string name="celsius_text">°C</string>
+    <string name="fahrenheit_text">°F</string>
+
+    <string name="select_custom_display_text">选择您要在自定义屏幕上查看的信息：</string>
+
+    <string name="max_limit_text">达到最大限制：5</string>
+    <string name="exit_app_text">再按一次退出</string>
+
+    <string name="temp_limit_text">如果设置了自动模式，这是空调启动的温度。</string>
+    <string name="bright_limit_text">这是车道灯打开的亮度阈值，如果这是选定的模式。</string>
+    <string name="gas_limit_text">这是允许的最大二氧化碳水平。 如果设置了警报并且超过了二氧化碳值，警报就会响起。</string>
+    <string name="aq_limit_text">这是空气质量的最低允许水平。 如果设置了警报并且空气质量低于此值，警报就会响起。</string>
+
+    <string name="save_text">节省</string>
+
+    <string name="number_error">值应该是一个数字！</string>
+
+    <string name="en_lang_text">英语</string>
+    <string name="ro_lang_text">罗马尼亚语</string>
+    <string name="fr_lang_text">法语</string>
+    <string name="sp_lang_text">西班牙语</string>
+    <string name="it_lang_text">意大利语</string>
+    <string name="ge_lang_text">德语</string>
+    <string name="ru_lang_text">俄语</string>
+    <string name="jp_lang_text">日本人</string>
+    <string name="cn_lang_text">中国人</string>
+</resources>

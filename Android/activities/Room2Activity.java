@@ -15,7 +15,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
-public class Room2Activity extends AppCompatActivity {
+public class Room2Activity extends AppCompat {
 
     static final int LIGHT_ON = 1;
     static final int LIGHT_OFF = 0;

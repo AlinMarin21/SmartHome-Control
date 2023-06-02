@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Дом</string>
+
+    <string name="device_not_supported">Похоже, ваше устройство не поддерживает Bluetooth</string>
+    <string name="permission_not_granted">Предоставьте разрешения на подключение Bluetooth</string>
+    <string name="bluetooth_not_connected">Ваше Bluetooth-соединение отключено. Пожалуйста, включите Bluetooth</string>
+    <string name="device_not_paired">Ваши устройства не сопряжены. Пожалуйста, подключите ваше устройство</string>
+    <string name="connection_not_established">Соединение установить не удалось. Попробуйте перезапустить модуль Bluetooth</string>
+
+    <string name="try_again_button">ПОПРОБУЙТЕ ЕЩЕ РАЗ</string>
+
+    <string name="lights_text">ОСВЕЩЕНИЕ</string>
+    <string name="doors_text">ДВЕРИ</string>
+    <string name="AC_text">КОНДИЦИОНЕР</string>
+    <string name="ambient_text">ДОМАШНЯЯ ОКРУЖАЮЩАЯ</string>
+    <string name="display_text">ОТОБРАЖАТЬ</string>
+    <string name="voice_text">ГОЛОСОВОЕ УПРАВЛЕНИЕ</string>
+    <string name="settings_text">НАСТРОЙКИ</string>
+
+    <string name="living_room_text">ГОСТИНАЯ</string>
+    <string name="room1_text">КОМНАТА 1</string>
+    <string name="room2_text">КОМНАТА 2</string>
+    <string name="bathroom_text">ВАННАЯ КОМНАТА</string>
+    <string name="kitchen_text">КУХНЯ</string>
+    <string name="terrace_text">ТЕРРАСА</string>
+
+    <string name="normal_control_text">Ручное управление светом</string>
+    <string name="darkness_control_text">Загорается при обнаружении темноты</string>
+    <string name="motion_control_text">Загорается при обнаружении движения</string>
+
+    <string name="front_door_text">ПЕРЕДНЯЯ ДВЕРЬ</string>
+    <string name="gates_text">ВОРОТА</string>
+
+    <string name="automatic_closing_text">Автоматическое закрытие</string>
+    <string name="door_lock_text">Замок</string>
+
+    <string name="air_conditioner_text">КОНДИЦИОНЕР</string>
+    <string name="auto_ac_text">Автоматический кондиционер</string>
+
+    <string name="temp_inside_text">Внутренняя температура</string>
+    <string name="hum_inside_text">Внутренняя влажность</string>
+    <string name="temp_outside_text">Наружная температура</string>
+    <string name="hum_outside_text">Внешняя влажность</string>
+    <string name="air_quality_text">Качество воздуха</string>
+    <string name="gas_text">CO2</string>
+
+    <string name="select_display_text">Выберите, что вы хотите, чтобы ваш дисплей отображал:</string>
+
+    <string name="temp_inside_only_text">Внутренняя температура</string>
+    <string name="temp_outside_only_text">Наружная температура</string>
+    <string name="hum_inside_only_text">Внутренняя влажность</string>
+    <string name="hum_outside_only_text">Внешняя влажность</string>
+    <string name="temp_hum_inside_text">Внутренняя температура и влажность</string>
+    <string name="temp_hum_outside_text">Наружная температура и влажность</string>
+    <string name="rainfall_text">Осадки</string>
+    <string name="custom_text">Обычай</string>
+    <string name="brightness_text">Яркость</string>
+    <string name="motion_text">Движение</string>
+
+    <string name="on_text">ВКЛЮЧЕНО</string>
+    <string name="off_text">НЕПОЛНОЦЕННЫЙ</string>
+
+    <string name="settings_limits_text">ПОРОГИ</string>
+    <string name="settings_units_text">ЕДИНИЦЫ ИЗМЕРЕНИЯ</string>
+    <string name="settings_alarm_text">ТРЕВОГА</string>
+    <string name="settings_custom_display_text">ПОЛЬЗОВАТЕЛЬСКИЙ ДИСПЛЕЙ</string>
+    <string name="settings_language_text">ЯЗЫК</string>
+
+    <string name="select_alarm_text">Выберите, какие события должны вызвать ваш сигнал тревоги:</string>
+
+    <string name="airquality_alarm_text">Качество воздуха ниже допустимого предельного уровня</string>
+    <string name="gas_alarm_text">Уровень CO2 выше допустимых пределов</string>
+    <string name="humidity_alarm_text">Влажность выше допустимого уровня</string>
+    <string name="motion_detected_text">В переулке обнаружено движение</string>
+
+    <string name="temperature_unit_text">Температура</string>
+    <string name="celsius_text">°C</string>
+    <string name="fahrenheit_text">°F</string>
+
+    <string name="select_custom_display_text">Выберите, какую информацию вы хотите просмотреть на пользовательском экране:</string>
+
+    <string name="max_limit_text">Достигнут максимальный предел: 5</string>
+    <string name="exit_app_text">Нажмите еще раз, чтобы выйти</string>
+
+    <string name="temp_limit_text">Это температура, при которой запустится кондиционер, если установлен его автоматический режим.</string>
+    <string name="bright_limit_text">Это порог яркости, при котором включится освещение проезжей части, если выбран этот режим.</string>
+    <string name="gas_limit_text">Это максимально допустимый уровень CO2. Если установлен сигнал тревоги и превышено значение CO2, сигнал тревоги сработает.</string>
+    <string name="aq_limit_text">Это минимально допустимый уровень качества воздуха. Если установлен сигнал тревоги и качество воздуха ниже этого значения, сигнал тревоги сработает.</string>
+
+    <string name="save_text">СОХРАНЯТЬ</string>
+
+    <string name="number_error">Значение должно быть числом!</string>
+
+    <string name="en_lang_text">Английский</string>
+    <string name="ro_lang_text">румынский</string>
+    <string name="fr_lang_text">Французский</string>
+    <string name="sp_lang_text">испанский</string>
+    <string name="it_lang_text">итальянский</string>
+    <string name="ge_lang_text">Немецкий</string>
+    <string name="ru_lang_text">Русский</string>
+    <string name="jp_lang_text">Японский</string>
+    <string name="cn_lang_text">Китайский</string>
+</resources>

@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
-public class VoiceControlActivity extends AppCompatActivity {
+public class VoiceControlActivity extends AppCompat {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
