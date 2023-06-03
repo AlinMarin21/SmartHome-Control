@@ -101,4 +101,72 @@
     <string name="ru_lang_text">Russisch</string>
     <string name="jp_lang_text">Japanisch</string>
     <string name="cn_lang_text">Chinesisch</string>
+
+    <string name="turn_on_living_room_light_command_text">Mach das Licht im Wohnzimmer an</string>
+    <string name="command_not_found">Befehl wird nicht erkannt</string>
+
+    <string name="red_color">rot</string>
+    <string name="orange_color">orange</string>
+    <string name="yellow_color">gelb</string>
+    <string name="aqua_color">aqua</string>
+    <string name="blue_color">blau</string>
+    <string name="green_color">grün</string>
+    <string name="pink_color">rosa</string>
+    <string name="purple_color">lila</string>
+
+    <string name="turn_off_living_room_light_command_text">Schalten Sie das Licht im Wohnzimmer aus</string>
+    <string name="change_intensity_max_living_room_light_command_text">Ändern Sie die Intensität des Lichts im Wohnzimmer auf Maximum</string>
+    <string name="change_intensity_min_living_room_light_command_text">Ändern Sie die Intensität des Lichts im Wohnzimmer auf Minimum</string>
+    <string name="turn_on_kitchen_lights_command_text">Schalten Sie das Licht in der Küche ein</string>
+    <string name="turn_off_kitchen_lights_command_text">Schalten Sie das Licht in der Küche aus</string>
+    <string name="turn_on_room1_light_command_text">Schalten Sie das Licht in Raum 1 ein</string>
+    <string name="turn_on_roomone_light_command_text">Schalten Sie das Licht im Raum eins ein</string>
+    <string name="turn_off_room1_light_command_text">Schalten Sie das Licht in Raum 1 aus</string>
+    <string name="turn_off_roomone_light_command_text">Schalten Sie das Licht im Raum eins aus</string>
+    <string name="change_color_room1_light_command_text">Ändern Sie die Farbe des Lichts in Raum 1 in </string>
+    <string name="change_color_roomone_light_command_text">Ändern Sie die Farbe des Lichts in Raum eins zu </string>
+    <string name="turn_on_room2_light_command_text">Schalten Sie das Licht in Raum 2 ein</string>
+    <string name="turn_on_roomtwo_light_command_text">Schalten Sie das Licht in Raum zwei ein</string>
+    <string name="turn_off_room2_light_command_text">Schalten Sie das Licht in Raum 2 aus</string>
+    <string name="turn_off_roomtwo_light_command_text">Schalten Sie das Licht in Raum zwei aus</string>
+    <string name="change_color_room2_light_command_text">Ändern Sie die Farbe des Lichts in Raum 2 in </string>
+    <string name="change_color_roomtwo_light_command_text">Ändern Sie die Farbe des Lichts in Raum zwei zu </string>
+    <string name="turn_on_bathroom_light_command_text">Schalten Sie das Licht im Badezimmer ein</string>
+    <string name="turn_off_bathroom_light_command_text">Schalten Sie das Licht im Badezimmer aus</string>
+    <string name="turn_on_alley_lights_on_dark_command_text">Schalten Sie nach Einbruch der Dunkelheit das Licht in der Gasse ein</string>
+    <string name="turn_on_alley_lights_on_move_command_text">Schalten Sie das Licht in der Gasse ein, wenn eine Bewegung erkannt wird</string>
+    <string name="turn_on_alley_lights_command_text">Schalten Sie das Licht in der Gasse ein</string>
+    <string name="turn_off_alley_lights_command_text">Schalten Sie das Licht in der Gasse aus</string>
+
+    <string name="open_front_door_command_text">Öffne die Vordertür</string>
+    <string name="open_gates_command_text">Öffne die Tore</string>
+    <string name="close_front_door_command_text">Schließen Sie die Vordertür</string>
+    <string name="close_gates_command_text">Schließen Sie die Tore</string>
+    <string name="lock_front_door_command_text">Tür abschließen</string>
+    <string name="unlock_front_door_command_text">Öffne die Tür</string>
+    <string name="activate_automatic_closing_door_command_text">Automatisches Schließen der Tür aktivieren</string>
+    <string name="activate_automatic_closing_gates_command_text">Automatisches Schließen der Tür aktivieren</string>
+    <string name="deactivate_automatic_closing_door_command_text">Automatisches Schließen der Tür deaktivieren</string>
+    <string name="deactivate_automatic_closing_gates_command_text">Automatisches Schließen der Tür deaktivieren</string>
+
+    <string name="turn_on_ac_command_text">Schalten Sie die Klimaanlage ein</string>
+    <string name="turn_off_ac_command_text">Schalten Sie die Klimaanlage aus</string>
+    <string name="activate_automatic_ac_command_text">Aktivieren Sie die automatische Klimaanlage</string>
+    <string name="deactivate_automatic_ac_command_text">Automatische AC deaktivieren</string>
+    <string name="increase_ac_speed_command_text">AC-Geschwindigkeit erhöhen</string>
+    <string name="decrease_ac_speed_command_text">Wechselstromgeschwindigkeit verringern</string>
+
+    <string name="turn_on_diplay_command_text">Schalten Sie das Display ein</string>
+    <string name="turn_off_diplay_command_text">Anzeige ausschalten</string>
+    <string name="show_inside_temp_command_text">Anzeige der Innentemperatur auf dem Bildschirm</string>
+    <string name="show_outside_temp_command_text">Zeigen Sie die Außentemperatur auf dem Bildschirm an</string>
+    <string name="show_inside_hum_command_text">Anzeige der Raumluftfeuchtigkeit auf dem Bildschirm</string>
+    <string name="show_outside_hum_command_text">Zeigen Sie die Außenfeuchtigkeit auf dem Bildschirm an</string>
+    <string name="show_inside_temp_hum_command_text">Anzeige der Innentemperatur und Luftfeuchtigkeit auf dem Bildschirm</string>
+    <string name="show_outside_temp_hum_command_text">Zeigt die Außentemperatur und Luftfeuchtigkeit auf dem Bildschirm an</string>
+    <string name="show_aq_command_text">Anzeige der Luftqualität auf dem Bildschirm</string>
+    <string name="show_co2_command_text">Zeigen Sie den CO2-Gehalt auf dem Bildschirm an</string>
+    <string name="show_rainfall_command_text">Zeigen Sie die Niederschlagsmenge auf dem Bildschirm an</string>
+    <string name="show_custom_screen_command_text">Zeigen Sie den benutzerdefinierten Bildschirm an</string>
+    <string name="see_commands_text">Siehe Befehle</string>
 </resources>

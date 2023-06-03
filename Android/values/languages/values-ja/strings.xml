@@ -101,4 +101,72 @@
     <string name="ru_lang_text">ロシア</string>
     <string name="jp_lang_text">日本</string>
     <string name="cn_lang_text">中国語</string>
+
+    <string name="turn_on_living_room_light_command_text">リビングルームの電気をつけます</string>
+    <string name="command_not_found">コマンドが認識されない</string>
+
+    <string name="red_color">赤</string>
+    <string name="orange_color">オレンジ</string>
+    <string name="yellow_color">黄色</string>
+    <string name="aqua_color">アクア</string>
+    <string name="blue_color">ブルー</string>
+    <string name="green_color">緑</string>
+    <string name="pink_color">ピンク</string>
+    <string name="purple_color">紫</string>
+
+    <string name="turn_off_living_room_light_command_text">リビング ルームの電気を消します</string>
+    <string name="change_intensity_max_living_room_light_command_text">リビング ルームの光の強度を最大に変更します</string>
+    <string name="change_intensity_min_living_room_light_command_text">リビング ルームの光の強度を最小に変更します</string>
+    <string name="turn_on_kitchen_lights_command_text">キッチンの照明をつけてください</string>
+    <string name="turn_off_kitchen_lights_command_text">キッチンの電気を消してください</string>
+    <string name="turn_on_room1_light_command_text">部屋 1 の電気をつけます</string>
+    <string name="turn_on_roomone_light_command_text">部屋 1 の電気をつけてください</string>
+    <string name="turn_off_room1_light_command_text">部屋 1 の電気を消します</string>
+    <string name="turn_off_roomone_light_command_text">部屋 1 の電気を消してください</string>
+    <string name="change_color_room1_light_command_text">部屋 1 のライトの色を次のように変更します </string>
+    <string name="change_color_roomone_light_command_text">部屋 1 のライトの色を次のように変更します </string>
+    <string name="turn_on_room2_light_command_text">部屋 2 の電気をつけます</string>
+    <string name="turn_on_roomtwo_light_command_text">部屋 2 の電気をつけてください</string>
+    <string name="turn_off_room2_light_command_text">部屋 2 の電気を消します</string>
+    <string name="turn_off_roomtwo_light_command_text">部屋 2 の電気を消してください</string>
+    <string name="change_color_room2_light_command_text">部屋 2 のライトの色を次のように変更します </string>
+    <string name="change_color_roomtwo_light_command_text">部屋 2 のライトの色を次のように変更します </string>
+    <string name="turn_on_bathroom_light_command_text">バスルームの電気をつけてください</string>
+    <string name="turn_off_bathroom_light_command_text">バスルームの電気を消してください</string>
+    <string name="turn_on_alley_lights_on_dark_command_text">暗くなったら路地の照明を点灯します</string>
+    <string name="turn_on_alley_lights_on_move_command_text">動きが検出されたら路地の照明を点灯します</string>
+    <string name="turn_on_alley_lights_command_text">路地の明かりをつけてください</string>
+    <string name="turn_off_alley_lights_command_text">路地の電気を消してください</string>
+
+    <string name="open_front_door_command_text">正面ドアを開けます</string>
+    <string name="open_gates_command_text">ゲートを開けてください</string>
+    <string name="close_front_door_command_text">正面ドアを閉めます</string>
+    <string name="close_gates_command_text">ゲートを閉めてください</string>
+    <string name="lock_front_door_command_text">ドアに鍵をかけます</string>
+    <string name="unlock_front_door_command_text">ドアのロックを解除します</string>
+    <string name="activate_automatic_closing_door_command_text">ドアの自動閉を有効にする</string>
+    <string name="activate_automatic_closing_gates_command_text">ドアの自動閉鎖を有効にする</string>
+    <string name="deactivate_automatic_closing_door_command_text">ドアの自動閉を無効にする</string>
+    <string name="deactivate_automatic_closing_gates_command_text">ドアの自動閉を無効にする</string>
+
+    <string name="turn_on_ac_command_text">エアコンをオンにしてください</string>
+    <string name="turn_off_ac_command_text">エアコンをオフにしてください</string>
+    <string name="activate_automatic_ac_command_text">自動エアコンをアクティブにする</string>
+    <string name="deactivate_automatic_ac_command_text">自動エアコンを無効にする</string>
+    <string name="increase_ac_speed_command_text">AC 速度を上げる</string>
+    <string name="decrease_ac_speed_command_text">AC 速度を下げる</string>
+
+    <string name="turn_on_diplay_command_text">ディスプレイをオンにする</string>
+    <string name="turn_off_diplay_command_text">ディスプレイをオフにする</string>
+    <string name="show_inside_temp_command_text">室内温度を画面に表示します</string>
+    <string name="show_outside_temp_command_text">屋外温度を画面に表示します</string>
+    <string name="show_inside_hum_command_text">室内の湿度を画面に表示します</string>
+    <string name="show_outside_hum_command_text">屋外の湿度を画面に表示します</string>
+    <string name="show_inside_temp_hum_command_text">室内の温度と湿度を画面に表示します</string>
+    <string name="show_outside_temp_hum_command_text">屋外の温度と湿度を画面に表示します</string>
+    <string name="show_aq_command_text">空気品質レベルを画面に表示します</string>
+    <string name="show_co2_command_text">画面に CO2 レベルを表示します</string>
+    <string name="show_rainfall_command_text">降雨レベルを画面に表示します</string>
+    <string name="show_custom_screen_command_text">カスタム画面を表示する</string>
+    <string name="see_commands_text">コマンドを参照</string>
 </resources>

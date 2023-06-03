@@ -1,16 +1,741 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/red_background">
+    android:background="@color/red_background" >
+
+
+    <RelativeLayout
+        android:id="@+id/backgroundLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/red_background"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <ImageView
+            android:id="@+id/bottom_page"
+            android:layout_width="424dp"
+            android:layout_height="325dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="1dp"
+            android:src="@drawable/red_bottom_image"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.538"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <TextView
+            android:id="@+id/speech_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="108dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="374dp"
+            android:layout_marginBottom="250dp"
+            android:gravity="center_vertical"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:text=""
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="22dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.198" />
+
+        <TextView
+            android:id="@+id/see_all_commands_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="17dp"
+            android:layout_marginBottom="139dp"
+            android:text="@string/see_commands_text"
+            android:textColor="@color/red_navigation_background"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
 
     <ImageView
-        android:id="@+id/bottom_page"
-        android:layout_width="424dp"
-        android:layout_height="325dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="6dp"
-        android:layout_marginBottom="-2dp"
-        android:src="@drawable/red_bottom_image" />
+        android:id="@+id/speechRecognitionAnimation"
+        android:layout_width="350dp"
+        android:layout_height="350dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="350dp"
+        android:src="@drawable/animation_speech"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</RelativeLayout>
+    <LinearLayout
+        android:id="@+id/commands_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/red_background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="0.10"
+        android:isScrollContainer="true">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="@string/lights_text"
+                android:background="@color/red_navigation_background"
+                android:textColor="@color/red_background"
+                android:gravity="center_vertical"
+                android:textSize="16dp"
+                android:paddingLeft="20dp"
+                android:layout_marginTop="5dp"/>
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="@string/turn_on_living_room_light_command_text"
+                android:background="@color/red_background"
+                android:textColor="@color/red_navigation_background"
+                android:gravity="center_vertical"
+                android:textSize="13dp"
+                android:paddingLeft="20dp" />
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="@string/turn_off_living_room_light_command_text"
+                android:background="@color/red_background"
+                android:textColor="@color/red_navigation_background"
+                android:gravity="center_vertical"
+                android:textSize="13dp"
+                android:paddingLeft="20dp" />
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="@string/change_intensity_max_living_room_light_command_text"
+                android:background="@color/red_background"
+                android:textColor="@color/red_navigation_background"
+                android:gravity="center_vertical"
+                android:textSize="13dp"
+                android:paddingLeft="20dp" />
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="@string/change_intensity_min_living_room_light_command_text"
+                android:background="@color/red_background"
+                android:textColor="@color/red_navigation_background"
+                android:gravity="center_vertical"
+                android:textSize="13dp"
+                android:paddingLeft="20dp" />
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="@string/turn_on_kitchen_lights_command_text"
+                android:background="@color/red_background"
+                android:textColor="@color/red_navigation_background"
+                android:gravity="center_vertical"
+                android:textSize="13dp"
+                android:paddingLeft="20dp" />
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="@string/turn_off_kitchen_lights_command_text"
+                android:background="@color/red_background"
+                android:textColor="@color/red_navigation_background"
+                android:gravity="center_vertical"
+                android:textSize="13dp"
+                android:paddingLeft="20dp" />
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="@string/turn_on_room1_light_command_text"
+                android:background="@color/red_background"
+                android:textColor="@color/red_navigation_background"
+                android:gravity="center_vertical"
+                android:textSize="13dp"
+                android:paddingLeft="20dp" />
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="@string/turn_off_room1_light_command_text"
+                android:background="@color/red_background"
+                android:textColor="@color/red_navigation_background"
+                android:gravity="center_vertical"
+                android:textSize="13dp"
+                android:paddingLeft="20dp" />
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="@string/turn_on_room2_light_command_text"
+                android:background="@color/red_background"
+                android:textColor="@color/red_navigation_background"
+                android:gravity="center_vertical"
+                android:textSize="13dp"
+                android:paddingLeft="20dp" />
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="@string/turn_off_room2_light_command_text"
+                android:background="@color/red_background"
+                android:textColor="@color/red_navigation_background"
+                android:gravity="center_vertical"
+                android:textSize="13dp"
+                android:paddingLeft="20dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="240dp"
+                android:orientation="horizontal"
+                android:layout_marginBottom="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_weight="1">
+                    <TextView
+                        android:id="@+id/textView23"
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:text="@string/change_color_room1_light_command_text"
+                        android:background="@color/red_background"
+                        android:textColor="@color/red_navigation_background"
+                        android:gravity="center_vertical"
+                        android:textSize="13dp"
+                        android:paddingLeft="20dp" />
+                    <TextView
+                        android:id="@+id/textView24"
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:text="@string/change_color_room2_light_command_text"
+                        android:background="@color/red_background"
+                        android:textColor="@color/red_navigation_background"
+                        android:gravity="center_vertical"
+                        android:textSize="13dp"
+                        android:paddingLeft="20dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_weight="1">
+                    <TextView
+                        android:id="@+id/textView15"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:text="@string/red_color"
+                        android:background="@color/red_background"
+                        android:textColor="@color/red_navigation_background"
+                        android:gravity="center_vertical"
+                        android:textSize="13dp"
+                        android:paddingLeft="20dp" />
+                    <TextView
+                        android:id="@+id/textView16"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:text="@string/orange_color"
+                        android:background="@color/red_background"
+                        android:textColor="@color/red_navigation_background"
+                        android:gravity="center_vertical"
+                        android:textSize="13dp"
+                        android:paddingLeft="20dp" />
+                    <TextView
+                        android:id="@+id/textView17"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:text="@string/yellow_color"
+                        android:background="@color/red_background"
+                        android:textColor="@color/red_navigation_background"
+                        android:gravity="center_vertical"
+                        android:textSize="13dp"
+                        android:paddingLeft="20dp" />
+                    <TextView
+                        android:id="@+id/textView18"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:text="@string/aqua_color"
+                        android:background="@color/red_background"
+                        android:textColor="@color/red_navigation_background"
+                        android:gravity="center_vertical"
+                        android:textSize="13dp"
+                        android:paddingLeft="20dp" />
+                    <TextView
+                        android:id="@+id/textView19"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:text="@string/blue_color"
+                        android:background="@color/red_background"
+                        android:textColor="@color/red_navigation_background"
+                        android:gravity="center_vertical"
+                        android:textSize="13dp"
+                        android:paddingLeft="20dp" />
+                    <TextView
+                        android:id="@+id/textView20"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:text="@string/green_color"
+                        android:background="@color/red_background"
+                        android:textColor="@color/red_navigation_background"
+                        android:gravity="center_vertical"
+                        android:textSize="13dp"
+                        android:paddingLeft="20dp" />
+                    <TextView
+                        android:id="@+id/textView21"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:text="@string/pink_color"
+                        android:background="@color/red_background"
+                        android:textColor="@color/red_navigation_background"
+                        android:gravity="center_vertical"
+                        android:textSize="13dp"
+                        android:paddingLeft="20dp" />
+                    <TextView
+                        android:id="@+id/textView22"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:text="@string/purple_color"
+                        android:background="@color/red_background"
+                        android:textColor="@color/red_navigation_background"
+                        android:gravity="center_vertical"
+                        android:textSize="13dp"
+                        android:paddingLeft="20dp" />
+                </LinearLayout>
+            </LinearLayout>
+            <TextView
+                android:id="@+id/textView25"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="@string/turn_on_bathroom_light_command_text"
+                android:background="@color/red_background"
+                android:textColor="@color/red_navigation_background"
+                android:gravity="center_vertical"
+                android:textSize="13dp"
+                android:paddingLeft="20dp" />
+            <TextView
+                android:id="@+id/textView26"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="@string/turn_off_bathroom_light_command_text"
+                android:background="@color/red_background"
+                android:textColor="@color/red_navigation_background"
+                android:gravity="center_vertical"
+                android:textSize="13dp"
+                android:paddingLeft="20dp" />
+            <TextView
+                android:id="@+id/textView27"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="@string/turn_on_alley_lights_on_dark_command_text"
+                android:background="@color/red_background"
+                android:textColor="@color/red_navigation_background"
+                android:gravity="center_vertical"
+                android:textSize="13dp"
+                android:paddingLeft="20dp" />
+            <TextView
+                android:id="@+id/textView28"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="@string/turn_on_alley_lights_on_move_command_text"
+                android:background="@color/red_background"
+                android:textColor="@color/red_navigation_background"
+                android:gravity="center_vertical"
+                android:textSize="13dp"
+                android:paddingLeft="20dp" />
+            <TextView
+                android:id="@+id/textView29"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="@string/turn_on_alley_lights_command_text"
+                android:background="@color/red_background"
+                android:textColor="@color/red_navigation_background"
+                android:gravity="center_vertical"
+                android:textSize="13dp"
+                android:paddingLeft="20dp" />
+            <TextView
+                android:id="@+id/textView30"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="@string/turn_off_alley_lights_command_text"
+                android:background="@color/red_background"
+                android:textColor="@color/red_navigation_background"
+                android:gravity="center_vertical"
+                android:textSize="13dp"
+                android:paddingLeft="20dp" />
+            <TextView
+                android:id="@+id/textView31"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="@string/doors_text"
+                android:background="@color/red_navigation_background"
+                android:textColor="@color/red_background"
+                android:gravity="center_vertical"
+                android:textSize="16dp"
+                android:paddingLeft="20dp"/>
+            <TextView
+                android:id="@+id/textView32"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="@string/open_front_door_command_text"
+                android:background="@color/red_background"
+                android:textColor="@color/red_navigation_background"
+                android:gravity="center_vertical"
+                android:textSize="13dp"
+                android:paddingLeft="20dp" />
+            <TextView
+                android:id="@+id/textView33"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="@string/open_gates_command_text"
+                android:background="@color/red_background"
+                android:textColor="@color/red_navigation_background"
+                android:gravity="center_vertical"
+                android:textSize="13dp"
+                android:paddingLeft="20dp" />
+            <TextView
+                android:id="@+id/textView34"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="@string/close_front_door_command_text"
+                android:background="@color/red_background"
+                android:textColor="@color/red_navigation_background"
+                android:gravity="center_vertical"
+                android:textSize="13dp"
+                android:paddingLeft="20dp" />
+            <TextView
+                android:id="@+id/textView35"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="@string/close_gates_command_text"
+                android:background="@color/red_background"
+                android:textColor="@color/red_navigation_background"
+                android:gravity="center_vertical"
+                android:textSize="13dp"
+                android:paddingLeft="20dp" />
+            <TextView
+                android:id="@+id/textView36"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="@string/lock_front_door_command_text"
+                android:background="@color/red_background"
+                android:textColor="@color/red_navigation_background"
+                android:gravity="center_vertical"
+                android:textSize="13dp"
+                android:paddingLeft="20dp" />
+            <TextView
+                android:id="@+id/textView37"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="@string/unlock_front_door_command_text"
+                android:background="@color/red_background"
+                android:textColor="@color/red_navigation_background"
+                android:gravity="center_vertical"
+                android:textSize="13dp"
+                android:paddingLeft="20dp" />
+            <TextView
+                android:id="@+id/textView38"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="@string/activate_automatic_closing_door_command_text"
+                android:background="@color/red_background"
+                android:textColor="@color/red_navigation_background"
+                android:gravity="center_vertical"
+                android:textSize="13dp"
+                android:paddingLeft="20dp" />
+            <TextView
+                android:id="@+id/textView39"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="@string/activate_automatic_closing_gates_command_text"
+                android:background="@color/red_background"
+                android:textColor="@color/red_navigation_background"
+                android:gravity="center_vertical"
+                android:textSize="13dp"
+                android:paddingLeft="20dp" />
+            <TextView
+                android:id="@+id/textView40"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="@string/deactivate_automatic_closing_door_command_text"
+                android:background="@color/red_background"
+                android:textColor="@color/red_navigation_background"
+                android:gravity="center_vertical"
+                android:textSize="13dp"
+                android:paddingLeft="20dp" />
+            <TextView
+                android:id="@+id/textView41"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="@string/deactivate_automatic_closing_gates_command_text"
+                android:background="@color/red_background"
+                android:textColor="@color/red_navigation_background"
+                android:gravity="center_vertical"
+                android:textSize="13dp"
+                android:paddingLeft="20dp" />
+            <TextView
+                android:id="@+id/textView42"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="@string/AC_text"
+                android:background="@color/red_navigation_background"
+                android:textColor="@color/red_background"
+                android:gravity="center_vertical"
+                android:textSize="16dp"
+                android:paddingLeft="20dp"/>
+            <TextView
+                android:id="@+id/textView43"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="@string/turn_on_ac_command_text"
+                android:background="@color/red_background"
+                android:textColor="@color/red_navigation_background"
+                android:gravity="center_vertical"
+                android:textSize="13dp"
+                android:paddingLeft="20dp" />
+            <TextView
+                android:id="@+id/textView44"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="@string/turn_off_ac_command_text"
+                android:background="@color/red_background"
+                android:textColor="@color/red_navigation_background"
+                android:gravity="center_vertical"
+                android:textSize="13dp"
+                android:paddingLeft="20dp" />
+            <TextView
+                android:id="@+id/textView45"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="@string/activate_automatic_ac_command_text"
+                android:background="@color/red_background"
+                android:textColor="@color/red_navigation_background"
+                android:gravity="center_vertical"
+                android:textSize="13dp"
+                android:paddingLeft="20dp" />
+            <TextView
+                android:id="@+id/textView46"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="@string/activate_automatic_ac_command_text"
+                android:background="@color/red_background"
+                android:textColor="@color/red_navigation_background"
+                android:gravity="center_vertical"
+                android:textSize="13dp"
+                android:paddingLeft="20dp" />
+            <TextView
+                android:id="@+id/textView47"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="@string/increase_ac_speed_command_text"
+                android:background="@color/red_background"
+                android:textColor="@color/red_navigation_background"
+                android:gravity="center_vertical"
+                android:textSize="13dp"
+                android:paddingLeft="20dp" />
+            <TextView
+                android:id="@+id/textView48"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="@string/decrease_ac_speed_command_text"
+                android:background="@color/red_background"
+                android:textColor="@color/red_navigation_background"
+                android:gravity="center_vertical"
+                android:textSize="13dp"
+                android:paddingLeft="20dp" />
+            <TextView
+                android:id="@+id/textView49"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="@string/display_text"
+                android:background="@color/red_navigation_background"
+                android:textColor="@color/red_background"
+                android:gravity="center_vertical"
+                android:textSize="16dp"
+                android:paddingLeft="20dp"/>
+            <TextView
+                android:id="@+id/textView50"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="@string/turn_on_diplay_command_text"
+                android:background="@color/red_background"
+                android:textColor="@color/red_navigation_background"
+                android:gravity="center_vertical"
+                android:textSize="13dp"
+                android:paddingLeft="20dp" />
+            <TextView
+                android:id="@+id/textView51"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="@string/turn_off_diplay_command_text"
+                android:background="@color/red_background"
+                android:textColor="@color/red_navigation_background"
+                android:gravity="center_vertical"
+                android:textSize="13dp"
+                android:paddingLeft="20dp" />
+            <TextView
+                android:id="@+id/textView52"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="@string/show_inside_temp_command_text"
+                android:background="@color/red_background"
+                android:textColor="@color/red_navigation_background"
+                android:gravity="center_vertical"
+                android:textSize="13dp"
+                android:paddingLeft="20dp" />
+            <TextView
+                android:id="@+id/textView53"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="@string/show_outside_temp_command_text"
+                android:background="@color/red_background"
+                android:textColor="@color/red_navigation_background"
+                android:gravity="center_vertical"
+                android:textSize="13dp"
+                android:paddingLeft="20dp" />
+            <TextView
+                android:id="@+id/textView54"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="@string/show_inside_hum_command_text"
+                android:background="@color/red_background"
+                android:textColor="@color/red_navigation_background"
+                android:gravity="center_vertical"
+                android:textSize="13dp"
+                android:paddingLeft="20dp" />
+            <TextView
+                android:id="@+id/textView55"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="@string/show_outside_hum_command_text"
+                android:background="@color/red_background"
+                android:textColor="@color/red_navigation_background"
+                android:gravity="center_vertical"
+                android:textSize="13dp"
+                android:paddingLeft="20dp" />
+            <TextView
+                android:id="@+id/textView56"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="@string/show_inside_temp_hum_command_text"
+                android:background="@color/red_background"
+                android:textColor="@color/red_navigation_background"
+                android:gravity="center_vertical"
+                android:textSize="13dp"
+                android:paddingLeft="20dp" />
+            <TextView
+                android:id="@+id/textView57"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="@string/show_outside_temp_hum_command_text"
+                android:background="@color/red_background"
+                android:textColor="@color/red_navigation_background"
+                android:gravity="center_vertical"
+                android:textSize="13dp"
+                android:paddingLeft="20dp" />
+            <TextView
+                android:id="@+id/textView58"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="@string/show_aq_command_text"
+                android:background="@color/red_background"
+                android:textColor="@color/red_navigation_background"
+                android:gravity="center_vertical"
+                android:textSize="13dp"
+                android:paddingLeft="20dp" />
+            <TextView
+                android:id="@+id/textView59"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="@string/show_co2_command_text"
+                android:background="@color/red_background"
+                android:textColor="@color/red_navigation_background"
+                android:gravity="center_vertical"
+                android:textSize="13dp"
+                android:paddingLeft="20dp" />
+            <TextView
+                android:id="@+id/textView60"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="@string/show_rainfall_command_text"
+                android:background="@color/red_background"
+                android:textColor="@color/red_navigation_background"
+                android:gravity="center_vertical"
+                android:textSize="13dp"
+                android:paddingLeft="20dp" />
+            <TextView
+                android:id="@+id/textView61"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="@string/show_custom_screen_command_text"
+                android:background="@color/red_background"
+                android:textColor="@color/red_navigation_background"
+                android:gravity="center_vertical"
+                android:textSize="13dp"
+                android:paddingLeft="20dp" />
+
+        </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1.4"
+            android:background="#DC000000">
+
+            <ImageView
+                android:id="@+id/close_commands_list_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/baseline_close_100"
+                android:layout_marginLeft="100dp"
+                android:layout_marginRight="100dp"/>
+        </LinearLayout>
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

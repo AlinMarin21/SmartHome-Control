@@ -29,7 +29,7 @@
     <string name="darkness_control_text">Aprinderea luminilor la lăsarea întunericului</string>
     <string name="motion_control_text">Aprinderea luminilor la detecția mișcării</string>
 
-    <string name="front_door_text">UȘA DIN FAȚĂ</string>
+    <string name="front_door_text">UȘA DE LA INTRARE</string>
     <string name="gates_text">PORȚI</string>
 
     <string name="automatic_closing_text">Închidere automată</string>
@@ -101,4 +101,72 @@
     <string name="ru_lang_text">Rusă</string>
     <string name="jp_lang_text">Japoneză</string>
     <string name="cn_lang_text">Chineză</string>
+
+    <string name="turn_on_living_room_light_command_text">Aprinde lumina din sufragerie</string>
+    <string name="command_not_found">Comanda nu este recunoscută</string>
+
+    <string name="red_color">roșu</string>
+    <string name="orange_color">portocaliu</string>
+    <string name="yellow_color">galben</string>
+    <string name="aqua_color">turcoaz</string>
+    <string name="blue_color">albastru</string>
+    <string name="green_color">verde</string>
+    <string name="pink_color">roz</string>
+    <string name="purple_color">violet</string>
+
+    <string name="turn_off_living_room_light_command_text">Stinge lumina din sufragerie</string>
+    <string name="change_intensity_max_living_room_light_command_text">Schimbă intensitatea luminii din sufragerie la valoarea maximă</string>
+    <string name="change_intensity_min_living_room_light_command_text">Schimbă intensitatea luminii din sufragerie la valoarea minimă</string>
+    <string name="turn_on_kitchen_lights_command_text">Aprinde luminile din bucătărie</string>
+    <string name="turn_off_kitchen_lights_command_text">Stinge luminile din bucătărie</string>
+    <string name="turn_on_room1_light_command_text">Aprinde lumina din camera 1</string>
+    <string name="turn_on_roomone_light_command_text">Aprinde lumina din camera unu</string>
+    <string name="turn_off_room1_light_command_text">Stinge lumina din camera 1</string>
+    <string name="turn_off_roomone_light_command_text">Stinge lumina din camera unu</string>
+    <string name="change_color_room1_light_command_text">Schimbă culoarea luminii din camera 1 în </string>
+    <string name="change_color_roomone_light_command_text">Schimbă culoarea luminii din camera unu în </string>
+    <string name="turn_on_room2_light_command_text">Aprinde lumina din camera 2</string>
+    <string name="turn_on_roomtwo_light_command_text">Aprinde lumina din camera doi</string>
+    <string name="turn_off_room2_light_command_text">Stinge lumina din camera 2</string>
+    <string name="turn_off_roomtwo_light_command_text">Stinge lumina din camera doi</string>
+    <string name="change_color_room2_light_command_text">Schimbă culoarea luminii din camera 2 în </string>
+    <string name="change_color_roomtwo_light_command_text">Schimbă culoarea luminii din camera doi în </string>
+    <string name="turn_on_bathroom_light_command_text">Aprinde lumina din baie</string>
+    <string name="turn_off_bathroom_light_command_text">Stinge lumina din baie</string>
+    <string name="turn_on_alley_lights_on_dark_command_text">Aprinde luminile de pe alee după lăsarea întunericului</string>
+    <string name="turn_on_alley_lights_on_move_command_text">Aprinde luminile de pe alee când este detectată mișcare</string>
+    <string name="turn_on_alley_lights_command_text">Aprinde luminile pe alee</string>
+    <string name="turn_off_alley_lights_command_text">Stinge luminile de pe alee</string>
+
+    <string name="open_front_door_command_text">Deschide ușa din față</string>
+    <string name="open_gates_command_text">Deschide porțile</string>
+    <string name="close_front_door_command_text">Închide ușa din față</string>
+    <string name="close_gates_command_text">Închide porțile</string>
+    <string name="lock_front_door_command_text">Blochează ușa</string>
+    <string name="unlock_front_door_command_text">Deblochează ușa</string>
+    <string name="activate_automatic_closing_door_command_text">Activează închiderea automată a ușii</string>
+    <string name="activate_automatic_closing_gates_command_text">Activează închiderea automată a porților</string>
+    <string name="deactivate_automatic_closing_door_command_text">Dezactivează închiderea automată a ușii</string>
+    <string name="deactivate_automatic_closing_gates_command_text">Dezactivează închiderea automată a porților</string>
+
+    <string name="turn_on_ac_command_text">Pornește aerul condiționat</string>
+    <string name="turn_off_ac_command_text">Oprește aerul condiționat</string>
+    <string name="activate_automatic_ac_command_text">Activează aerul condiționat automat</string>
+    <string name="deactivate_automatic_ac_command_text">Dezactivează aerul condiționat automat</string>
+    <string name="increase_ac_speed_command_text">Mărește viteza aerului condiționat</string>
+    <string name="decrease_ac_speed_command_text">Redu viteza aerului condiționat</string>
+
+    <string name="turn_on_diplay_command_text">Aprinde afișajul</string>
+    <string name="turn_off_diplay_command_text">Stinge afișajul</string>
+    <string name="show_inside_temp_command_text">Afișează temperatura la interior pe ecran</string>
+    <string name="show_outside_temp_command_text">Afișează temperatura la exterior pe ecran</string>
+    <string name="show_inside_hum_command_text">Afișează umiditatea la interior pe ecran umiditatea</string>
+    <string name="show_outside_hum_command_text">Afișează umiditatea la exterior pe ecran umiditatea</string>
+    <string name="show_inside_temp_hum_command_text">Afișează temperatura și umiditatea la interior pe ecran</string>
+    <string name="show_outside_temp_hum_command_text">Afișează temperatura și umiditatea la exterior pe ecran</string>
+    <string name="show_aq_command_text">Afișează nivelul de calitate a aerului pe ecran</string>
+    <string name="show_co2_command_text">Afișează nivelul de CO2 pe ecran</string>
+    <string name="show_rainfall_command_text">Afișează nivelul de precipitații pe ecran</string>
+    <string name="show_custom_screen_command_text">Afișează ecranul personalizat</string>
+    <string name="see_commands_text">Vezi comenzile</string>
 </resources>

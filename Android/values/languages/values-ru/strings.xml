@@ -101,4 +101,72 @@
     <string name="ru_lang_text">Русский</string>
     <string name="jp_lang_text">Японский</string>
     <string name="cn_lang_text">Китайский</string>
+
+    <string name="turn_on_living_room_light_command_text">включить свет в гостиной</string>
+    <string name="command_not_found">Команда не распознана</string>
+
+    <string name="red_color">красный</string>
+    <string name="orange_color">оранжевый</string>
+    <string name="yellow_color">желтый</string>
+    <string name="aqua_color">цвет морской волны</string>
+    <string name="blue_color">синий</string>
+    <string name="green_color">зеленый</string>
+    <string name="pink_color">розовый</string>
+    <string name="purple_color">фиолетовый</string>
+
+    <string name="turn_off_living_room_light_command_text">Выключите свет в гостиной</string>
+    <string name="change_intensity_max_living_room_light_command_text">Изменить интенсивность света в гостиной на максимальную</string>
+    <string name="change_intensity_min_living_room_light_command_text">Изменить интенсивность света в гостиной на мин.</string>
+    <string name="turn_on_kitchen_lights_command_text">Включите свет на кухне</string>
+    <string name="turn_off_kitchen_lights_command_text">Выключите свет на кухне</string>
+    <string name="turn_on_room1_light_command_text">Включите свет в комнате 1</string>
+    <string name="turn_on_roomone_light_command_text">Включите свет в первой комнате</string>
+    <string name="turn_off_room1_light_command_text">Выключите свет в комнате 1</string>
+    <string name="turn_off_roomone_light_command_text">Выключите свет в первой комнате</string>
+    <string name="change_color_room1_light_command_text">Изменить цвет света в комнате 1 на </string>
+    <string name="change_color_roomone_light_command_text">Изменить цвет света в первой комнате на </string>
+    <string name="turn_on_room2_light_command_text">Включите свет в комнате 2</string>
+    <string name="turn_on_roomtwo_light_command_text">Включите свет во второй комнате</string>
+    <string name="turn_off_room2_light_command_text">Выключите свет в комнате 2</string>
+    <string name="turn_off_roomtwo_light_command_text">Выключите свет во второй комнате</string>
+    <string name="change_color_room2_light_command_text">Изменить цвет света в комнате 2 на </string>
+    <string name="change_color_roomtwo_light_command_text">Изменить цвет света во второй комнате на </string>
+    <string name="turn_on_bathroom_light_command_text">Включите свет в ванной</string>
+    <string name="turn_off_bathroom_light_command_text">Выключите свет в ванной</string>
+    <string name="turn_on_alley_lights_on_dark_command_text">Включить свет в переулке после наступления темноты</string>
+    <string name="turn_on_alley_lights_on_move_command_text">Включить свет в переулке при обнаружении движения</string>
+    <string name="turn_on_alley_lights_command_text">Включите свет в переулке</string>
+    <string name="turn_off_alley_lights_command_text">Выключите свет в переулке</string>
+
+    <string name="open_front_door_command_text">Откройте входную дверь</string>
+    <string name="open_gates_command_text">Откройте ворота</string>
+    <string name="close_front_door_command_text">Закройте входную дверь</string>
+    <string name="close_gates_command_text">Закрыть ворота</string>
+    <string name="lock_front_door_command_text">Заприте дверь</string>
+    <string name="unlock_front_door_command_text">Откройте дверь</string>
+    <string name="activate_automatic_closing_door_command_text">Активировать автоматическое закрывание двери</string>
+    <string name="activate_automatic_closing_gates_command_text">Активировать автоматическое закрытие двери</string>
+    <string name="deactivate_automatic_closing_door_command_text">Отключить автоматическое закрывание двери</string>
+    <string name="deactivate_automatic_closing_gates_command_text">Деактивировать автоматическое закрывание двери</string>
+
+    <string name="turn_on_ac_command_text">Включите кондиционер</string>
+    <string name="turn_off_ac_command_text">Выключить кондиционер</string>
+    <string name="activate_automatic_ac_command_text">Активировать автоматический AC</string>
+    <string name="deactivate_automatic_ac_command_text">Отключить автоматический AC</string>
+    <string name="increase_ac_speed_command_text">Увеличить скорость переменного тока</string>
+    <string name="decrease_ac_speed_command_text">Уменьшить скорость переменного тока</string>
+
+    <string name="turn_on_diplay_command_text">Включить дисплей</string>
+    <string name="turn_off_diplay_command_text">Выключить дисплей</string>
+    <string name="show_inside_temp_command_text">Отображение температуры в помещении на экране</string>
+    <string name="show_outside_temp_command_text">Отображение наружной температуры на экране</string>
+    <string name="show_inside_hum_command_text">Отображение влажности в помещении на экране</string>
+    <string name="show_outside_hum_command_text">Отображение влажности наружного воздуха на экране</string>
+    <string name="show_inside_temp_hum_command_text">Отображение температуры и влажности в помещении на экране</string>
+    <string name="show_outside_temp_hum_command_text">Отображать на экране температуру и влажность наружного воздуха</string>
+    <string name="show_aq_command_text">Отображение уровня качества воздуха на экране</string>
+    <string name="show_co2_command_text">Отображение уровня CO2 на экране</string>
+    <string name="show_rainfall_command_text">Отображение уровня осадков на экране</string>
+    <string name="show_custom_screen_command_text">Отображение пользовательского экрана</string>
+    <string name="see_commands_text">См. команды</string>
 </resources>

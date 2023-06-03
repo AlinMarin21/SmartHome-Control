@@ -101,4 +101,72 @@
     <string name="ru_lang_text">Rusa</string>
     <string name="jp_lang_text">Japonesa</string>
     <string name="cn_lang_text">China</string>
+
+    <string name="turn_on_living_room_light_command_text">Enciende la luz en la sala de estar</string>
+    <string name="command_not_found">No se reconoce el comando</string>
+
+    <string name="red_color">rojo</string>
+    <string name="orange_color">naranja</string>
+    <string name="yellow_color">amarillo</string>
+    <string name="aqua_color">agua</string>
+    <string name="blue_color">azul</string>
+    <string name="green_color">verde</string>
+    <string name="pink_color">rosa</string>
+    <string name="purple_color">púrpura</string>
+
+    <string name="turn_off_living_room_light_command_text">Apaga la luz de la sala</string>
+    <string name="change_intensity_max_living_room_light_command_text">Cambia la intensidad de la luz en la sala de estar al máximo</string>
+    <string name="change_intensity_min_living_room_light_command_text">Cambiar la intensidad de la luz del salón a min</string>
+    <string name="turn_on_kitchen_lights_command_text">Enciende las luces de la cocina</string>
+    <string name="turn_off_kitchen_lights_command_text">Apaga las luces de la cocina</string>
+    <string name="turn_on_room1_light_command_text">Enciende la luz en la habitación 1</string>
+    <string name="turn_on_roomone_light_command_text">Enciende la luz en la habitación uno</string>
+    <string name="turn_off_room1_light_command_text">Apaga la luz de la habitación 1</string>
+    <string name="turn_off_roomone_light_command_text">Apaga la luz de la habitación uno</string>
+    <string name="change_color_room1_light_command_text">Cambiar el color de la luz en la habitación 1 a </string>
+    <string name="change_color_roomone_light_command_text">Cambiar el color de la luz en la habitación uno a </string>
+    <string name="turn_on_room2_light_command_text">Enciende la luz en la habitación 2</string>
+    <string name="turn_on_roomtwo_light_command_text">Enciende la luz en la habitación dos</string>
+    <string name="turn_off_room2_light_command_text">Apaga la luz de la habitación 2</string>
+    <string name="turn_off_roomtwo_light_command_text">Apaga la luz en la habitación dos</string>
+    <string name="change_color_room2_light_command_text">Cambiar el color de la luz en la habitación 2 a </string>
+    <string name="change_color_roomtwo_light_command_text">Cambiar el color de la luz en la habitación dos a </string>
+    <string name="turn_on_bathroom_light_command_text">Enciende la luz del baño</string>
+    <string name="turn_off_bathroom_light_command_text">Apaga la luz del baño</string>
+    <string name="turn_on_alley_lights_on_dark_command_text">Enciende las luces en el callejón después del anochecer</string>
+    <string name="turn_on_alley_lights_on_move_command_text">Enciende las luces del callejón cuando se detecta movimiento</string>
+    <string name="turn_on_alley_lights_command_text">Enciende las luces en el callejón</string>
+    <string name="turn_off_alley_lights_command_text">Apaga las luces del callejón</string>
+
+    <string name="open_front_door_command_text">Abre la puerta principal</string>
+    <string name="open_gates_command_text">Abre las puertas</string>
+    <string name="close_front_door_command_text">Cerrar la puerta principal</string>
+    <string name="close_gates_command_text">Cerrar las puertas</string>
+    <string name="lock_front_door_command_text">Cerrar la puerta</string>
+    <string name="unlock_front_door_command_text">Desbloquear la puerta</string>
+    <string name="activate_automatic_closing_door_command_text">Activar el cierre automático de la puerta</string>
+    <string name="activate_automatic_closing_gates_command_text">Activar el cierre automático de la puerta</string>
+    <string name="deactivate_automatic_closing_door_command_text">Desactivar el cierre automático de la puerta</string>
+    <string name="deactivate_automatic_closing_gates_command_text">Desactivar el cierre automático de la puerta</string>
+
+    <string name="turn_on_ac_command_text">Enciende el aire acondicionado</string>
+    <string name="turn_off_ac_command_text">Apagar el aire acondicionado</string>
+    <string name="activate_automatic_ac_command_text">Activar el AC automático</string>
+    <string name="deactivate_automatic_ac_command_text">Desactivar el AC automático</string>
+    <string name="increase_ac_speed_command_text">Aumentar la velocidad de CA</string>
+    <string name="decrease_ac_speed_command_text">Reducir la velocidad de CA</string>
+
+    <string name="turn_on_diplay_command_text">Enciende la pantalla</string>
+    <string name="turn_off_diplay_command_text">Apagar la pantalla</string>
+    <string name="show_inside_temp_command_text">Muestra la temperatura interior en la pantalla</string>
+    <string name="show_outside_temp_command_text">Muestra la temperatura exterior en la pantalla</string>
+    <string name="show_inside_hum_command_text">Muestra la humedad interior en la pantalla</string>
+    <string name="show_outside_hum_command_text">Muestra la humedad exterior en la pantalla</string>
+    <string name="show_inside_temp_hum_command_text">Muestra la temperatura y humedad interior en la pantalla</string>
+    <string name="show_outside_temp_hum_command_text">Muestra la temperatura y humedad exterior en la pantalla</string>
+    <string name="show_aq_command_text">Muestra el nivel de calidad del aire en la pantalla</string>
+    <string name="show_co2_command_text">Muestra el nivel de CO2 en la pantalla</string>
+    <string name="show_rainfall_command_text">Muestra el nivel de lluvia en la pantalla</string>
+    <string name="show_custom_screen_command_text">Mostrar la pantalla personalizada</string>
+    <string name="see_commands_text">Ver comandos</string>
 </resources>

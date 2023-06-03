@@ -102,4 +102,72 @@
     <string name="ru_lang_text">俄语</string>
     <string name="jp_lang_text">日本人</string>
     <string name="cn_lang_text">中国人</string>
+
+    <string name="turn_on_living_room_light_command_text">打开客厅的灯</string>
+    <string name="command_not_found">命令无法识别</string>
+
+    <string name="red_color">红色</string>
+    <string name="orange_color">橙色</string>
+    <string name="yellow_color">黄色</string>
+    <string name="aqua_color">浅绿色</string>
+    <string name="blue_color">蓝色</string>
+    <string name="green_color">绿色</string>
+    <string name="pink_color">粉色</string>
+    <string name="purple_color">紫色</string>
+
+    <string name="turn_off_living_room_light_command_text">关掉客厅的灯</string>
+    <string name="change_intensity_max_living_room_light_command_text">将客厅的灯光强度调至最大</string>
+    <string name="change_intensity_min_living_room_light_command_text">将客厅的灯光强度更改为最小值</string>
+    <string name="turn_on_kitchen_lights_command_text">打开厨房的灯</string>
+    <string name="turn_off_kitchen_lights_command_text">关掉厨房的灯</string>
+    <string name="turn_on_room1_light_command_text">打开房间 1 的灯</string>
+    <string name="turn_on_roomone_light_command_text">打开第一个房间的灯</string>
+    <string name="turn_off_room1_light_command_text">关掉房间 1 的灯</string>
+    <string name="turn_off_roomone_light_command_text">关掉第一个房间的灯</string>
+    <string name="change_color_room1_light_command_text">将房间 1 的灯光颜色更改为 </string>
+    <string name="change_color_roomone_light_command_text">将一号房间的灯光颜色更改为 </string>
+    <string name="turn_on_room2_light_command_text">打开房间 2 的灯</string>
+    <string name="turn_on_roomtwo_light_command_text">打开房间二的灯</string>
+    <string name="turn_off_room2_light_command_text">关掉房间 2 的灯</string>
+    <string name="turn_off_roomtwo_light_command_text">关掉二号房间的灯</string>
+    <string name="change_color_room2_light_command_text">将房间 2 的灯光颜色更改为 </string>
+    <string name="change_color_roomtwo_light_command_text">将房间二的灯光颜色更改为 </string>
+    <string name="turn_on_bathroom_light_command_text">打开浴室的灯</string>
+    <string name="turn_off_bathroom_light_command_text">关掉浴室的灯</string>
+    <string name="turn_on_alley_lights_on_dark_command_text">天黑后打开小巷的灯</string>
+    <string name="turn_on_alley_lights_on_move_command_text">检测到运动时打开小巷中的灯</string>
+    <string name="turn_on_alley_lights_command_text">打开胡同里的灯</string>
+    <string name="turn_off_alley_lights_command_text">关掉小巷里的灯</string>
+
+    <string name="open_front_door_command_text">打开前门</string>
+    <string name="open_gates_command_text">打开大门</string>
+    <string name="close_front_door_command_text">关闭前门</string>
+    <string name="close_gates_command_text">关闭大门</string>
+    <string name="lock_front_door_command_text">锁上门</string>
+    <string name="unlock_front_door_command_text">打开门</string>
+    <string name="activate_automatic_closing_door_command_text">激活门的自动关闭</string>
+    <string name="activate_automatic_closing_gates_command_text">激活门的自动关闭</string>
+    <string name="deactivate_automatic_closing_door_command_text">关闭门的自动关闭</string>
+    <string name="deactivate_automatic_closing_gates_command_text">停用门的自动关闭</string>
+
+    <string name="turn_on_ac_command_text">打开空调</string>
+    <string name="turn_off_ac_command_text">关闭空调</string>
+    <string name="activate_automatic_ac_command_text">激活自动AC</string>
+    <string name="deactivate_automatic_ac_command_text">停用自动空调</string>
+    <string name="increase_ac_speed_command_text">增加交流速度</string>
+    <string name="decrease_ac_speed_command_text">降低交流速度</string>
+
+    <string name="turn_on_diplay_command_text">打开显示器</string>
+    <string name="turn_off_diplay_command_text">关闭显示</string>
+    <string name="show_inside_temp_command_text">在屏幕上显示室内温度</string>
+    <string name="show_outside_temp_command_text">在屏幕上显示室外温度</string>
+    <string name="show_inside_hum_command_text">在屏幕上显示室内湿度</string>
+    <string name="show_outside_hum_command_text">在屏幕上显示室外湿度</string>
+    <string name="show_inside_temp_hum_command_text">在屏幕上显示室内温度和湿度</string>
+    <string name="show_outside_temp_hum_command_text">在屏幕上显示室外温度和湿度</string>
+    <string name="show_aq_command_text">在屏幕上显示空气质量水平</string>
+    <string name="show_co2_command_text">在屏幕上显示 CO2 水平</string>
+    <string name="show_rainfall_command_text">在屏幕上显示降雨量</string>
+    <string name="show_custom_screen_command_text">显示自定义屏幕</string>
+    <string name="see_commands_text">查看命令</string>
 </resources>
