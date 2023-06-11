@@ -12,14 +12,14 @@ import androidx.core.content.ContextCompat;
 
 public class KitchenActivity extends AppCompat {
 
-    static final int LIGHT_ON = 1;
-    static final int LIGHT_OFF = 0;
+    private static final int LIGHT_ON = 1;
+    private static final int LIGHT_OFF = 0;
 
-    ImageView KitchenBulb1;
-    ImageView KitchenBulb2;
+    private ImageView KitchenBulb1;
+    private ImageView KitchenBulb2;
 
-    int light1_state = LIGHT_OFF;
-    int light2_state = LIGHT_OFF;
+    private int light1_state = LIGHT_OFF;
+    private int light2_state = LIGHT_OFF;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -34,6 +34,9 @@ public class KitchenActivity extends AppCompat {
 
         KitchenBulb1 = (ImageView) findViewById(R.id.bulb_icon1_kitchen);
         KitchenBulb2 = (ImageView) findViewById(R.id.bulb_icon2_kitchen);
+
+        light1_state = BufferManager.TxBuffer[3];
+        light2_state = BufferManager.TxBuffer[4];
 
         if(LIGHT_OFF == light1_state) {
             KitchenBulb1.setImageResource(R.drawable.baseline_lightbulb_200_black);
@@ -60,6 +63,7 @@ public class KitchenActivity extends AppCompat {
                     KitchenBulb1.setImageResource(R.drawable.baseline_lightbulb_200_black);
                     light1_state = LIGHT_OFF;
                 }
+                BufferManager.TxBuffer[3] = (byte) light1_state;
             }
         });
 
@@ -74,6 +78,7 @@ public class KitchenActivity extends AppCompat {
                     KitchenBulb2.setImageResource(R.drawable.baseline_lightbulb_200_black);
                     light2_state = LIGHT_OFF;
                 }
+                BufferManager.TxBuffer[4] = (byte) light2_state;
             }
         });
     }

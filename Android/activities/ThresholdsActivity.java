@@ -18,16 +18,16 @@ import com.google.android.material.textfield.TextInputLayout;
 
 public class ThresholdsActivity extends AppCompat {
 
-    Button saveValuesButton;
-    TextInputEditText temperatureThresholdText;
-    TextInputEditText brightnessThresholdText;
-    TextInputEditText gasThresholdText;
-    TextInputEditText airQualityThresholdText;
+    private Button saveValuesButton;
+    private TextInputEditText temperatureThresholdText;
+    private TextInputEditText brightnessThresholdText;
+    private TextInputEditText gasThresholdText;
+    private TextInputEditText airQualityThresholdText;
 
-    int temp_threshold;
-    int bright_threshold;
-    int co2_threshold;
-    int aq_threshold;
+    private int temp_threshold;
+    private int bright_threshold;
+    private int co2_threshold;
+    private int aq_threshold;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -46,10 +46,16 @@ public class ThresholdsActivity extends AppCompat {
         gasThresholdText = (TextInputEditText) findViewById(R.id.co2_threshold_text);
         airQualityThresholdText = (TextInputEditText) findViewById(R.id.aq_threshold_text);
 
-        temp_threshold = Integer.valueOf(temperatureThresholdText.getText().toString());
-        bright_threshold = Integer.valueOf(brightnessThresholdText.getText().toString());
-        co2_threshold = Integer.valueOf(gasThresholdText.getText().toString());
-        aq_threshold = Integer.valueOf(airQualityThresholdText.getText().toString());
+        temp_threshold = BufferManager.TxBuffer[26];
+        bright_threshold = BufferManager.TxBuffer[27];
+        co2_threshold = ((BufferManager.TxBuffer[28] & 0xFF) * 256) + (BufferManager.TxBuffer[46] & 0xFF);
+        aq_threshold = ((BufferManager.TxBuffer[29] & 0xFF) * 256) + (BufferManager.TxBuffer[47] & 0xFF);
+
+        temperatureThresholdText.setText(String.valueOf(temp_threshold));
+        brightnessThresholdText.setText(String.valueOf(bright_threshold));
+        gasThresholdText.setText(String.valueOf(co2_threshold));
+        airQualityThresholdText.setText(String.valueOf(aq_threshold));
+
 
         temperatureThresholdText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -65,7 +71,9 @@ public class ThresholdsActivity extends AppCompat {
             @Override
             public void afterTextChanged(Editable editable) {
                 if(!(temperatureThresholdText.getText().toString()).equals("")) {
-                    temp_threshold = Integer.valueOf(editable.toString());
+                    if(Integer.valueOf(editable.toString()) > 0 && Integer.valueOf(editable.toString()) < 100) {
+                        temp_threshold = Integer.valueOf(editable.toString());
+                    }
                 }
                 else {
                     temp_threshold = 0;
@@ -88,7 +96,9 @@ public class ThresholdsActivity extends AppCompat {
             @Override
             public void afterTextChanged(Editable editable) {
                 if(!(brightnessThresholdText.getText().toString()).equals("")) {
-                    bright_threshold = Integer.valueOf(editable.toString());
+                    if(Integer.valueOf(editable.toString()) > 0 && Integer.valueOf(editable.toString()) < 100) {
+                        bright_threshold = Integer.valueOf(editable.toString());
+                    }
                 }
                 else {
                     bright_threshold = 0;
@@ -146,10 +156,12 @@ public class ThresholdsActivity extends AppCompat {
         saveValuesButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                System.out.println(temp_threshold);
-                System.out.println(bright_threshold);
-                System.out.println(co2_threshold);
-                System.out.println(aq_threshold);
+                BufferManager.TxBuffer[26] = (byte) temp_threshold;
+                BufferManager.TxBuffer[27] = (byte) bright_threshold;
+                BufferManager.TxBuffer[28] = (byte) (co2_threshold / 256);
+                BufferManager.TxBuffer[46] = (byte) (co2_threshold % 256);
+                BufferManager.TxBuffer[29] = (byte) (aq_threshold / 256);
+                BufferManager.TxBuffer[47] = (byte) (aq_threshold % 256);
             }
         });
 

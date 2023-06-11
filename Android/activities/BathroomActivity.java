@@ -12,12 +12,12 @@ import androidx.core.content.ContextCompat;
 
 public class BathroomActivity extends AppCompat {
 
-    static final int LIGHT_ON = 1;
-    static final int LIGHT_OFF = 0;
+    private static final int LIGHT_ON = 1;
+    private static final int LIGHT_OFF = 0;
 
-    ImageView BathroomBulb;
+    private ImageView BathroomBulb;
 
-    int light_state = LIGHT_OFF;
+    private int light_state = LIGHT_OFF;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -31,6 +31,8 @@ public class BathroomActivity extends AppCompat {
         window.setNavigationBarColor(ContextCompat.getColor(BathroomActivity.this, R.color.green_navigation_background));
 
         BathroomBulb = (ImageView) findViewById(R.id.bulb_icon1_kitchen);
+
+        light_state = BufferManager.TxBuffer[15];
 
         if(LIGHT_OFF == light_state) {
             BathroomBulb.setImageResource(R.drawable.baseline_lightbulb_300_black);
@@ -50,6 +52,7 @@ public class BathroomActivity extends AppCompat {
                     BathroomBulb.setImageResource(R.drawable.baseline_lightbulb_300_black);
                     light_state = LIGHT_OFF;
                 }
+                BufferManager.TxBuffer[15] = (byte) light_state;
             }
         });
 

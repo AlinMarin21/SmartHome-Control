@@ -1,7 +1,9 @@
 package com.example.home;
 
 import android.content.res.ColorStateList;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -15,18 +17,22 @@ import androidx.core.content.ContextCompat;
 
 public class AirConditionerActivity extends AppCompat {
 
-    static final int AC_OFF = 0;
-    static final int AC_ON = 1;
+    private static final int AC_OFF = 0;
+    private static final int AC_ON = 1;
 
-    static final int AUTO_AC_ON = 1;
-    static final int AUTO_AC_OFF = 0;
+    private static final int AUTO_AC_ON = 1;
+    private static final int AUTO_AC_OFF = 0;
 
-    ImageView FanIcon;
-    Switch AutoACSwitch;
-    SeekBar ACSpeedBar;
+    private ImageView FanIcon;
+    private Switch AutoACSwitch;
+    private SeekBar ACSpeedBar;
 
-    int ac_state = AC_OFF;
-    int auto_ac_state = AUTO_AC_OFF;
+    private int ac_state = AC_OFF;
+    private int auto_ac_state = AUTO_AC_OFF;
+
+    private int ac_speed = 5;
+
+    private Handler mHandler;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -54,8 +60,42 @@ public class AirConditionerActivity extends AppCompat {
         }
 
         ACSpeedBar.setVisibility(View.INVISIBLE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            ACSpeedBar.setMin(5);
+        }
+        ACSpeedBar.setMax(254);
 
-        ACSpeedBar.setMax(255);
+        ac_state = BufferManager.TxBuffer[21];
+        auto_ac_state = BufferManager.TxBuffer[22];
+        ac_speed = BufferManager.TxBuffer[23] & 0xFF;
+
+        mHandler = new Handler();
+        startRepeatingTask();
+
+        ACSpeedBar.setProgress(ac_speed);
+
+        if(AC_ON == ac_state) {
+            FanIcon.setImageResource(R.drawable.baseline_wind_power_200_open);
+            ACSpeedBar.setVisibility(View.VISIBLE);
+        }
+        else {
+            FanIcon.setImageResource(R.drawable.baseline_wind_power_200);
+            ACSpeedBar.setVisibility(View.INVISIBLE);
+        }
+
+        if(AUTO_AC_ON == auto_ac_state) {
+            AutoACSwitch.setChecked(true);
+            AutoACSwitch.setTrackTintList(ColorStateList.valueOf(ContextCompat.getColor(AirConditionerActivity.this, R.color.red_navigation_background)));
+            if (BufferManager.RxBuffer[6] >= BufferManager.TxBuffer[26]) {
+                FanIcon.setImageResource(R.drawable.baseline_wind_power_200_open);
+            } else {
+                FanIcon.setImageResource(R.drawable.baseline_wind_power_200);
+            }
+        }
+        else {
+            AutoACSwitch.setChecked(false);
+            AutoACSwitch.setTrackTintList(ColorStateList.valueOf(ContextCompat.getColor(AirConditionerActivity.this, R.color.gray_navigation_background)));
+        }
 
         FanIcon.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,6 +110,7 @@ public class AirConditionerActivity extends AppCompat {
                         ac_state = AC_OFF;
                         ACSpeedBar.setVisibility(View.INVISIBLE);
                     }
+                    BufferManager.TxBuffer[21] = (byte) ac_state;
                 }
             }
         });
@@ -91,7 +132,57 @@ public class AirConditionerActivity extends AppCompat {
                     AutoACSwitch.setChecked(false);
                     AutoACSwitch.setTrackTintList(ColorStateList.valueOf(ContextCompat.getColor(AirConditionerActivity.this, R.color.gray_navigation_background)));
                 }
+                BufferManager.TxBuffer[22] = (byte) auto_ac_state;
+                BufferManager.TxBuffer[21] = (byte) ac_state;
             }
         });
+
+        ACSpeedBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                ac_speed = i;
+                BufferManager.TxBuffer[23] = (byte) ac_speed;
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+    }
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        stopRepeatingTask();
+    }
+
+    Runnable mStatusChecker = new Runnable() {
+        @Override
+        public void run() {
+            try {
+                if(AUTO_AC_ON == auto_ac_state) {
+                    if (BufferManager.RxBuffer[6] >= BufferManager.TxBuffer[26]) {
+                        FanIcon.setImageResource(R.drawable.baseline_wind_power_200_open);
+                    } else {
+                        FanIcon.setImageResource(R.drawable.baseline_wind_power_200);
+                    }
+                }
+            } finally {
+                mHandler.postDelayed(mStatusChecker, 250);
+            }
+        }
+    };
+
+    void startRepeatingTask() {
+        mStatusChecker.run();
+    }
+
+    void stopRepeatingTask() {
+        mHandler.removeCallbacks(mStatusChecker);
     }
 }

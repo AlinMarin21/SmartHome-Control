@@ -14,38 +14,38 @@ import androidx.core.content.ContextCompat;
 
 public class DisplayActivity extends AppCompat {
 
-    static final int DISPLAY_ON = 1;
-    static final int DISPLAY_OFF = 0;
+    private static final int DISPLAY_ON = 1;
+    private static final int DISPLAY_OFF = 0;
 
-    static final int TEMPERATURE_INSIDE_DISPLAY = 0;
-    static final int TEMPERATURE_OUTSIDE_DISPLAY = 1;
-    static final int HUMIDITY_INSIDE_DISPLAY = 2;
-    static final int HUMIDITY_OUTSIDE_DISPLAY = 3;
-    static final int TEMPERATURE_HUMIDITY_INSIDE_DISPLAY = 4;
-    static final int TEMPERATURE_HUMIDITY_OUTSIDE_DISPLAY = 5;
-    static final int AIR_QUALITY_DISPLAY = 6;
-    static final int GAS_DISPLAY = 7;
-    static final int RAINFALL_DISPLAY = 8;
-    static final int CUSTOM_DISPLAY = 9;
+    private static final int TEMPERATURE_INSIDE_DISPLAY = 0;
+    private static final int TEMPERATURE_OUTSIDE_DISPLAY = 1;
+    private static final int HUMIDITY_INSIDE_DISPLAY = 2;
+    private static final int HUMIDITY_OUTSIDE_DISPLAY = 3;
+    private static final int TEMPERATURE_HUMIDITY_INSIDE_DISPLAY = 4;
+    private static final int TEMPERATURE_HUMIDITY_OUTSIDE_DISPLAY = 5;
+    private static final int AIR_QUALITY_DISPLAY = 6;
+    private static final int GAS_DISPLAY = 7;
+    private static final int RAINFALL_DISPLAY = 8;
+    private static final int CUSTOM_DISPLAY = 9;
 
-    TextView DisplayOnButton;
-    TextView DisplayOffButton;
+    private TextView DisplayOnButton;
+    private TextView DisplayOffButton;
 
-    TextView titleTextView;
+    private TextView titleTextView;
 
-    Switch TemperatureInsideSwitch;
-    Switch TemperatureIOutsideSwitch;
-    Switch HumidityInsideSwitch;
-    Switch HumidityOutsideSwitch;
-    Switch TemperatureAndHumidityInsideSwitch;
-    Switch TemperatureAndHumidityOutsideSwitch;
-    Switch AirQualitySwitch;
-    Switch GasSwitch;
-    Switch RainfallSwitch;
-    Switch CustomSwitch;
+    private Switch TemperatureInsideSwitch;
+    private Switch TemperatureIOutsideSwitch;
+    private Switch HumidityInsideSwitch;
+    private Switch HumidityOutsideSwitch;
+    private Switch TemperatureAndHumidityInsideSwitch;
+    private Switch TemperatureAndHumidityOutsideSwitch;
+    private Switch AirQualitySwitch;
+    private Switch GasSwitch;
+    private Switch RainfallSwitch;
+    private Switch CustomSwitch;
 
-    int display_state = DISPLAY_OFF;
-    int display_mode = TEMPERATURE_INSIDE_DISPLAY;
+    private int display_state = DISPLAY_OFF;
+    private int display_mode = TEMPERATURE_INSIDE_DISPLAY;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -92,6 +92,24 @@ public class DisplayActivity extends AppCompat {
             DisplayOffButton.setTextSize(7);
         }
 
+        display_state = BufferManager.TxBuffer[24];
+        display_mode = BufferManager.TxBuffer[25];
+
+        if(DISPLAY_ON == display_state) {
+            DisplayOnButton.setBackgroundColor(ContextCompat.getColor(DisplayActivity.this, R.color.green_navigation_background));
+            DisplayOffButton.setBackgroundColor(ContextCompat.getColor(DisplayActivity.this, R.color.green_fade_background));
+
+            DisplayOnButton.setTextColor(ContextCompat.getColor(DisplayActivity.this, R.color.white));
+            DisplayOffButton.setTextColor(ContextCompat.getColor(DisplayActivity.this, R.color.black));
+        }
+        else {
+            DisplayOnButton.setBackgroundColor(ContextCompat.getColor(DisplayActivity.this, R.color.green_fade_background));
+            DisplayOffButton.setBackgroundColor(ContextCompat.getColor(DisplayActivity.this, R.color.green_navigation_background));
+
+            DisplayOnButton.setTextColor(ContextCompat.getColor(DisplayActivity.this, R.color.black));
+            DisplayOffButton.setTextColor(ContextCompat.getColor(DisplayActivity.this, R.color.white));
+        }
+
         getActiveDisplayMode();
 
         DisplayOnButton.setOnClickListener(new View.OnClickListener() {
@@ -105,6 +123,7 @@ public class DisplayActivity extends AppCompat {
 
                 display_state = DISPLAY_ON;
 
+                BufferManager.TxBuffer[24] = (byte) display_state;
             }
         });
 
@@ -119,6 +138,7 @@ public class DisplayActivity extends AppCompat {
 
                 display_state = DISPLAY_OFF;
 
+                BufferManager.TxBuffer[24] = (byte) display_state;
             }
         });
 
@@ -153,6 +173,7 @@ public class DisplayActivity extends AppCompat {
                     TemperatureInsideSwitch.setChecked(true);
                     display_mode = TEMPERATURE_INSIDE_DISPLAY;
                 }
+                BufferManager.TxBuffer[25] = (byte) display_mode;
             }
         });
 
@@ -187,6 +208,7 @@ public class DisplayActivity extends AppCompat {
                     TemperatureIOutsideSwitch.setChecked(true);
                     display_mode = TEMPERATURE_OUTSIDE_DISPLAY;
                 }
+                BufferManager.TxBuffer[25] = (byte) display_mode;
             }
         });
 
@@ -221,6 +243,7 @@ public class DisplayActivity extends AppCompat {
                     HumidityInsideSwitch.setChecked(true);
                     display_mode = HUMIDITY_INSIDE_DISPLAY;
                 }
+                BufferManager.TxBuffer[25] = (byte) display_mode;
             }
         });
 
@@ -255,6 +278,7 @@ public class DisplayActivity extends AppCompat {
                     HumidityOutsideSwitch.setChecked(true);
                     display_mode = HUMIDITY_OUTSIDE_DISPLAY;
                 }
+                BufferManager.TxBuffer[25] = (byte) display_mode;
             }
         });
 
@@ -289,6 +313,7 @@ public class DisplayActivity extends AppCompat {
                     TemperatureAndHumidityInsideSwitch.setChecked(true);
                     display_mode = TEMPERATURE_HUMIDITY_INSIDE_DISPLAY;
                 }
+                BufferManager.TxBuffer[25] = (byte) display_mode;
             }
         });
 
@@ -323,6 +348,7 @@ public class DisplayActivity extends AppCompat {
                     TemperatureAndHumidityOutsideSwitch.setChecked(true);
                     display_mode = TEMPERATURE_HUMIDITY_OUTSIDE_DISPLAY;
                 }
+                BufferManager.TxBuffer[25] = (byte) display_mode;
             }
         });
 
@@ -357,6 +383,7 @@ public class DisplayActivity extends AppCompat {
                     AirQualitySwitch.setChecked(true);
                     display_mode = AIR_QUALITY_DISPLAY;
                 }
+                BufferManager.TxBuffer[25] = (byte) display_mode;
             }
         });
 
@@ -391,6 +418,7 @@ public class DisplayActivity extends AppCompat {
                     GasSwitch.setChecked(true);
                     display_mode = GAS_DISPLAY;
                 }
+                BufferManager.TxBuffer[25] = (byte) display_mode;
             }
         });
 
@@ -425,6 +453,7 @@ public class DisplayActivity extends AppCompat {
                     RainfallSwitch.setChecked(true);
                     display_mode = RAINFALL_DISPLAY;
                 }
+                BufferManager.TxBuffer[25] = (byte) display_mode;
             }
         });
 
@@ -459,6 +488,7 @@ public class DisplayActivity extends AppCompat {
                     CustomSwitch.setChecked(true);
                     display_mode = CUSTOM_DISPLAY;
                 }
+                BufferManager.TxBuffer[25] = (byte) display_mode;
             }
         });
     }

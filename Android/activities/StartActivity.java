@@ -2,6 +2,8 @@ package com.example.home;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.core.content.ContextCompat;
 
 import android.bluetooth.BluetoothAdapter;
@@ -12,6 +14,7 @@ import android.content.pm.PackageManager;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.ContactsContract;
 import android.view.View;
 import android.view.Window;
@@ -29,34 +32,41 @@ import java.util.UUID;
 
 public class StartActivity extends AppCompat {
 
-    static final UUID mUUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
+    private static final UUID mUUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
 
-    static final int BLUETOOTH_OK = 0;
-    static final int BLUETOOTH_PERMISSION_NOT_GRANTED = 1;
-    static final int BLUETOOTH_NOT_SUPPORTED = 2;
-    static final int BLUETOOTH_NOT_ENABLED = 3;
-    static final int DEVICE_NOT_PAIRED = 4;
-    static final int CONNECTION_NOT_ESTABLISHED = 5;
+    private static final int BLUETOOTH_OK = 0;
+    private static final int BLUETOOTH_PERMISSION_NOT_GRANTED = 1;
+    private static final int BLUETOOTH_NOT_SUPPORTED = 2;
+    private static final int BLUETOOTH_NOT_ENABLED = 3;
+    private static final int DEVICE_NOT_PAIRED = 4;
+    private static final int CONNECTION_NOT_ESTABLISHED = 5;
 
-    int bluetooth_action_result = BLUETOOTH_OK;
+    private int bluetooth_action_result = BLUETOOTH_OK;
 
-    BluetoothAdapter btAdapter = null;
-    BluetoothDevice hc05 = null;
-    BluetoothSocket btSocket = null;
-    OutputStream TX_data = null;
-    InputStream RX_data = null;
+    private BluetoothAdapter btAdapter = null;
+    private BluetoothDevice hc05 = null;
+    private BluetoothSocket btSocket = null;
+    private OutputStream TX_data = null;
+    private InputStream RX_data = null;
 
-    RelativeLayout backgroundLayout = null;
-    RelativeLayout bluetoothInfoLayout = null;
-    TextView bluetoothMessage = null;
-    ImageView bluetoothImage = null;
-    Button tryAgainButton = null;
-    ImageView bottomPage = null;
+    private RelativeLayout backgroundLayout = null;
+    private RelativeLayout bluetoothInfoLayout = null;
+    private TextView bluetoothMessage = null;
+    private ImageView bluetoothImage = null;
+    private Button tryAgainButton = null;
+    private ImageView bottomPage = null;
 
-    AnimationDrawable connectivityAnimation = null;
-    ImageView startPageConnectivity = null;
+    private AnimationDrawable connectivityAnimation = null;
+    private ImageView startPageConnectivity = null;
 
-    Intent homeMenu_intent = null;
+    private Intent homeMenu_intent = null;
+
+    private boolean transmission_allowed = false;
+    private boolean recovery_action = false;
+
+    private Handler mHandler;
+
+    private byte[] recoveryBuffer = new byte[BufferManager.TX_ELEMENTS];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,6 +93,9 @@ public class StartActivity extends AppCompat {
         window.setNavigationBarColor(ContextCompat.getColor(StartActivity.this, R.color.gray_navigation_background));
 
         new bluetoothConnectionTask().execute();
+
+        mHandler = new Handler();
+        startRepeatingTask();
     }
 
     private class bluetoothConnectionTask extends AsyncTask<Void, Void, Void> {
@@ -206,13 +219,90 @@ public class StartActivity extends AppCompat {
                     }
                 });
             } else {
-//                    transmission_allowed = true;
-//                    recovery_action = true;
-//
+                transmission_allowed = true;
+                recovery_action = true;
+
                 homeMenu_intent = new Intent(StartActivity.this, HomeMenuActivity.class);
                 startActivity(homeMenu_intent);
-                }
             }
         }
+    }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        stopRepeatingTask();
+    }
+
+    Runnable mStatusChecker = new Runnable() {
+        @Override
+        public void run() {
+            try {
+                if (true == transmission_allowed) {
+                    try {
+                        if (true == recovery_action) {
+                            TX_data.write(BufferManager.TxBuffer[0]);
+                        }
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+
+                    try {
+                        RX_data.read(BufferManager.RxBuffer, 0, BufferManager.RX_ELEMENTS);
+
+                        if (true == recovery_action) {
+                            for (int i = 0; i < BufferManager.RX_ELEMENTS; i++) {
+                                BufferManager.TxBuffer[i] = BufferManager.RxBuffer[i];
+                            }
+                        }
+                        /*workaround*/
+                        if ((BufferManager.RxBuffer[0] & 0xFF) != BufferManager.SOB && (BufferManager.RxBuffer[48] & 0xFF) != BufferManager.EOB) {
+                            for (int j = 0; j < 8; j++) {
+                                int last_element = BufferManager.RxBuffer[48] & 0xFF;
+                                for (int k = BufferManager.RX_ELEMENTS - 1; k > 0; k--) {
+                                    BufferManager.RxBuffer[k] = BufferManager.RxBuffer[k - 1];
+                                }
+                                BufferManager.RxBuffer[0] = (byte) last_element;
+                            }
+                        }
+
+                        System.out.print("RX: ");
+                        for (int i = 0; i < BufferManager.RX_ELEMENTS; i++) {
+                            System.out.print(BufferManager.RxBuffer[i] + " ");
+                        }
+                        System.out.println("");
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+
+                    try {
+                        if (false == recovery_action) {
+                            TX_data.write(BufferManager.TxBuffer, 0, BufferManager.TX_ELEMENTS);
+                        } else {
+                            recovery_action = false;
+                            TX_data.write(BufferManager.TxBuffer, 1, BufferManager.TX_ELEMENTS - 1);
+                        }
+                        System.out.print("TX: ");
+                        for (int i = 0; i < BufferManager.TX_ELEMENTS; i++) {
+                            System.out.print(BufferManager.TxBuffer[i] + " ");
+                        }
+                        System.out.println("");
+
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+            } finally {
+                mHandler.postDelayed(mStatusChecker, 250);
+            }
+        }
+    };
+
+    void startRepeatingTask() {
+        mStatusChecker.run();
+    }
+
+    void stopRepeatingTask() {
+        mHandler.removeCallbacks(mStatusChecker);
+    }
 }

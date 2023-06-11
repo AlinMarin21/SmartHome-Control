@@ -164,184 +164,258 @@ public class VoiceControlActivity extends AppCompat {
 
     void checkSpeechCommand() {
         if(speechString.equalsIgnoreCase(getString(R.string.turn_on_living_room_light_command_text))) {
-
+            BufferManager.TxBuffer[1] = (byte) 1;
         }
         else if(speechString.equalsIgnoreCase(getString(R.string.turn_off_living_room_light_command_text))) {
-
+            BufferManager.TxBuffer[1] = (byte) 0;
         }
         else if(speechString.equalsIgnoreCase(getString(R.string.change_intensity_max_living_room_light_command_text))) {
-
+            BufferManager.TxBuffer[2] = (byte) 254;
         }
         else if(speechString.equalsIgnoreCase(getString(R.string.change_intensity_min_living_room_light_command_text))) {
-
+            BufferManager.TxBuffer[2] = (byte) 5;
         }
         else if(speechString.equalsIgnoreCase(getString(R.string.turn_on_kitchen_lights_command_text))) {
-
+            BufferManager.TxBuffer[3] = (byte) 1;
+            BufferManager.TxBuffer[4] = (byte) 1;
         }
         else if(speechString.equalsIgnoreCase(getString(R.string.turn_off_kitchen_lights_command_text))) {
-
+            BufferManager.TxBuffer[3] = (byte) 0;
+            BufferManager.TxBuffer[4] = (byte) 0;
         }
         else if(speechString.equalsIgnoreCase(getString(R.string.turn_on_room1_light_command_text)) || speechString.equalsIgnoreCase(getString(R.string.turn_on_roomone_light_command_text))) {
-
+            BufferManager.TxBuffer[5] = (byte) 1;
         }
         else if(speechString.equalsIgnoreCase(getString(R.string.turn_off_room1_light_command_text)) || speechString.equalsIgnoreCase(getString(R.string.turn_off_roomone_light_command_text))) {
-
+            BufferManager.TxBuffer[5] = (byte) 0;
         }
         else if(speechString.equalsIgnoreCase(getString(R.string.change_color_room1_light_command_text) + " " + getString(R.string.red_color)) || speechString.equalsIgnoreCase(getString(R.string.change_color_roomone_light_command_text) + " " + getString(R.string.red_color))) {
-
+            BufferManager.TxBuffer[44] = (byte) 1;
+            BufferManager.TxBuffer[6] = (byte) 254;
+            BufferManager.TxBuffer[7] = (byte) 0;
+            BufferManager.TxBuffer[8] = (byte) 0;
         }
         else if(speechString.equalsIgnoreCase(getString(R.string.change_color_room1_light_command_text) + " " + getString(R.string.yellow_color)) || speechString.equalsIgnoreCase(getString(R.string.change_color_roomone_light_command_text) + " " + getString(R.string.yellow_color))) {
-
+            BufferManager.TxBuffer[44] = (byte) 0;
+            BufferManager.TxBuffer[6] = (byte) 254;
+            BufferManager.TxBuffer[7] = (byte) 254;
+            BufferManager.TxBuffer[8] = (byte) 0;
         }
         else if(speechString.equalsIgnoreCase(getString(R.string.change_color_room1_light_command_text) + " " + getString(R.string.orange_color)) || speechString.equalsIgnoreCase(getString(R.string.change_color_roomone_light_command_text) + " " + getString(R.string.orange_color))) {
-
+            BufferManager.TxBuffer[44] = (byte) 2;
+            BufferManager.TxBuffer[6] = (byte) 254;
+            BufferManager.TxBuffer[7] = (byte) 165;
+            BufferManager.TxBuffer[8] = (byte) 0;
         }
         else if(speechString.equalsIgnoreCase(getString(R.string.change_color_room1_light_command_text) + " " + getString(R.string.aqua_color)) || speechString.equalsIgnoreCase(getString(R.string.change_color_roomone_light_command_text) + " " + getString(R.string.aqua_color))) {
-
+            BufferManager.TxBuffer[44] = (byte) 3;
+            BufferManager.TxBuffer[6] = (byte) 0;
+            BufferManager.TxBuffer[7] = (byte) 254;
+            BufferManager.TxBuffer[8] = (byte) 254;
         }
         else if(speechString.equalsIgnoreCase(getString(R.string.change_color_room1_light_command_text) + " " + getString(R.string.blue_color)) || speechString.equalsIgnoreCase(getString(R.string.change_color_roomone_light_command_text) + " " + getString(R.string.blue_color))) {
-
+            BufferManager.TxBuffer[44] = (byte) 4;
+            BufferManager.TxBuffer[6] = (byte) 0;
+            BufferManager.TxBuffer[7] = (byte) 0;
+            BufferManager.TxBuffer[8] = (byte) 254;
         }
         else if(speechString.equalsIgnoreCase(getString(R.string.change_color_room1_light_command_text) + " " + getString(R.string.green_color)) || speechString.equalsIgnoreCase(getString(R.string.change_color_roomone_light_command_text) + " " + getString(R.string.green_color))) {
-
+            BufferManager.TxBuffer[44] = (byte) 5;
+            BufferManager.TxBuffer[6] = (byte) 0;
+            BufferManager.TxBuffer[7] = (byte) 254;
+            BufferManager.TxBuffer[8] = (byte) 0;
         }
         else if(speechString.equalsIgnoreCase(getString(R.string.change_color_room1_light_command_text) + " " + getString(R.string.pink_color)) || speechString.equalsIgnoreCase(getString(R.string.change_color_roomone_light_command_text) + " " + getString(R.string.pink_color))) {
-
+            BufferManager.TxBuffer[44] = (byte) 6;
+            BufferManager.TxBuffer[6] = (byte) 254;
+            BufferManager.TxBuffer[7] = (byte) 0;
+            BufferManager.TxBuffer[8] = (byte) 254;
         }
         else if(speechString.equalsIgnoreCase(getString(R.string.change_color_room1_light_command_text) + " " + getString(R.string.purple_color)) || speechString.equalsIgnoreCase(getString(R.string.change_color_roomone_light_command_text) + " " + getString(R.string.purple_color))) {
-
+            BufferManager.TxBuffer[44] = (byte) 7;
+            BufferManager.TxBuffer[6] = (byte) 128;
+            BufferManager.TxBuffer[7] = (byte) 0;
+            BufferManager.TxBuffer[8] = (byte) 128;
         }
         else if(speechString.equalsIgnoreCase(getString(R.string.turn_on_room2_light_command_text)) || speechString.equalsIgnoreCase(getString(R.string.turn_on_roomtwo_light_command_text))) {
-
+            BufferManager.TxBuffer[9] = (byte) 1;
         }
         else if(speechString.equalsIgnoreCase(getString(R.string.turn_off_room2_light_command_text)) || speechString.equalsIgnoreCase(getString(R.string.turn_off_roomtwo_light_command_text))) {
-
+            BufferManager.TxBuffer[9] = (byte) 0;
         }
         else if(speechString.equalsIgnoreCase(getString(R.string.change_color_room2_light_command_text) + " " + getString(R.string.red_color)) || speechString.equalsIgnoreCase(getString(R.string.change_color_roomtwo_light_command_text) + " " + getString(R.string.red_color))) {
-
+            BufferManager.TxBuffer[45] = (byte) 1;
+            BufferManager.TxBuffer[10] = (byte) 254;
+            BufferManager.TxBuffer[11] = (byte) 0;
+            BufferManager.TxBuffer[12] = (byte) 0;
         }
         else if(speechString.equalsIgnoreCase(getString(R.string.change_color_room2_light_command_text) + " " + getString(R.string.yellow_color)) || speechString.equalsIgnoreCase(getString(R.string.change_color_roomtwo_light_command_text) + " " + getString(R.string.yellow_color))) {
-
+            BufferManager.TxBuffer[45] = (byte) 0;
+            BufferManager.TxBuffer[10] = (byte) 254;
+            BufferManager.TxBuffer[11] = (byte) 254;
+            BufferManager.TxBuffer[12] = (byte) 0;
         }
         else if(speechString.equalsIgnoreCase(getString(R.string.change_color_room2_light_command_text) + " " + getString(R.string.orange_color)) || speechString.equalsIgnoreCase(getString(R.string.change_color_roomtwo_light_command_text) + " " + getString(R.string.orange_color))) {
-
+            BufferManager.TxBuffer[45] = (byte) 2;
+            BufferManager.TxBuffer[10] = (byte) 254;
+            BufferManager.TxBuffer[11] = (byte) 165;
+            BufferManager.TxBuffer[12] = (byte) 0;
         }
         else if(speechString.equalsIgnoreCase(getString(R.string.change_color_room2_light_command_text) + " " + getString(R.string.aqua_color)) || speechString.equalsIgnoreCase(getString(R.string.change_color_roomtwo_light_command_text) + " " + getString(R.string.aqua_color))) {
-
+            BufferManager.TxBuffer[45] = (byte) 3;
+            BufferManager.TxBuffer[10] = (byte) 0;
+            BufferManager.TxBuffer[11] = (byte) 254;
+            BufferManager.TxBuffer[12] = (byte) 254;
         }
         else if(speechString.equalsIgnoreCase(getString(R.string.change_color_room2_light_command_text) + " " + getString(R.string.blue_color)) || speechString.equalsIgnoreCase(getString(R.string.change_color_roomtwo_light_command_text) + " " + getString(R.string.blue_color))) {
-
+            BufferManager.TxBuffer[45] = (byte) 4;
+            BufferManager.TxBuffer[10] = (byte) 0;
+            BufferManager.TxBuffer[11] = (byte) 0;
+            BufferManager.TxBuffer[12] = (byte) 254;
         }
         else if(speechString.equalsIgnoreCase(getString(R.string.change_color_room2_light_command_text) + " " + getString(R.string.green_color)) || speechString.equalsIgnoreCase(getString(R.string.change_color_roomtwo_light_command_text) + " " + getString(R.string.green_color))) {
-
+            BufferManager.TxBuffer[45] = (byte) 5;
+            BufferManager.TxBuffer[10] = (byte) 0;
+            BufferManager.TxBuffer[11] = (byte) 254;
+            BufferManager.TxBuffer[12] = (byte) 0;
         }
         else if(speechString.equalsIgnoreCase(getString(R.string.change_color_room2_light_command_text) + " " + getString(R.string.pink_color)) || speechString.equalsIgnoreCase(getString(R.string.change_color_roomtwo_light_command_text) + " " + getString(R.string.pink_color))) {
-
+            BufferManager.TxBuffer[45] = (byte) 6;
+            BufferManager.TxBuffer[10] = (byte) 254;
+            BufferManager.TxBuffer[11] = (byte) 0;
+            BufferManager.TxBuffer[12] = (byte) 254;
         }
         else if(speechString.equalsIgnoreCase(getString(R.string.change_color_room2_light_command_text) + " " + getString(R.string.purple_color)) || speechString.equalsIgnoreCase(getString(R.string.change_color_roomtwo_light_command_text) + " " + getString(R.string.purple_color))) {
-
+            BufferManager.TxBuffer[45] = (byte) 7;
+            BufferManager.TxBuffer[10] = (byte) 128;
+            BufferManager.TxBuffer[11] = (byte) 0;
+            BufferManager.TxBuffer[12] = (byte) 128;
         }
         else if(speechString.equalsIgnoreCase(getString(R.string.turn_on_bathroom_light_command_text))) {
-
+            BufferManager.TxBuffer[15] = (byte) 1;
         }
         else if(speechString.equalsIgnoreCase(getString(R.string.turn_off_bathroom_light_command_text))) {
-
+            BufferManager.TxBuffer[15] = (byte) 0;
         }
         else if(speechString.equalsIgnoreCase(getString(R.string.turn_on_alley_lights_on_dark_command_text))) {
-
+            BufferManager.TxBuffer[14] = (byte) 2;
         }
         else if(speechString.equalsIgnoreCase(getString(R.string.turn_on_alley_lights_on_move_command_text))) {
-
+            BufferManager.TxBuffer[14] = (byte) 1;
         }
         else if(speechString.equalsIgnoreCase(getString(R.string.turn_on_alley_lights_command_text))) {
-
+            BufferManager.TxBuffer[14] = (byte) 0;
+            BufferManager.TxBuffer[13] = (byte) 1;
         }
         else if(speechString.equalsIgnoreCase(getString(R.string.turn_off_alley_lights_command_text))) {
-
+            BufferManager.TxBuffer[14] = (byte) 0;
+            BufferManager.TxBuffer[13] = (byte) 0;
         }
         else if(speechString.equalsIgnoreCase(getString(R.string.open_front_door_command_text))) {
-
+            BufferManager.TxBuffer[16] = (byte) 1;
         }
         else if(speechString.equalsIgnoreCase(getString(R.string.open_gates_command_text))) {
-
+            BufferManager.TxBuffer[19] = (byte) 1;
         }
         else if(speechString.equalsIgnoreCase(getString(R.string.close_front_door_command_text))) {
-
+            BufferManager.TxBuffer[16] = (byte) 0;
         }
         else if(speechString.equalsIgnoreCase(getString(R.string.close_gates_command_text))) {
-
+            BufferManager.TxBuffer[19] = (byte) 0;
         }
         else if(speechString.equalsIgnoreCase(getString(R.string.lock_front_door_command_text))) {
-
+            BufferManager.TxBuffer[18] = (byte) 1;
+            BufferManager.TxBuffer[16] = (byte) 0;
         }
         else if(speechString.equalsIgnoreCase(getString(R.string.unlock_front_door_command_text))) {
-
+            BufferManager.TxBuffer[18] = (byte) 0;
         }
         else if(speechString.equalsIgnoreCase(getString(R.string.activate_automatic_closing_door_command_text))) {
-
+            BufferManager.TxBuffer[17] = (byte) 1;
         }
         else if(speechString.equalsIgnoreCase(getString(R.string.activate_automatic_closing_gates_command_text))) {
-
+            BufferManager.TxBuffer[20] = (byte) 1;
         }
         else if(speechString.equalsIgnoreCase(getString(R.string.deactivate_automatic_closing_door_command_text))) {
-
+            BufferManager.TxBuffer[17] = (byte) 0;
         }
         else if(speechString.equalsIgnoreCase(getString(R.string.deactivate_automatic_closing_gates_command_text))) {
-
+            BufferManager.TxBuffer[20] = (byte) 0;
         }
         else if(speechString.equalsIgnoreCase(getString(R.string.turn_on_ac_command_text))) {
-
+            BufferManager.TxBuffer[21] = (byte) 1;
         }
         else if(speechString.equalsIgnoreCase(getString(R.string.turn_off_ac_command_text))) {
-
+            BufferManager.TxBuffer[21] = (byte) 0;
         }
         else if(speechString.equalsIgnoreCase(getString(R.string.activate_automatic_ac_command_text))) {
-
+            BufferManager.TxBuffer[22] = (byte) 1;
+            BufferManager.TxBuffer[21] = (byte) 0;
         }
         else if(speechString.equalsIgnoreCase(getString(R.string.deactivate_automatic_ac_command_text))) {
-
+            BufferManager.TxBuffer[22] = (byte) 0;
         }
         else if(speechString.equalsIgnoreCase(getString(R.string.increase_ac_speed_command_text))) {
-
+            int ac_speed = BufferManager.TxBuffer[23] & 0xFF;
+            ac_speed = ac_speed + 25;
+            if(ac_speed > 254) {
+                ac_speed = 254;
+            }
+            BufferManager.TxBuffer[23] = (byte) ac_speed;
         }
         else if(speechString.equalsIgnoreCase(getString(R.string.decrease_ac_speed_command_text))) {
-
+            int ac_speed = BufferManager.TxBuffer[23] & 0xFF;
+            ac_speed = ac_speed - 25;
+            if(ac_speed < 5) {
+                ac_speed = 5;
+            }
+            BufferManager.TxBuffer[23] = (byte) ac_speed;
         }
         else if(speechString.equalsIgnoreCase(getString(R.string.turn_on_diplay_command_text))) {
-
+            BufferManager.TxBuffer[24] = (byte) 1;
         }
         else if(speechString.equalsIgnoreCase(getString(R.string.turn_off_diplay_command_text))) {
-
+            BufferManager.TxBuffer[24] = (byte) 0;
         }
         else if(speechString.equalsIgnoreCase(getString(R.string.show_inside_temp_command_text))) {
-
+            BufferManager.TxBuffer[24] = (byte) 1;
+            BufferManager.TxBuffer[25] = (byte) 0;
         }
         else if(speechString.equalsIgnoreCase(getString(R.string.show_outside_temp_command_text))) {
-
+            BufferManager.TxBuffer[24] = (byte) 1;
+            BufferManager.TxBuffer[25] = (byte) 1;
         }
         else if(speechString.equalsIgnoreCase(getString(R.string.show_inside_hum_command_text))) {
-
+            BufferManager.TxBuffer[24] = (byte) 1;
+            BufferManager.TxBuffer[25] = (byte) 2;
         }
         else if(speechString.equalsIgnoreCase(getString(R.string.show_outside_hum_command_text))) {
-
+            BufferManager.TxBuffer[24] = (byte) 1;
+            BufferManager.TxBuffer[25] = (byte) 3;
         }
         else if(speechString.equalsIgnoreCase(getString(R.string.show_inside_temp_hum_command_text))) {
-
+            BufferManager.TxBuffer[24] = (byte) 1;
+            BufferManager.TxBuffer[25] = (byte) 4;
         }
         else if(speechString.equalsIgnoreCase(getString(R.string.show_outside_temp_hum_command_text))) {
-
+            BufferManager.TxBuffer[24] = (byte) 1;
+            BufferManager.TxBuffer[25] = (byte) 5;
         }
         else if(speechString.equalsIgnoreCase(getString(R.string.show_aq_command_text))) {
-
+            BufferManager.TxBuffer[24] = (byte) 1;
+            BufferManager.TxBuffer[25] = (byte) 6;
         }
         else if(speechString.equalsIgnoreCase(getString(R.string.show_co2_command_text))) {
-
+            BufferManager.TxBuffer[24] = (byte) 1;
+            BufferManager.TxBuffer[25] = (byte) 7;
         }
         else if(speechString.equalsIgnoreCase(getString(R.string.show_rainfall_command_text))) {
-
+            BufferManager.TxBuffer[24] = (byte) 1;
+            BufferManager.TxBuffer[25] = (byte) 8;
         }
         else if(speechString.equalsIgnoreCase(getString(R.string.show_custom_screen_command_text))) {
-
+            BufferManager.TxBuffer[24] = (byte) 1;
+            BufferManager.TxBuffer[25] = (byte) 9;
         }
         else {
             Toast.makeText(getBaseContext(), R.string.command_not_found, Toast.LENGTH_SHORT).show();

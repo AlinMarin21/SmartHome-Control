@@ -14,13 +14,13 @@ import org.w3c.dom.Text;
 
 public class MeasurementUnitsActivity extends AppCompat {
 
-    static final int CELSIUS_UNIT = 0;
-    static final int FAHRENHEIT_UNIT = 1;
+    private static final int CELSIUS_UNIT = 0;
+    private static final int FAHRENHEIT_UNIT = 1;
 
-    TextView CelsiusLayout;
-    TextView FahrenheitLayout;
+    private TextView CelsiusLayout;
+    private TextView FahrenheitLayout;
 
-    int temperature_unit = CELSIUS_UNIT;
+    private int temperature_unit = CELSIUS_UNIT;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -36,6 +36,23 @@ public class MeasurementUnitsActivity extends AppCompat {
         CelsiusLayout = (TextView) findViewById(R.id.celsius_textview);
         FahrenheitLayout = (TextView) findViewById(R.id.fahrenheit_textview);
 
+        temperature_unit = BufferManager.TxBuffer[30];
+
+        if(CELSIUS_UNIT == temperature_unit) {
+            CelsiusLayout.setBackgroundColor(ContextCompat.getColor(MeasurementUnitsActivity.this, R.color.purple_navigation_background));
+            FahrenheitLayout.setBackgroundColor(ContextCompat.getColor(MeasurementUnitsActivity.this, R.color.purple_fade_background));
+
+            CelsiusLayout.setTextColor(ContextCompat.getColor(MeasurementUnitsActivity.this, R.color.white));
+            FahrenheitLayout.setTextColor(ContextCompat.getColor(MeasurementUnitsActivity.this, R.color.black));
+        }
+        else {
+            CelsiusLayout.setBackgroundColor(ContextCompat.getColor(MeasurementUnitsActivity.this, R.color.purple_fade_background));
+            FahrenheitLayout.setBackgroundColor(ContextCompat.getColor(MeasurementUnitsActivity.this, R.color.purple_navigation_background));
+
+            CelsiusLayout.setTextColor(ContextCompat.getColor(MeasurementUnitsActivity.this, R.color.black));
+            FahrenheitLayout.setTextColor(ContextCompat.getColor(MeasurementUnitsActivity.this, R.color.white));
+        }
+
         CelsiusLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -46,7 +63,7 @@ public class MeasurementUnitsActivity extends AppCompat {
                 FahrenheitLayout.setTextColor(ContextCompat.getColor(MeasurementUnitsActivity.this, R.color.black));
 
                 temperature_unit = CELSIUS_UNIT;
-
+                BufferManager.TxBuffer[30] = (byte) temperature_unit;
             }
         });
 
@@ -60,7 +77,7 @@ public class MeasurementUnitsActivity extends AppCompat {
                 FahrenheitLayout.setTextColor(ContextCompat.getColor(MeasurementUnitsActivity.this, R.color.white));
 
                 temperature_unit = FAHRENHEIT_UNIT;
-
+                BufferManager.TxBuffer[30] = (byte) temperature_unit;
             }
         });
     }

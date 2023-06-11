@@ -15,33 +15,33 @@ import androidx.core.content.ContextCompat;
 
 public class CustomDisplayActivity extends AppCompat {
 
-    static final int SWITCH_ON = 1;
-    static final int SWITCH_OFF = 0;
+    private static final int SWITCH_ON = 1;
+    private static final int SWITCH_OFF = 0;
 
-    Switch InsideTemperatureSwitch;
-    Switch OutsideTemperatureSwitch;
-    Switch InsideHumiditySwitch;
-    Switch OutsideHumiditySwitch;
-    Switch AirQualitySwitch;
-    Switch GasSwitch;
-    Switch RainfallSwitch;
-    Switch BrightnessSwitch;
-    Switch MotionSwitch;
+    private Switch InsideTemperatureSwitch;
+    private Switch OutsideTemperatureSwitch;
+    private Switch InsideHumiditySwitch;
+    private Switch OutsideHumiditySwitch;
+    private  Switch AirQualitySwitch;
+    private Switch GasSwitch;
+    private Switch RainfallSwitch;
+    private Switch BrightnessSwitch;
+    private Switch MotionSwitch;
 
-    TextView titleTextView;
-    TextView infoTextView;
+    private TextView titleTextView;
+    private TextView infoTextView;
 
-    int inside_temp_switch_state = SWITCH_ON;
-    int outside_temp_switch_state = SWITCH_ON;
-    int inside_hum_switch_state = SWITCH_ON;
-    int outside_hum_switch_state = SWITCH_ON;
-    int air_quality_switch_state = SWITCH_ON;
-    int gas_switch_state = SWITCH_OFF;
-    int rainfall_switch_state = SWITCH_OFF;
-    int brightness_switch_state = SWITCH_OFF;
-    int motion_switch_state = SWITCH_OFF;
+    private int inside_temp_switch_state = SWITCH_ON;
+    private int outside_temp_switch_state = SWITCH_ON;
+    private int inside_hum_switch_state = SWITCH_ON;
+    private int outside_hum_switch_state = SWITCH_ON;
+    private int air_quality_switch_state = SWITCH_ON;
+    private int gas_switch_state = SWITCH_OFF;
+    private int rainfall_switch_state = SWITCH_OFF;
+    private int brightness_switch_state = SWITCH_OFF;
+    private int motion_switch_state = SWITCH_OFF;
 
-    int no_of_selections = 0;
+    private int no_of_selections = 0;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -77,6 +77,17 @@ public class CustomDisplayActivity extends AppCompat {
         if(BufferManager.currentLanguage.equals("es")) {
             titleTextView.setTextSize(26);
         }
+
+        inside_temp_switch_state = BufferManager.TxBuffer[35];
+        outside_temp_switch_state = BufferManager.TxBuffer[36];
+        inside_hum_switch_state = BufferManager.TxBuffer[37];
+        outside_hum_switch_state = BufferManager.TxBuffer[38];
+        air_quality_switch_state = BufferManager.TxBuffer[39];
+        gas_switch_state = BufferManager.TxBuffer[40];
+        rainfall_switch_state = BufferManager.TxBuffer[41];
+        brightness_switch_state = BufferManager.TxBuffer[42];
+        motion_switch_state = BufferManager.TxBuffer[43];
+
 
         if(SWITCH_ON == inside_temp_switch_state) {
             InsideTemperatureSwitch.setChecked(true);
@@ -190,6 +201,7 @@ public class CustomDisplayActivity extends AppCompat {
                     inside_temp_switch_state = SWITCH_OFF;
                     no_of_selections--;
                 }
+                BufferManager.TxBuffer[35] = (byte) inside_temp_switch_state;
             }
         });
 
@@ -215,6 +227,7 @@ public class CustomDisplayActivity extends AppCompat {
                     outside_temp_switch_state = SWITCH_OFF;
                     no_of_selections--;
                 }
+                BufferManager.TxBuffer[36] = (byte) outside_temp_switch_state;
             }
         });
 
@@ -240,6 +253,7 @@ public class CustomDisplayActivity extends AppCompat {
                     inside_hum_switch_state = SWITCH_OFF;
                     no_of_selections--;
                 }
+                BufferManager.TxBuffer[37] = (byte) inside_hum_switch_state;
             }
         });
 
@@ -265,6 +279,7 @@ public class CustomDisplayActivity extends AppCompat {
                     outside_hum_switch_state = SWITCH_OFF;
                     no_of_selections--;
                 }
+                BufferManager.TxBuffer[38] = (byte) outside_hum_switch_state;
             }
         });
 
@@ -290,6 +305,7 @@ public class CustomDisplayActivity extends AppCompat {
                     air_quality_switch_state = SWITCH_OFF;
                     no_of_selections--;
                 }
+                BufferManager.TxBuffer[39] = (byte) air_quality_switch_state;
             }
         });
 
@@ -315,6 +331,7 @@ public class CustomDisplayActivity extends AppCompat {
                     gas_switch_state = SWITCH_OFF;
                     no_of_selections--;
                 }
+                BufferManager.TxBuffer[40] = (byte) gas_switch_state;
             }
         });
 
@@ -340,6 +357,7 @@ public class CustomDisplayActivity extends AppCompat {
                     rainfall_switch_state = SWITCH_OFF;
                     no_of_selections--;
                 }
+                BufferManager.TxBuffer[41] = (byte) rainfall_switch_state;
             }
         });
 
@@ -365,6 +383,7 @@ public class CustomDisplayActivity extends AppCompat {
                     brightness_switch_state = SWITCH_OFF;
                     no_of_selections--;
                 }
+                BufferManager.TxBuffer[42] = (byte) brightness_switch_state;
             }
         });
 
@@ -390,6 +409,7 @@ public class CustomDisplayActivity extends AppCompat {
                     motion_switch_state = SWITCH_OFF;
                     no_of_selections--;
                 }
+                BufferManager.TxBuffer[43] = (byte) motion_switch_state;
             }
         });
     }

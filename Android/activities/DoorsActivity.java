@@ -3,6 +3,7 @@ package com.example.home;
 import android.annotation.SuppressLint;
 import android.content.res.ColorStateList;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -17,36 +18,44 @@ import androidx.core.content.ContextCompat;
 
 public class DoorsActivity extends AppCompat {
 
-    static final int DOOR_OPEN = 1;
-    static final int DOOR_CLOSE = 0;
+    private static final int DOOR_OPEN = 1;
+    private static final int DOOR_CLOSE = 0;
 
-    static final int DOOR_LOCKED = 1;
-    static final int DOOR_UNLOCKED = 0;
+    private static final int DOOR_LOCKED = 1;
+    private static final int DOOR_UNLOCKED = 0;
 
-    static final int AUTO_CLOSE_ON = 1;
-    static final int AUTO_CLOSE_OFF = 0;
-    LinearLayout DoorButton;
-    LinearLayout GatesButton;
+    private static final int AUTO_CLOSE_ON = 1;
+    private static final int AUTO_CLOSE_OFF = 0;
 
-    TextView DoorTextView;
-    TextView GatesTextView;
+    private static final int TIME_EXPIRED = 1;
+    private static final int TIME_NOT_EXPIRED = 0;
+    private LinearLayout DoorButton;
+    private LinearLayout GatesButton;
 
-    LinearLayout FrontDoorLayout;
-    LinearLayout GatesLayout;
+    private TextView DoorTextView;
+    private TextView GatesTextView;
 
-    ImageView DoorIcon;
-    ImageView GatesIcon;
+    private LinearLayout FrontDoorLayout;
+    private LinearLayout GatesLayout;
 
-    Switch DoorLockSwitch;
-    Switch DoorClosingSwitch;
-    Switch GatesClosingSwitch;
+    private ImageView DoorIcon;
+    private ImageView GatesIcon;
 
-    int door_state = DOOR_CLOSE;
-    int gates_state = DOOR_CLOSE;
+    private Switch DoorLockSwitch;
+    private Switch DoorClosingSwitch;
+    private Switch GatesClosingSwitch;
 
-    int locking_state = DOOR_UNLOCKED;
-    int auto_closing_door_state = AUTO_CLOSE_OFF;
-    int auto_closing_gate_state = AUTO_CLOSE_OFF;
+    private int door_state = DOOR_CLOSE;
+    private int gates_state = DOOR_CLOSE;
+
+    private int locking_state = DOOR_UNLOCKED;
+    private int auto_closing_door_state = AUTO_CLOSE_OFF;
+    private int auto_closing_gate_state = AUTO_CLOSE_OFF;
+
+    private Handler mHandler;
+
+    private int door_time_expired = TIME_NOT_EXPIRED;
+    private int gate_time_expired = TIME_NOT_EXPIRED;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -75,6 +84,15 @@ public class DoorsActivity extends AppCompat {
         DoorClosingSwitch = (Switch) findViewById(R.id.closing_door_switch);
         GatesClosingSwitch = (Switch) findViewById(R.id.closing_gate_switch);
 
+        door_state = BufferManager.TxBuffer[16];
+        auto_closing_door_state = BufferManager.TxBuffer[17];
+        locking_state = BufferManager.TxBuffer[18];
+        gates_state = BufferManager.TxBuffer[19];
+        auto_closing_gate_state = BufferManager.TxBuffer[20];
+
+        door_time_expired = BufferManager.RxBuffer[11];
+        gate_time_expired = BufferManager.RxBuffer[12];
+
         if(BufferManager.currentLanguage.equals("fr")) {
             DoorClosingSwitch.setTextSize(16);
             GatesClosingSwitch.setTextSize(16);
@@ -88,7 +106,51 @@ public class DoorsActivity extends AppCompat {
             GatesClosingSwitch.setTextSize(11);
         }
 
+        mHandler = new Handler();
+        startRepeatingTask();
+
         GatesLayout.setVisibility(View.INVISIBLE);
+
+        if(DOOR_OPEN == door_state) {
+            DoorIcon.setImageResource(R.drawable.baseline_door_sliding_200_open);
+        }
+        else {
+            DoorIcon.setImageResource(R.drawable.baseline_door_sliding_200);
+        }
+
+        if(DOOR_OPEN == gates_state) {
+            GatesIcon.setImageResource(R.drawable.baseline_door_sliding_200_open);
+        }
+        else {
+            GatesIcon.setImageResource(R.drawable.baseline_door_sliding_200);
+        }
+
+        if(DOOR_LOCKED == locking_state) {
+            DoorLockSwitch.setChecked(true);
+            DoorLockSwitch.setTrackTintList(ColorStateList.valueOf(ContextCompat.getColor(DoorsActivity.this, R.color.purple_navigation_background)));
+        }
+        else {
+            DoorLockSwitch.setChecked(false);
+            DoorLockSwitch.setTrackTintList(ColorStateList.valueOf(ContextCompat.getColor(DoorsActivity.this, R.color.gray_navigation_background)));
+        }
+
+        if(AUTO_CLOSE_ON == auto_closing_door_state) {
+            DoorClosingSwitch.setChecked(true);
+            DoorClosingSwitch.setTrackTintList(ColorStateList.valueOf(ContextCompat.getColor(DoorsActivity.this, R.color.purple_navigation_background)));
+        }
+        else {
+            DoorClosingSwitch.setChecked(false);
+            DoorClosingSwitch.setTrackTintList(ColorStateList.valueOf(ContextCompat.getColor(DoorsActivity.this, R.color.gray_navigation_background)));
+        }
+
+        if(AUTO_CLOSE_ON == auto_closing_gate_state) {
+            GatesClosingSwitch.setChecked(true);
+            GatesClosingSwitch.setTrackTintList(ColorStateList.valueOf(ContextCompat.getColor(DoorsActivity.this, R.color.purple_navigation_background)));
+        }
+        else {
+            GatesClosingSwitch.setChecked(false);
+            GatesClosingSwitch.setTrackTintList(ColorStateList.valueOf(ContextCompat.getColor(DoorsActivity.this, R.color.gray_navigation_background)));
+        }
 
 
         DoorButton.setOnClickListener(new View.OnClickListener() {
@@ -132,6 +194,7 @@ public class DoorsActivity extends AppCompat {
                     DoorIcon.setImageResource(R.drawable.baseline_door_sliding_200);
                     door_state = DOOR_CLOSE;
                 }
+                BufferManager.TxBuffer[16] = (byte) door_state;
             }
         });
 
@@ -146,6 +209,7 @@ public class DoorsActivity extends AppCompat {
                     GatesIcon.setImageResource(R.drawable.baseline_door_sliding_200);
                     gates_state = DOOR_CLOSE;
                 }
+                BufferManager.TxBuffer[19] = (byte) gates_state;
             }
         });
 
@@ -165,6 +229,8 @@ public class DoorsActivity extends AppCompat {
                     DoorLockSwitch.setChecked(false);
                     DoorLockSwitch.setTrackTintList(ColorStateList.valueOf(ContextCompat.getColor(DoorsActivity.this, R.color.gray_navigation_background)));
                 }
+                BufferManager.TxBuffer[18] = (byte) locking_state;
+                BufferManager.TxBuffer[16] = (byte) door_state;
             }
         });
 
@@ -182,6 +248,7 @@ public class DoorsActivity extends AppCompat {
                     DoorClosingSwitch.setChecked(false);
                     DoorClosingSwitch.setTrackTintList(ColorStateList.valueOf(ContextCompat.getColor(DoorsActivity.this, R.color.gray_navigation_background)));
                 }
+                BufferManager.TxBuffer[17] = (byte) auto_closing_door_state;
             }
         });
 
@@ -199,7 +266,42 @@ public class DoorsActivity extends AppCompat {
                     GatesClosingSwitch.setChecked(false);
                     GatesClosingSwitch.setTrackTintList(ColorStateList.valueOf(ContextCompat.getColor(DoorsActivity.this, R.color.gray_navigation_background)));
                 }
+                BufferManager.TxBuffer[20] = (byte) auto_closing_gate_state;
             }
         });
+    }
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        stopRepeatingTask();
+    }
+
+    Runnable mStatusChecker = new Runnable() {
+        @Override
+        public void run() {
+            try {
+                door_time_expired = BufferManager.RxBuffer[11];
+                gate_time_expired = BufferManager.RxBuffer[12];
+
+                if(TIME_EXPIRED == door_time_expired) {
+                    BufferManager.TxBuffer[16] = DOOR_CLOSE;
+                    DoorIcon.setImageResource(R.drawable.baseline_door_sliding_200);
+                }
+                if(TIME_EXPIRED == gate_time_expired) {
+                    BufferManager.TxBuffer[19] = DOOR_CLOSE;
+                    GatesIcon.setImageResource(R.drawable.baseline_door_sliding_200);
+                }
+            } finally {
+                mHandler.postDelayed(mStatusChecker, 250);
+            }
+        }
+    };
+
+    void startRepeatingTask() {
+        mStatusChecker.run();
+    }
+
+    void stopRepeatingTask() {
+        mHandler.removeCallbacks(mStatusChecker);
     }
 }

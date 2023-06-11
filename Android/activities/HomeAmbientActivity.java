@@ -1,6 +1,7 @@
 package com.example.home;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -28,6 +29,15 @@ public class HomeAmbientActivity extends AppCompat {
     TextView GasHiddenLayout;
 
     TextView tempInsideTextView;
+
+    private float temperature_inside;
+    private int humidity_inside;
+    private float temperature_outside;
+    private int humidity_outside;
+    private int air_quality;
+    private int co2;
+
+    private Handler mHandler;
 
 
     @Override
@@ -61,12 +71,36 @@ public class HomeAmbientActivity extends AppCompat {
             tempInsideTextView.setTextSize(26);
         }
 
+        temperature_inside = (float)((BufferManager.RxBuffer[3] & 0xFF) + ((BufferManager.RxBuffer[4] & 0xFF) * 0.1));
+        temperature_outside = (float)((BufferManager.RxBuffer[6] & 0xFF) + ((BufferManager.RxBuffer[7] & 0xFF) * 0.1));
+        humidity_inside = BufferManager.RxBuffer[5] & 0xFF;
+        humidity_outside = BufferManager.RxBuffer[8] & 0xFF;
+        air_quality = ((BufferManager.RxBuffer[9] & 0xFF) * 256) + (BufferManager.RxBuffer[13] & 0xFF);
+        co2 = ((BufferManager.RxBuffer[10] & 0xFF) * 256) + (BufferManager.RxBuffer[14] & 0xFF);
+
+        if(BufferManager.TxBuffer[30] == 0) {
+            TemperatureInsideHiddenLayout.setText(String.valueOf(temperature_inside) + " °C");
+            TemperatureOutsideHiddenLayout.setText(String.valueOf(temperature_outside) + " °C");
+        }
+        else if(BufferManager.TxBuffer[30] == 1)
+        {
+            TemperatureInsideHiddenLayout.setText(String.valueOf(temperature_inside) + " °F");
+            TemperatureOutsideHiddenLayout.setText(String.valueOf(temperature_outside) + " °F");
+        }
+        HumidityInsideHiddenLayout.setText(String.valueOf(humidity_inside) + " %");
+        HumidityOutsideHiddenLayout.setText(String.valueOf(humidity_outside) + " %");
+        AirQualityHiddenLayout.setText(String.valueOf(air_quality) + " ppm");
+        GasHiddenLayout.setText(String.valueOf(co2) + " ppm");
+
         TemperatureInsideLayout.setVisibility(View.VISIBLE);
         HumidityInsideHiddenLayout.setVisibility(View.INVISIBLE);
         TemperatureOutsideHiddenLayout.setVisibility(View.INVISIBLE);
         HumidityOutsideHiddenLayout.setVisibility(View.INVISIBLE);
         AirQualityHiddenLayout.setVisibility(View.INVISIBLE);
         GasHiddenLayout.setVisibility(View.INVISIBLE);
+
+        mHandler = new Handler();
+        startRepeatingTask();
 
         TemperatureInsideLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -427,5 +461,48 @@ public class HomeAmbientActivity extends AppCompat {
                 GasLayout.setLayoutParams(params_5);
             }
         });
+    }
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        stopRepeatingTask();
+    }
+
+    Runnable mStatusChecker = new Runnable() {
+        @Override
+        public void run() {
+            try {
+                temperature_inside = (float)((BufferManager.RxBuffer[3] & 0xFF) + ((BufferManager.RxBuffer[4] & 0xFF) * 0.1));
+                temperature_outside = (float)((BufferManager.RxBuffer[6] & 0xFF) + ((BufferManager.RxBuffer[7] & 0xFF) * 0.1));
+                humidity_inside = BufferManager.RxBuffer[5] & 0xFF;
+                humidity_outside = BufferManager.RxBuffer[8] & 0xFF;
+                air_quality = ((BufferManager.RxBuffer[9] & 0xFF) * 256) + (BufferManager.RxBuffer[13] & 0xFF);
+                co2 = ((BufferManager.RxBuffer[10] & 0xFF) * 256) + (BufferManager.RxBuffer[14] & 0xFF);
+
+                if(BufferManager.TxBuffer[30] == 0) {
+                    TemperatureInsideHiddenLayout.setText(String.valueOf(temperature_inside) + " °C");
+                    TemperatureOutsideHiddenLayout.setText(String.valueOf(temperature_outside) + " °C");
+                }
+                else if(BufferManager.TxBuffer[30] == 1)
+                {
+                    TemperatureInsideHiddenLayout.setText(String.valueOf(temperature_inside) + " °F");
+                    TemperatureOutsideHiddenLayout.setText(String.valueOf(temperature_outside) + " °F");
+                }
+                HumidityInsideHiddenLayout.setText(String.valueOf(humidity_inside) + " %");
+                HumidityOutsideHiddenLayout.setText(String.valueOf(humidity_outside) + " %");
+                AirQualityHiddenLayout.setText(String.valueOf(air_quality) + " ppm");
+                GasHiddenLayout.setText(String.valueOf(co2) + " ppm");
+            } finally {
+                mHandler.postDelayed(mStatusChecker, 250);
+            }
+        }
+    };
+
+    void startRepeatingTask() {
+        mStatusChecker.run();
+    }
+
+    void stopRepeatingTask() {
+        mHandler.removeCallbacks(mStatusChecker);
     }
 }

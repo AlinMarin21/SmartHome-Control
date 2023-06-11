@@ -13,17 +13,17 @@ import androidx.core.content.ContextCompat;
 
 public class AlarmActivity extends AppCompat {
 
-    static final int SWITCH_ON = 1;
-    static final int SWITCH_OFF = 0;
-    Switch AirQualityAlarmSwitch;
-    Switch GasAlarmSwitch;
-    Switch HumiditySwitch;
-    Switch MotionSwitch;
+    private static final int SWITCH_ON = 1;
+    private static final int SWITCH_OFF = 0;
+    private Switch AirQualityAlarmSwitch;
+    private Switch GasAlarmSwitch;
+    private Switch HumiditySwitch;
+    private Switch MotionSwitch;
 
-    int air_quality_switch_state = SWITCH_ON;
-    int gas_switch_state = SWITCH_ON;
-    int humidity_switch_state = SWITCH_OFF;
-    int motion_switch_state = SWITCH_OFF;
+    private int air_quality_switch_state = SWITCH_OFF;
+    private int gas_switch_state = SWITCH_OFF;
+    private int humidity_switch_state = SWITCH_OFF;
+    private int motion_switch_state = SWITCH_OFF;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -40,6 +40,11 @@ public class AlarmActivity extends AppCompat {
         GasAlarmSwitch = (Switch) findViewById(R.id.gas_alarm_switch);
         HumiditySwitch = (Switch) findViewById(R.id.humidity_alarm_switch);
         MotionSwitch = (Switch) findViewById(R.id.motion_alarm_switch);
+
+        air_quality_switch_state = BufferManager.TxBuffer[31];
+        gas_switch_state = BufferManager.TxBuffer[32];
+        humidity_switch_state = BufferManager.TxBuffer[33];
+        motion_switch_state = BufferManager.TxBuffer[34];
 
         if(SWITCH_ON == air_quality_switch_state) {
             AirQualityAlarmSwitch.setChecked(true);
@@ -90,6 +95,7 @@ public class AlarmActivity extends AppCompat {
                     AirQualityAlarmSwitch.setTrackTintList(ColorStateList.valueOf(ContextCompat.getColor(AlarmActivity.this, R.color.gray_navigation_background)));
                     air_quality_switch_state = SWITCH_OFF;
                 }
+                BufferManager.TxBuffer[31] = (byte) air_quality_switch_state;
             }
         });
 
@@ -106,6 +112,7 @@ public class AlarmActivity extends AppCompat {
                     HumiditySwitch.setTrackTintList(ColorStateList.valueOf(ContextCompat.getColor(AlarmActivity.this, R.color.gray_navigation_background)));
                     humidity_switch_state = SWITCH_OFF;
                 }
+                BufferManager.TxBuffer[33] = (byte) humidity_switch_state;
             }
         });
 
@@ -122,6 +129,7 @@ public class AlarmActivity extends AppCompat {
                     GasAlarmSwitch.setTrackTintList(ColorStateList.valueOf(ContextCompat.getColor(AlarmActivity.this, R.color.gray_navigation_background)));
                     gas_switch_state = SWITCH_OFF;
                 }
+                BufferManager.TxBuffer[32] = (byte) gas_switch_state;
             }
         });
 
@@ -138,6 +146,7 @@ public class AlarmActivity extends AppCompat {
                     MotionSwitch.setTrackTintList(ColorStateList.valueOf(ContextCompat.getColor(AlarmActivity.this, R.color.gray_navigation_background)));
                     motion_switch_state = SWITCH_OFF;
                 }
+                BufferManager.TxBuffer[34] = (byte) motion_switch_state;
             }
         });
     }
