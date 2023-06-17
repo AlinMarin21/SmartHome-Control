@@ -238,6 +238,8 @@ public class StartActivity extends AppCompat {
         @Override
         public void run() {
             try {
+                BufferManager.TxBuffer[0] = (byte) BufferManager.SOB;
+                BufferManager.TxBuffer[48] = (byte) BufferManager.EOB;
                 if (true == transmission_allowed) {
                     try {
                         if (true == recovery_action) {

@@ -43,7 +43,7 @@
     <string name="temp_outside_text">Temperatura la exterior</string>
     <string name="hum_outside_text">Umiditatea la exterior</string>
     <string name="air_quality_text">Calitatea aerului</string>
-    <string name="gas_text">CO2</string>
+    <string name="gas_text">Concentrația de gaz</string>
 
     <string name="select_display_text">Selectați ce doriți să afișseze ecranul dumneavoastră</string>
 
@@ -70,7 +70,7 @@
     <string name="select_alarm_text">Selectați ce evenimente doriți să declanșeze alarma:</string>
 
     <string name="airquality_alarm_text">Calitatea aerului este sub nivelul permis</string>
-    <string name="gas_alarm_text">Nivelul de CO2 este peste limitele permise</string>
+    <string name="gas_alarm_text">Nivelul concentrației de gaz este peste limitele permise</string>
     <string name="humidity_alarm_text">Umiditatea este peste nivelul suportabil</string>
     <string name="motion_detected_text">Mișcare detectată pe alee</string>
 
@@ -85,7 +85,7 @@
 
     <string name="temp_limit_text">Aceasta este temperatura la care aerul condiționat va porni dacă este setat modul său automat</string>
     <string name="bright_limit_text">Acesta este pragul de luminozitate la care se vor aprinde luminile de pe alee, dacă acesta este modul selectat.</string>
-    <string name="gas_limit_text">Acesta este nivelul maxim permis de CO2. Dacă alarma este setată și valoarea CO2 este depășită, alarma se va declanșa.</string>
+    <string name="gas_limit_text">Acesta este nivelul maxim permis pentru concentrația de gaz. Dacă alarma este setată și valoarea concentrației de gaz este depășită, alarma se va declanșa.</string>
     <string name="aq_limit_text">Acesta este nivelul minim admisibil pentru calitatea aerului. Dacă alarma este setată și calitatea aerului este sub această valoare, alarma se va declanșa.</string>
 
     <string name="save_text">SALVAȚI</string>
@@ -165,7 +165,7 @@
     <string name="show_inside_temp_hum_command_text">Afișează temperatura și umiditatea la interior pe ecran</string>
     <string name="show_outside_temp_hum_command_text">Afișează temperatura și umiditatea la exterior pe ecran</string>
     <string name="show_aq_command_text">Afișează nivelul de calitate a aerului pe ecran</string>
-    <string name="show_co2_command_text">Afișează nivelul de CO2 pe ecran</string>
+    <string name="show_co2_command_text">Afișează nivelul concentrației de gaz pe ecran</string>
     <string name="show_rainfall_command_text">Afișează nivelul de precipitații pe ecran</string>
     <string name="show_custom_screen_command_text">Afișează ecranul personalizat</string>
     <string name="see_commands_text">Vezi comenzile</string>

@@ -1,3 +1,10 @@
+#include <Servo.h>
+#include "DHT.h"
+#include "MQ135.h"
+
+/*** Type of used DHT sensor ***/
+#define DHTTYPE DHT22
+
 #define RX_ELEMENTS 49
 #define TX_ELEMENTS 49
 
@@ -63,6 +70,45 @@
 #define GREEN 5
 #define PINK 6
 #define PURPLE 7
+
+#define SYSTEM_ON 1
+#define SYSTEM_OFF 0
+
+#define FIRST_TRANSMISSION_AFTER_RESTART 1
+#define NORMAL_TRANSMISSION 0
+
+const int room1_led_red_color_pin = 2;
+const int room1_led_green_color_pin = 3;
+const int room1_led_blue_color_pin = 4;
+const int room2_led_red_color_pin = 5;
+const int room2_led_green_color_pin = 6;
+const int room2_led_blue_color_pin = 7;
+const int living_room_led_pin = 8;
+const int kitchen_led1_pin = 28;
+const int kitchen_led2_pin = 29;
+const int bathroom_led_pin = 30;
+const int terrace_left_led1_pin = 31;
+const int terrace_left_led2_pin = 32;
+const int terrace_left_led3_pin = 33;
+const int terrace_left_led4_pin = 34;
+const int terrace_right_led1_pin = 35;
+const int terrace_right_led2_pin = 36;
+const int terrace_right_led3_pin = 37;
+const int terrace_right_led4_pin = 38;
+
+const int photorestior_pin = A0;
+const int PIR_sensor_pin = 53;
+const int inside_dht_pin = 50;
+const int outside_dht_pin = 51;
+const int mq135_pin = A1;
+const int mq2_pin = A2;
+const int rainfall_sensor_pin = A3;
+
+const int ac_pin = 9;
+const int left_gate_servo_pin = 10;
+const int right_gate_servo_pin = 11;
+const int door_locker_servo_pin = 12;
+const int door_servo_pin = 13;
 
 byte RxBuffer[RX_ELEMENTS] = {0};
 /* Rx Buffer
@@ -137,9 +183,19 @@ byte TxBuffer[TX_ELEMENTS] = {0};
 
 byte ReceivedData[RX_ELEMENTS] = {0};
 byte RecoveryBuffer[TX_ELEMENTS] = {0};
+byte LastValidReceivedData[RX_ELEMENTS] = {0};
 
 int serial_availability = 0;
 int recovery_debounce = 0;
+
+DHT inside_dht_sensor(inside_dht_pin, DHTTYPE);
+DHT outside_dht_sensor(outside_dht_pin, DHTTYPE);
+MQ135 mq135_sensor(mq135_pin);
+
+Servo left_gate_servo;
+Servo right_gate_servo;
+Servo door_locker_servo;
+Servo door_servo;
 
 int living_room_led_state = LED_OFF;
 int living_room_led_brightness = 5;
@@ -190,7 +246,7 @@ int room_2_color = YELLOW;
 int motion_state = NO_MOTION;
 int brightness = 0;
 float inside_temperature = 0.0;
-float outside_temprature = 0.0;
+float outside_temperature = 0.0;
 int inside_humidity = 0;
 int outside_humidity = 0;
 int air_quality_ppm = 0;
@@ -198,32 +254,89 @@ int co2_ppm = 0;
 int auto_door_time_expired = TIME_NOT_EXPIRED;
 int auto_gate_time_expired = TIME_NOT_EXPIRED;
 
-int i = 0;
-float temp = 22.7;
-int hum = 0;
-int aq = 240;
-int co2 = 1340;
+int rainfall = 0;
 
-int door_cnt = 0;
-int gate_cnt = 0;
-int start_door_cnt = 0;
-int start_gate_cnt = 0;
+int alley_lights_last_state = LED_OFF;
+int alley_lights_counter = 0;
+int start_alley_lights_counter = 0;
+
+int system_state = SYSTEM_OFF;
+int system_transmission = NORMAL_TRANSMISSION;
+
+int door_counter = 0;
+int gate_counter = 0;
+int start_door_counter = 0;
+int start_gate_counter = 0;
 int last_door_state = 0;
 int last_gate_state = 0;
 
 void setup() {
   Serial.begin(9600);
+
   TxBuffer[0] = SOB;
   TxBuffer[48] = EOB;
+
+  inside_dht_sensor.begin();
+  outside_dht_sensor.begin();
+
+  pinMode(room1_led_red_color_pin, OUTPUT);
+  pinMode(room1_led_green_color_pin, OUTPUT);
+  pinMode(room1_led_blue_color_pin, OUTPUT);
+  pinMode(room2_led_red_color_pin, OUTPUT);
+  pinMode(room2_led_green_color_pin, OUTPUT);
+  pinMode(room2_led_blue_color_pin, OUTPUT);
+
+  pinMode(living_room_led_pin, OUTPUT);
+  pinMode(kitchen_led1_pin, OUTPUT);
+  pinMode(kitchen_led2_pin, OUTPUT);
+  pinMode(bathroom_led_pin, OUTPUT);
+
+  pinMode(terrace_left_led1_pin, OUTPUT);
+  pinMode(terrace_left_led2_pin, OUTPUT);
+  pinMode(terrace_left_led3_pin, OUTPUT);
+  pinMode(terrace_left_led4_pin, OUTPUT);
+  pinMode(terrace_right_led1_pin, OUTPUT);
+  pinMode(terrace_right_led2_pin, OUTPUT);
+  pinMode(terrace_right_led3_pin, OUTPUT);
+  pinMode(terrace_right_led4_pin, OUTPUT);
+
+  pinMode(photorestior_pin, INPUT);
+  pinMode(PIR_sensor_pin, INPUT);
+  pinMode(mq2_pin, INPUT);
+  pinMode(rainfall_sensor_pin, INPUT);
+
+  pinMode(ac_pin, OUTPUT);
+
+  left_gate_servo.attach(left_gate_servo_pin);
+  right_gate_servo.attach(right_gate_servo_pin);
+  door_locker_servo.attach(door_locker_servo_pin);
+  door_servo.attach(door_servo_pin);
+
+  left_gate_servo.write(90);
+  right_gate_servo.write(90);
+  door_locker_servo.write(0);
+  door_servo.write(90);
 }
 
 void loop() {
+
+  if(SYSTEM_OFF == system_state) {
+    system_state = SYSTEM_ON;
+    system_transmission = FIRST_TRANSMISSION_AFTER_RESTART;
+  }
+
+  readSensors();
+  TxUpdate();
 
   if(Serial.available() > 0) {
     recovery_debounce = 0;
     
     if(serial_availability == 0) {
       serial_availability = 1;
+      if(FIRST_TRANSMISSION_AFTER_RESTART == system_transmission) {
+        setDefaultData();
+        system_transmission = NORMAL_TRANSMISSION;
+      }
       writeRecoveryData();
     }
     else {
@@ -238,7 +351,10 @@ void loop() {
     }
   }
 
-  tx1Update();
+  RxUpdate();
+  lightsControl();
+  ACControl();
+  doorsControl();
 
   delay(250);
 }
@@ -253,14 +369,34 @@ void readReceiverBuffer() {
   for(int i = 0; i < RX_ELEMENTS; i++) {
     ReceivedData[i] = Serial.read();
   }
-  if(255 == ReceivedData[0] || 255 == ReceivedData[44]) {
-    //do nothing
+  if(SOB != ReceivedData[0] || EOB != ReceivedData[48]) {
+    for (int j = 0; j < 14; j++) {
+      int first_element = ReceivedData[0] & 0xFF;
+      for (int k = 0; k < RX_ELEMENTS - 1; k++) {
+        ReceivedData[k] = ReceivedData[k + 1];
+      }
+      ReceivedData[48] = (byte) first_element;
+    }
+    if(SOB != ReceivedData[0] || EOB != ReceivedData[48]) {
+      //do nothing  
+    }             
+    else {
+      for(int i = 0; i < RX_ELEMENTS; i++) {
+        RxBuffer[i] = ReceivedData[i];
+      }
+    }    
   }
   else {
     for(int i = 0; i < RX_ELEMENTS; i++) {
       RxBuffer[i] = ReceivedData[i];
     }
   }
+  // Serial.print("Rx: ");
+  // for(int i = 0; i < RX_ELEMENTS; i++) {
+  //   Serial.print(RxBuffer[i]);
+  //   Serial.print(" ");
+  // }
+  // Serial.println();
 }
 
 void writeTransmitterBuffer() {
@@ -270,14 +406,33 @@ void writeTransmitterBuffer() {
 }
 
 void communicationWithBluetoothModule() {
+  validateRxData();
   readReceiverBuffer();
   writeTransmitterBuffer();
 }
 
 void recoverLastReceivedData() {
   for(int i = 0; i < RX_ELEMENTS; i++) {
-    RecoveryBuffer[i] = RxBuffer[i];
+    RecoveryBuffer[i] = LastValidReceivedData[i];
   }
+  // Serial.print("Recovery: ");
+  // for(int i = 0; i < RX_ELEMENTS; i++) {
+  //   Serial.print(RecoveryBuffer[i]);
+  //   Serial.print(" ");
+  // }
+  // Serial.println();
+}
+
+void validateRxData() {
+  for(int i = 0; i < RX_ELEMENTS; i++) {
+    LastValidReceivedData[i] = RxBuffer[i];
+  }
+  // Serial.print("Last: ");
+  // for(int i = 0; i < RX_ELEMENTS; i++) {
+  //   Serial.print(LastValidReceivedData[i]);
+  //   Serial.print(" ");
+  // }
+  // Serial.println();
 }
 
 void RxUpdate() {
@@ -334,8 +489,8 @@ void TxUpdate() {
   TxBuffer[3] = (inside_temperature * 100) / 100;
   TxBuffer[4] = (int)((inside_temperature * 100) / 10) % 10;
   TxBuffer[5] = inside_humidity;
-  TxBuffer[6] = (outside_temprature * 100) / 100;
-  TxBuffer[7] = (int)((outside_temprature * 100) / 10) % 10;
+  TxBuffer[6] = (outside_temperature * 100) / 100;
+  TxBuffer[7] = (int)((outside_temperature * 100) / 10) % 10;
   TxBuffer[8] = outside_humidity;
   TxBuffer[9] = air_quality_ppm / 256;
   TxBuffer[10] = co2_ppm / 256;
@@ -345,92 +500,360 @@ void TxUpdate() {
   TxBuffer[14] = co2_ppm % 256;
 }
 
-void tx1Update() {
-  hum++;
-   i++;
-   aq = aq + 3;
-   co2 = co2 + 2;
+void setDefaultData() {
 
-   if(i==100)
-   {
-     TxBuffer[1] = 1;
-   }
-   if(i == 200) {
-     TxBuffer[1] = 0;
-   }
-
-   if(i==50) {
-     TxBuffer[2] = 25;
-   }
-   if(i==150) {
-     TxBuffer[2] = 60;
-   }
-
-  if(i==100) {
-    hum = 0;
-  }
-
-  if(i%50 == 0) {
-    temp = temp + 0.3;
-  }
-
-  if(RxBuffer[16] == 1 && last_door_state == 0) {
-    start_door_cnt = 1;
-    TxBuffer[11] = 0;
-  }
-  if(RxBuffer[19] == 1 && last_gate_state == 0) {
-    start_gate_cnt = 1;
-    TxBuffer[12] = 0;
-  }
-
-  if(start_door_cnt == 1) {
-    door_cnt++;
-  }
-  if(start_gate_cnt == 1) {
-    gate_cnt++;
-  }
-
-  if(door_cnt == 40 && RxBuffer[17] == 1) {
-    TxBuffer[11] = 1;
-  }
-  if(gate_cnt == 40 && RxBuffer[20] == 1) {
-    TxBuffer[12] = 1;
-  }
-
-  if(RxBuffer[16] == 0) {
-    start_door_cnt = 0;
-    door_cnt = 0;
-    TxBuffer[11] = 0;
-  }
-  if(RxBuffer[19] == 0) {
-    start_gate_cnt = 0;
-    gate_cnt = 0;
-    TxBuffer[12] = 0;
-  }
-
-
-  int t = (int)((temp * 100) / 10) % 10;
-
-  TxBuffer[3] = (temp * 100) / 100;
-  TxBuffer[4] = t;
-  TxBuffer[5] = hum;
-  TxBuffer[8] = hum;
-  TxBuffer[6] = (temp * 100) / 100;
-  TxBuffer[7] = t;
-  TxBuffer[9] = aq/256;
-  TxBuffer[13] = aq%256;
-  TxBuffer[10] = co2/256;
-  TxBuffer[14] = co2%256;
-
-   if(i==200) {
-     i = 0;
-     hum = 0;
-     aq = 189;
-     co2 = 1142;
-   }
-
-   last_door_state = RxBuffer[16];
-   last_gate_state = RxBuffer[19];
-   
+  RecoveryBuffer[2] = 5;
+  RecoveryBuffer[6] = 254;
+  RecoveryBuffer[7] = 254;
+  RecoveryBuffer[8] = 0;
+  RecoveryBuffer[10] = 254;
+  RecoveryBuffer[11] = 254;
+  RecoveryBuffer[12] = 0;
+  RecoveryBuffer[23] = 150;
+  RecoveryBuffer[26] = 24;
+  RecoveryBuffer[27] = 35;
+  RecoveryBuffer[35] = DISPLAYED_ON_CUSTOM;
+  RecoveryBuffer[36] = DISPLAYED_ON_CUSTOM;
+  RecoveryBuffer[37] = DISPLAYED_ON_CUSTOM;
+  RecoveryBuffer[38] = DISPLAYED_ON_CUSTOM;
+  RecoveryBuffer[39] = DISPLAYED_ON_CUSTOM;
+  RecoveryBuffer[44] = YELLOW;
+  RecoveryBuffer[45] = YELLOW;
 }
 
+void lightsControl() {
+  updateLivingRoomLight();
+  updateKitchenLight();
+  updateBathroomLight(); 
+  updateRoom1Light();
+  updateRoom2Light();
+  updateAlleyLights();
+}
+
+void readSensors() {
+  readBrightnessValue();
+  readMotionDetection();
+  readTemperatureValues();
+  readHumidityValues();
+  readAQIValue();
+  readCO2Value();
+}
+
+void ACControl() {
+  if(AUTO_AC_OFF == auto_ac) {
+    if(AC_ON == ac_state) {
+      analogWrite(ac_pin, ac_speed);
+    }
+    else if(AC_OFF == ac_state) {
+      analogWrite(ac_pin, AC_OFF);
+    }
+  }
+  else if(AUTO_AC_ON == auto_ac) {
+    if(inside_temperature > temperature_threshold) {
+      analogWrite(ac_pin, 254);
+    }
+  }
+}
+
+void doorsControl() {
+  controlGates();
+  controlFrontDoor();
+}
+
+void updateLivingRoomLight() {
+  if(LED_ON == living_room_led_state) {
+    analogWrite(living_room_led_pin, living_room_led_brightness);
+  }
+  else if(LED_OFF == living_room_led_state) {
+    analogWrite(living_room_led_pin, LED_OFF);
+  }
+}
+
+void updateBathroomLight() {
+  if(LED_ON == bathroom_led_state) {
+    digitalWrite(bathroom_led_pin, LED_ON);
+  }
+  else if(LED_OFF == bathroom_led_state) {
+    digitalWrite(bathroom_led_pin, LED_OFF);
+  }
+
+}
+
+void updateKitchenLight() {
+  if(LED_ON == kitchen_led_1_state) {
+    digitalWrite(kitchen_led1_pin, LED_ON);
+  }
+  else if(LED_OFF == kitchen_led_1_state) {
+    digitalWrite(kitchen_led1_pin, LED_OFF);
+  }
+
+  if(LED_ON == kitchen_led_2_state) {
+    digitalWrite(kitchen_led2_pin, LED_ON);
+  }
+  else if(LED_OFF == kitchen_led_2_state) {
+    digitalWrite(kitchen_led2_pin, LED_OFF);
+  }
+}
+
+void updateRoom1Light() {
+  if(LED_ON == room_1_led_state) {
+    analogWrite(room1_led_red_color_pin, room_1_rgb_red_color);
+    analogWrite(room1_led_green_color_pin, room_1_rgb_green_color);
+    analogWrite(room1_led_blue_color_pin, room_1_rgb_blue_color);
+  }
+  else if(LED_OFF == room_1_led_state) {
+    analogWrite(room1_led_red_color_pin, 0);
+    analogWrite(room1_led_green_color_pin, 0);
+    analogWrite(room1_led_blue_color_pin, 0);    
+  }
+}
+
+void updateRoom2Light() {
+  if(LED_ON == room_2_led_state) {
+    analogWrite(room2_led_red_color_pin, room_2_rgb_red_color);
+    analogWrite(room2_led_green_color_pin, room_2_rgb_green_color);
+    analogWrite(room2_led_blue_color_pin, room_2_rgb_blue_color);
+  }
+  else if(LED_OFF == room_2_led_state) {
+    analogWrite(room2_led_red_color_pin, 0);
+    analogWrite(room2_led_green_color_pin, 0);
+    analogWrite(room2_led_blue_color_pin, 0);    
+  }
+}
+
+void updateAlleyLights() {
+
+  if(MOTION_CONTROL == terrace_led_mode_control && MOTION_DETECTED == motion_state) {
+    terrace_led_state = LED_ON;
+  }
+  else if(MOTION_CONTROL == terrace_led_mode_control && NO_MOTION == motion_state) {
+    terrace_led_state = LED_OFF;
+  }
+
+  if(DARKNESS_CONTROL == terrace_led_mode_control && brightness_threshold >= brightness) {
+    terrace_led_state = LED_ON;
+  }
+  else if(DARKNESS_CONTROL == terrace_led_mode_control && brightness_threshold < brightness) {
+    terrace_led_state = LED_OFF;
+  }
+
+  if(terrace_led_state == LED_ON && alley_lights_last_state == LED_OFF)
+  {
+    start_alley_lights_counter = 1;
+  }
+
+  if(start_alley_lights_counter == 1) {
+    alley_lights_counter++;
+  }
+
+  if(terrace_led_state == LED_OFF) {
+    start_alley_lights_counter = 0;
+    alley_lights_counter = 0;
+
+    digitalWrite(terrace_left_led1_pin, LED_OFF);
+    digitalWrite(terrace_right_led1_pin, LED_OFF);
+    digitalWrite(terrace_left_led2_pin, LED_OFF);
+    digitalWrite(terrace_right_led2_pin, LED_OFF);
+    digitalWrite(terrace_left_led3_pin, LED_OFF);
+    digitalWrite(terrace_right_led3_pin, LED_OFF);
+    digitalWrite(terrace_left_led4_pin, LED_OFF);
+    digitalWrite(terrace_right_led4_pin, LED_OFF);
+  }
+
+  if(alley_lights_counter == 1 || alley_lights_counter == 7 || alley_lights_counter == 13) {
+    digitalWrite(terrace_left_led1_pin, LED_ON);
+    digitalWrite(terrace_right_led1_pin, LED_ON);
+    digitalWrite(terrace_left_led2_pin, LED_OFF);
+    digitalWrite(terrace_right_led2_pin, LED_OFF);
+    digitalWrite(terrace_left_led3_pin, LED_OFF);
+    digitalWrite(terrace_right_led3_pin, LED_OFF);
+    digitalWrite(terrace_left_led4_pin, LED_OFF);
+    digitalWrite(terrace_right_led4_pin, LED_OFF);
+  }
+  if(alley_lights_counter == 2 || alley_lights_counter == 6 || alley_lights_counter == 8 || alley_lights_counter == 12) {
+    digitalWrite(terrace_left_led1_pin, LED_OFF);
+    digitalWrite(terrace_right_led1_pin, LED_OFF);
+    digitalWrite(terrace_left_led2_pin, LED_ON);
+    digitalWrite(terrace_right_led2_pin, LED_ON);
+    digitalWrite(terrace_left_led3_pin, LED_OFF);
+    digitalWrite(terrace_right_led3_pin, LED_OFF);
+    digitalWrite(terrace_left_led4_pin, LED_OFF);
+    digitalWrite(terrace_right_led4_pin, LED_OFF);
+  }
+  if(alley_lights_counter == 3 || alley_lights_counter == 5 || alley_lights_counter == 9 || alley_lights_counter == 11) {
+    digitalWrite(terrace_left_led1_pin, LED_OFF);
+    digitalWrite(terrace_right_led1_pin, LED_OFF);
+    digitalWrite(terrace_left_led2_pin, LED_OFF);
+    digitalWrite(terrace_right_led2_pin, LED_OFF);
+    digitalWrite(terrace_left_led3_pin, LED_ON);
+    digitalWrite(terrace_right_led3_pin, LED_ON);
+    digitalWrite(terrace_left_led4_pin, LED_OFF);
+    digitalWrite(terrace_right_led4_pin, LED_OFF);
+  }
+  if(alley_lights_counter == 4 || alley_lights_counter == 10) {
+    digitalWrite(terrace_left_led1_pin, LED_OFF);
+    digitalWrite(terrace_right_led1_pin, LED_OFF);
+    digitalWrite(terrace_left_led2_pin, LED_OFF);
+    digitalWrite(terrace_right_led2_pin, LED_OFF);
+    digitalWrite(terrace_left_led3_pin, LED_OFF);
+    digitalWrite(terrace_right_led3_pin, LED_OFF);
+    digitalWrite(terrace_left_led4_pin, LED_ON);
+    digitalWrite(terrace_right_led4_pin, LED_ON);
+  }
+
+  if(alley_lights_counter == 14) {
+    digitalWrite(terrace_left_led1_pin, LED_ON);
+    digitalWrite(terrace_right_led1_pin, LED_ON);
+    digitalWrite(terrace_left_led2_pin, LED_ON);
+    digitalWrite(terrace_right_led2_pin, LED_ON);
+    digitalWrite(terrace_left_led3_pin, LED_ON);
+    digitalWrite(terrace_right_led3_pin, LED_ON);
+    digitalWrite(terrace_left_led4_pin, LED_ON);
+    digitalWrite(terrace_right_led4_pin, LED_ON);
+
+    start_alley_lights_counter = 0;
+    alley_lights_counter = 0;
+  }
+
+  alley_lights_last_state = terrace_led_state;
+}
+
+void readBrightnessValue() {
+  int photoresistor_value = analogRead(photorestior_pin);
+  brightness = map(photoresistor_value, 0, 1023, 0, 100);
+}
+
+void readMotionDetection() {
+  int pir_sensor_value = digitalRead(PIR_sensor_pin);
+  if(pir_sensor_value == HIGH) {
+    if(NO_MOTION == motion_state) {
+      motion_state = MOTION_DETECTED;
+    }
+  } 
+  else {
+    if(MOTION_DETECTED == motion_state) {
+      motion_state = NO_MOTION;
+    }
+  }
+}
+
+void readTemperatureValues() {
+  inside_temperature = inside_dht_sensor.readTemperature();
+  outside_temperature = outside_dht_sensor.readTemperature();
+
+  if(FAHRENHEIT_UNIT == temperature_unit) {
+    transformCelsiusToFahrenheit();
+  }
+}
+
+void transformCelsiusToFahrenheit() {
+  inside_temperature = (inside_temperature * 9 / 5) + 32;
+  outside_temperature = (outside_temperature * 9 / 5) + 32;
+}
+
+void readHumidityValues() {
+  inside_humidity = inside_dht_sensor.readHumidity();
+  outside_humidity = outside_dht_sensor.readHumidity();
+}
+
+void readAQIValue() {
+  air_quality_ppm = mq135_sensor.getCorrectedPPM(inside_temperature, inside_humidity);
+}
+
+void readCO2Value() {
+  int mq2_value = analogRead(mq2_pin);
+  co2_ppm = map(mq2_value, 0, 1023, 200, 10000);
+}
+
+void readRainfallValue() {
+  int rainfall_sensor_value = analogRead(rainfall_sensor_pin);
+  rainfall = map(rainfall_sensor_value, 0, 1023, 0, 100);
+}
+
+void controlGates() {
+
+  if(DOOR_OPEN == gates_state) {
+      left_gate_servo.write(0);
+      right_gate_servo.write(180);
+  }
+
+  if(AUTO_CLOSE_OFF == gates_automatic_closing) {
+    if(DOOR_CLOSE == gates_state) {
+      left_gate_servo.write(90);
+      right_gate_servo.write(90);
+    }
+    auto_gate_time_expired = TIME_NOT_EXPIRED;
+  }
+  else if(AUTO_CLOSE_ON == gates_automatic_closing) {
+    if(DOOR_CLOSE == gates_state) {
+      left_gate_servo.write(90);
+      right_gate_servo.write(90);
+
+      start_gate_counter = 0;
+      gate_counter = 0;
+    }
+
+    if(DOOR_CLOSE == last_gate_state && DOOR_OPEN == gates_state) {
+      start_gate_counter = 1;
+      gate_counter = 0;
+      auto_gate_time_expired = TIME_NOT_EXPIRED;
+    }
+
+    if(start_gate_counter == 1) {
+      gate_counter++;
+    }
+
+    if(gate_counter == 40) {
+      auto_gate_time_expired = TIME_EXPIRED;
+    }
+
+  }
+
+  last_gate_state = gates_state;
+}
+
+void controlFrontDoor() {
+
+  if(DOOR_OPEN == front_door_state) {
+    door_servo.write(180);
+  }
+
+  if(AUTO_CLOSE_OFF == front_door_automatic_closing) {
+    if(DOOR_CLOSE == front_door_state) {
+      door_servo.write(90);
+    }
+    auto_door_time_expired = TIME_NOT_EXPIRED;
+  }
+  else if(AUTO_CLOSE_ON == front_door_automatic_closing) {
+    if(DOOR_CLOSE == front_door_state) {
+      door_servo.write(90);
+
+      start_door_counter = 0;
+      door_counter = 0;
+    }
+
+    if(DOOR_CLOSE == last_door_state && DOOR_OPEN == front_door_state) {
+      start_door_counter = 1;
+      door_counter = 0;
+      auto_door_time_expired = TIME_NOT_EXPIRED;
+    }
+
+    if(start_door_counter == 1) {
+      door_counter++;
+    }
+
+    if(door_counter == 40) {
+      auto_door_time_expired = TIME_EXPIRED;
+    }
+
+  }
+
+  last_door_state = front_door_state;
+
+  if(DOOR_LOCKED == front_door_locking_state) {
+    door_locker_servo.write(90);
+  }
+  else if(DOOR_UNLOCKED == front_door_locking_state) {
+    door_locker_servo.write(0);
+  }
+}

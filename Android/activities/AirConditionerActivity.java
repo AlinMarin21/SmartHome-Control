@@ -30,7 +30,7 @@ public class AirConditionerActivity extends AppCompat {
     private int ac_state = AC_OFF;
     private int auto_ac_state = AUTO_AC_OFF;
 
-    private int ac_speed = 5;
+    private int ac_speed = 150;
 
     private Handler mHandler;
 
@@ -61,7 +61,7 @@ public class AirConditionerActivity extends AppCompat {
 
         ACSpeedBar.setVisibility(View.INVISIBLE);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            ACSpeedBar.setMin(5);
+            ACSpeedBar.setMin(150);
         }
         ACSpeedBar.setMax(254);
 
@@ -131,6 +131,7 @@ public class AirConditionerActivity extends AppCompat {
                     auto_ac_state = AUTO_AC_OFF;
                     AutoACSwitch.setChecked(false);
                     AutoACSwitch.setTrackTintList(ColorStateList.valueOf(ContextCompat.getColor(AirConditionerActivity.this, R.color.gray_navigation_background)));
+                    FanIcon.setImageResource(R.drawable.baseline_wind_power_200);
                 }
                 BufferManager.TxBuffer[22] = (byte) auto_ac_state;
                 BufferManager.TxBuffer[21] = (byte) ac_state;

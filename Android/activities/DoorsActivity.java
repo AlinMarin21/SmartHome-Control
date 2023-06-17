@@ -216,21 +216,27 @@ public class DoorsActivity extends AppCompat {
         DoorLockSwitch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(DOOR_UNLOCKED == locking_state) {
-                    locking_state = DOOR_LOCKED;
-                    DoorLockSwitch.setChecked(true);
-                    DoorLockSwitch.setTrackTintList(ColorStateList.valueOf(ContextCompat.getColor(DoorsActivity.this, R.color.purple_navigation_background)));
+                if (DOOR_CLOSE == door_state) {
+                    if (DOOR_UNLOCKED == locking_state) {
+                        locking_state = DOOR_LOCKED;
+                        DoorLockSwitch.setChecked(true);
+                        DoorLockSwitch.setTrackTintList(ColorStateList.valueOf(ContextCompat.getColor(DoorsActivity.this, R.color.purple_navigation_background)));
 
-                    DoorIcon.setImageResource(R.drawable.baseline_door_sliding_200);
-                    door_state = DOOR_CLOSE;
+                        DoorIcon.setImageResource(R.drawable.baseline_door_sliding_200);
+                        door_state = DOOR_CLOSE;
+                    } else {
+                        locking_state = DOOR_UNLOCKED;
+                        DoorLockSwitch.setChecked(false);
+                        DoorLockSwitch.setTrackTintList(ColorStateList.valueOf(ContextCompat.getColor(DoorsActivity.this, R.color.gray_navigation_background)));
+                    }
+                    BufferManager.TxBuffer[18] = (byte) locking_state;
+                    BufferManager.TxBuffer[16] = (byte) door_state;
                 }
                 else {
                     locking_state = DOOR_UNLOCKED;
                     DoorLockSwitch.setChecked(false);
                     DoorLockSwitch.setTrackTintList(ColorStateList.valueOf(ContextCompat.getColor(DoorsActivity.this, R.color.gray_navigation_background)));
                 }
-                BufferManager.TxBuffer[18] = (byte) locking_state;
-                BufferManager.TxBuffer[16] = (byte) door_state;
             }
         });
 
