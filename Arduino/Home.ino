@@ -110,6 +110,8 @@ const int right_gate_servo_pin = 11;
 const int door_locker_servo_pin = 12;
 const int door_servo_pin = 13;
 
+const int alarm_pin = 48;
+
 byte RxBuffer[RX_ELEMENTS] = {0};
 /* Rx Buffer
 * 0: SOB (Start Of Buffer)
@@ -306,6 +308,7 @@ void setup() {
   pinMode(rainfall_sensor_pin, INPUT);
 
   pinMode(ac_pin, OUTPUT);
+  pinMode(alarm_pin, OUTPUT);
 
   left_gate_servo.attach(left_gate_servo_pin);
   right_gate_servo.attach(right_gate_servo_pin);
@@ -355,6 +358,7 @@ void loop() {
   lightsControl();
   ACControl();
   doorsControl();
+  alarmControl();
 
   delay(250);
 }
@@ -512,6 +516,10 @@ void setDefaultData() {
   RecoveryBuffer[23] = 150;
   RecoveryBuffer[26] = 24;
   RecoveryBuffer[27] = 35;
+  RecoveryBuffer[28] = 15;
+  RecoveryBuffer[46] = 160;
+  RecoveryBuffer[29] = 11;
+  RecoveryBuffer[47] = 184;
   RecoveryBuffer[35] = DISPLAYED_ON_CUSTOM;
   RecoveryBuffer[36] = DISPLAYED_ON_CUSTOM;
   RecoveryBuffer[37] = DISPLAYED_ON_CUSTOM;
@@ -855,5 +863,36 @@ void controlFrontDoor() {
   }
   else if(DOOR_UNLOCKED == front_door_locking_state) {
     door_locker_servo.write(0);
+  }
+}
+
+void alarmControl() {
+
+  if(ALARM_ON == air_quality_alarm && air_quality_threshold < air_quality_ppm) {
+    digitalWrite(alarm_pin, LOW);
+  }
+  else {
+    digitalWrite(alarm_pin, HIGH);
+  }
+
+  if(ALARM_ON == co2_alarm && co2_threshold < co2_ppm) {
+    digitalWrite(alarm_pin, LOW);
+  }
+  else {
+    digitalWrite(alarm_pin, HIGH);
+  }
+
+  if(ALARM_ON == humidity_alarm && 90 < inside_humidity) {
+    digitalWrite(alarm_pin, LOW);
+  }
+  else {
+    digitalWrite(alarm_pin, HIGH);
+  }
+
+  if(ALARM_ON == motion_alarm && MOTION_DETECTED == motion_state) {
+    digitalWrite(alarm_pin, LOW);
+  }
+  else {
+    digitalWrite(alarm_pin, HIGH);
   }
 }
