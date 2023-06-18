@@ -1266,11 +1266,16 @@ void oledDisplayRainfall()
   myDisplay.setTextSize(1);
   myDisplay.setTextColor(WHITE);
 
-  myDisplay.setCursor(60, 10);
+  myDisplay.setCursor(70, 10);
   myDisplay.println("Rainfall");
 
   myDisplay.setTextSize(3);
-  myDisplay.setCursor(65, 30);
+  if(rainfall < 10) {
+    myDisplay.setCursor(75, 30);
+  }
+  else {
+    myDisplay.setCursor(65, 30);
+  }
   myDisplay.println(string_rainfall);
 
   myDisplay.setTextSize(2);

@@ -472,12 +472,14 @@ public class HomeAmbientActivity extends AppCompat {
         @Override
         public void run() {
             try {
-                temperature_inside = (float)((BufferManager.RxBuffer[3] & 0xFF) + ((BufferManager.RxBuffer[4] & 0xFF) * 0.1));
-                temperature_outside = (float)((BufferManager.RxBuffer[6] & 0xFF) + ((BufferManager.RxBuffer[7] & 0xFF) * 0.1));
-                humidity_inside = BufferManager.RxBuffer[5] & 0xFF;
-                humidity_outside = BufferManager.RxBuffer[8] & 0xFF;
-                air_quality = ((BufferManager.RxBuffer[9] & 0xFF) * 256) + (BufferManager.RxBuffer[13] & 0xFF);
-                co2 = ((BufferManager.RxBuffer[10] & 0xFF) * 256) + (BufferManager.RxBuffer[14] & 0xFF);
+                if((BufferManager.RxBuffer[0] & 0xFF) == BufferManager.SOB && (BufferManager.RxBuffer[48] & 0xFF) == BufferManager.EOB) {
+                    temperature_inside = (float) ((BufferManager.RxBuffer[3] & 0xFF) + ((BufferManager.RxBuffer[4] & 0xFF) * 0.1));
+                    temperature_outside = (float) ((BufferManager.RxBuffer[6] & 0xFF) + ((BufferManager.RxBuffer[7] & 0xFF) * 0.1));
+                    humidity_inside = BufferManager.RxBuffer[5] & 0xFF;
+                    humidity_outside = BufferManager.RxBuffer[8] & 0xFF;
+                    air_quality = ((BufferManager.RxBuffer[9] & 0xFF) * 256) + (BufferManager.RxBuffer[13] & 0xFF);
+                    co2 = ((BufferManager.RxBuffer[10] & 0xFF) * 256) + (BufferManager.RxBuffer[14] & 0xFF);
+                }
 
                 if(BufferManager.TxBuffer[30] == 0) {
                     TemperatureInsideHiddenLayout.setText(String.valueOf(temperature_inside) + " °C");
