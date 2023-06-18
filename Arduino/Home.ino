@@ -1068,7 +1068,7 @@ void displayControl() {
     oledDisplayRainfall();
   }
   else if(CUSTOM_DISPLAY == display_mode) {
-    
+    oledDisplayCustom();
   }
 }
 
@@ -1383,4 +1383,174 @@ void oledDisplayInsideOutsideHumidity() {
   myDisplay.println("%");
 
   myDisplay.display();  
+}
+
+void oledDisplayCustom() {
+
+  int column = 9;
+
+  long integer_inside_temperature = (inside_temperature * 100) / 10;
+  long integer_outside_temperature = (outside_temperature * 100) / 10;
+
+  String string_temperature_inside = String(integer_inside_temperature / 10) + "." + String(integer_inside_temperature % 10);
+  String string_temperature_outside = String(integer_outside_temperature / 10) + "." + String(integer_outside_temperature % 10);
+  String string_humidity_inside = String(inside_humidity);
+  String string_humidity_outside = String(outside_humidity);
+  String string_aq = String(air_quality_ppm);
+  String string_co2 = String(co2_ppm);
+  String string_rainfall = String(rainfall);
+  String string_brightness = String(brightness);
+
+  myDisplay.clearDisplay();
+
+  myDisplay.drawRect(0, 0, 128, 64, WHITE);
+  myDisplay.drawRect(0, 0, 128, 15, WHITE);
+
+  myDisplay.setTextSize(1);
+  myDisplay.setTextColor(WHITE);
+
+  myDisplay.setCursor(5, 3);
+  myDisplay.println("MEASURE");
+
+  myDisplay.setCursor(73, 3);
+  myDisplay.println("VAL");
+
+  myDisplay.setCursor(100, 3);
+  myDisplay.println("UNIT");
+
+  if(DISPLAYED_ON_CUSTOM == custom_display_inside_temperature) {
+    column = column + 9;
+
+    myDisplay.setCursor(5, column);
+    myDisplay.println("Temp In");
+
+    myDisplay.setCursor(73, column);
+    myDisplay.println(string_temperature_inside);
+
+    myDisplay.drawCircle(102, column, 2, WHITE);
+    myDisplay.setCursor(106, column);
+    if(CELSIUS_UNIT == temperature_unit) {
+      myDisplay.println("C");
+    }
+    else if(FAHRENHEIT_UNIT == temperature_unit) {
+      myDisplay.println("F");
+    }
+  }
+
+  if(DISPLAYED_ON_CUSTOM == custom_display_outside_temperature) {
+    column = column + 9;
+
+    myDisplay.setCursor(5, column);
+    myDisplay.println("Temp Out");
+
+    myDisplay.setCursor(73, column);
+    myDisplay.println(string_temperature_outside);
+
+    myDisplay.drawCircle(102, column, 2, WHITE);
+    myDisplay.setCursor(106, column);
+    if(CELSIUS_UNIT == temperature_unit) {
+      myDisplay.println("C");
+    }
+    else if(FAHRENHEIT_UNIT == temperature_unit) {
+      myDisplay.println("F");
+    }
+  }
+
+  if(DISPLAYED_ON_CUSTOM == custom_display_inside_humidity) {
+    column = column + 9;
+
+    myDisplay.setCursor(5, column);
+    myDisplay.println("Hum In");
+
+    myDisplay.setCursor(73, column);
+    myDisplay.println(string_humidity_inside);
+
+    myDisplay.setCursor(102, column);
+    myDisplay.println("%");
+  }
+
+  if(DISPLAYED_ON_CUSTOM == custom_display_outside_humidity) {
+    column = column + 9;
+
+    myDisplay.setCursor(5, column);
+    myDisplay.println("Hum Out");
+
+    myDisplay.setCursor(73, column);
+    myDisplay.println(string_humidity_outside);
+
+    myDisplay.setCursor(102, column);
+    myDisplay.println("%");
+  }
+
+  if(DISPLAYED_ON_CUSTOM == custom_display_air_quality) {
+    column = column + 9;
+
+    myDisplay.setCursor(5, column);
+    myDisplay.println("Air Q");
+
+    myDisplay.setCursor(73, column);
+    myDisplay.println(string_aq);
+
+    myDisplay.setCursor(102, column);
+    myDisplay.println("ppm");
+  }
+
+  if(DISPLAYED_ON_CUSTOM == custom_display_co2) {
+    column = column + 9;
+
+    myDisplay.setCursor(5, column);
+    myDisplay.println("Gas");
+
+    myDisplay.setCursor(73, column);
+    myDisplay.println(string_co2);
+
+    myDisplay.setCursor(102, column);
+    myDisplay.println("ppm");
+  }
+
+  if(DISPLAYED_ON_CUSTOM == custom_display_rainfall) {
+    column = column + 9;
+
+    myDisplay.setCursor(5, column);
+    myDisplay.println("Rain");
+
+    myDisplay.setCursor(73, column);
+    myDisplay.println(string_rainfall);
+
+    myDisplay.setCursor(102, column);
+    myDisplay.println("%");
+  }
+
+  if(DISPLAYED_ON_CUSTOM == custom_display_brightness) {
+    column = column + 9;
+
+    myDisplay.setCursor(5, column);
+    myDisplay.println("Bright");
+
+    myDisplay.setCursor(73, column);
+    myDisplay.println(string_brightness);
+
+    myDisplay.setCursor(102, column);
+    myDisplay.println("%");
+  }
+
+  if(DISPLAYED_ON_CUSTOM == custom_display_motion) {
+    column = column + 9;
+
+    myDisplay.setCursor(5, column);
+    myDisplay.println("Motion");
+
+    myDisplay.setCursor(73, column);
+    if(MOTION_DETECTED == motion_state) {
+      myDisplay.println("ON");
+    }
+    else {
+      myDisplay.println("OFF");
+    }
+
+    myDisplay.setCursor(102, column);
+    myDisplay.println("");
+  }
+
+  myDisplay.display();
 }
